@@ -1,6 +1,8 @@
 #ifndef CONTROLADORELIMINARLECTOR_H
 #define CONTROLADORELIMINARLECTOR_H
 
+#include "Lector.h"
+#include "ManejadorUsuario.h"
 #include "IControladorEliminarLector.h"
 #include "DtLector.h"
 

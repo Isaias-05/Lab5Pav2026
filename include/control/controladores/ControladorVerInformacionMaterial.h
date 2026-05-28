@@ -1,6 +1,9 @@
 #ifndef CONTROLADORVERINFORMACIONMATERIAL_H
 #define CONTROLADORVERINFORMACIONMATERIAL_H
 
+#include "ManejadorMaterial.h"
+#include "Material.h"
+
 #include "IControladorVerInformacionMaterial.h"
 #include "DtMaterialBasico.h"
 #include <string>

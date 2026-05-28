@@ -1,6 +1,10 @@
 #ifndef CONTROLADORREGISTRARMATERIAL_H
 #define CONTROLADORREGISTRARMATERIAL_H
 
+#include "ManejadorMaterial.h"
+#include "Libro.h"
+#include "Revista.h"
+
 #include "IControladorRegistrarMaterial.h"
 #include "DtLibro.h"
 #include "DtRevista.h"

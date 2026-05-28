@@ -1,6 +1,9 @@
 #ifndef CONTROLADORCONSULTARPUNTAJEMATERIAL_H
 #define CONTROLADORCONSULTARPUNTAJEMATERIAL_H
 
+#include "ManejadorMaterial.h"
+#include "Material.h"
+
 #include "DtMaterialBasico.h"
 #include "DtMaterialPuntaje.h"
 #include <set>
