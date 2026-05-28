@@ -16,12 +16,9 @@ class DtMaterialPuntaje {
         ~DtMaterialPuntaje();
 
         string getCodigo();
-        void setCodigo(string codigo);
 
         string getTitulo();
-        void setTitulo(string titulo);
 
         float getPuntajePromedio();
-        void setPuntajePromedio(float puntajePromedio);
 };
 #endif

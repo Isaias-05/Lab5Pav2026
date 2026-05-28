@@ -14,9 +14,7 @@ class DtMaterialBasico {
         ~DtMaterialBasico();
 
         string getCodigo();
-        void setCodigo(string codigo);
 
         string getTitulo();
-        void setTitulo(string titulo);
 };
 #endif

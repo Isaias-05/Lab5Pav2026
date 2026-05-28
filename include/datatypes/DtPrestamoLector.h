@@ -13,9 +13,7 @@ class DtPrestamoLector {
         ~DtPrestamoLector();
 
         string getNombreLector();
-        void setNombreLector(string nombreLector);
 
         DtMaterial * getMaterialesPrestados();
-        void setMaterialesPrestados(DtMaterial * materialesPrestados);
 };
 #endif

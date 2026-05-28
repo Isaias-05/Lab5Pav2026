@@ -18,18 +18,13 @@ class DtMaterialFull {
         ~DtMaterialFull();
 
         string getCodigo();
-        void setCodigo(string codigo);
 
         string getTitulo();
-        void setTitulo(string titulo);
 
         int getAnioPublicacion();
-        void setAnioPublicacion(int anioPublicacion);
 
         float getPuntajePromedio();
-        void setPuntajePromedio(float puntajePromedio);
 
         TipoMaterial getTipoMaterial();
-        void setTipoMaterial(TipoMaterial tipoMaterial);
 };
 #endif
