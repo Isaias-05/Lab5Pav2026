@@ -6,8 +6,9 @@ using std::string;
 
 class IControladorEliminarLector {
 public:
-	virtual ~IControladorEliminarLector() {}
-	virtual bool eliminarLector(const string &email) = 0;
+	~IControladorEliminarLector();
+	virtual consultarLector(string) = 0;
+	virtual confirmar() = 0; 
 };
 
 #endif // ICONTROLADORELIMINARLECTOR_H

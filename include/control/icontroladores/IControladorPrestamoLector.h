@@ -1,14 +1,15 @@
 #ifndef ICONTROLADORPRESTAMOLECTOR_H
 #define ICONTROLADORPRESTAMOLECTOR_H
 
+#include "DtPrestamoLector.h"
 #include <string>
 using std::string;
 
 class IControladorPrestamoLector {
 public:
 	virtual ~IControladorPrestamoLector() {}
-	virtual bool registrarPrestamo(const string &lectorEmail, const string &codigoMaterial) = 0;
-	virtual bool devolverMaterial(const string &codigoMaterial) = 0;
+	
+	virtual DtPrestamoLector obtenerLector(int) = 0; 
 };
 
 #endif // ICONTROLADORPRESTAMOLECTOR_H

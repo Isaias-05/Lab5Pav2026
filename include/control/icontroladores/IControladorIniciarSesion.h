@@ -7,8 +7,7 @@ using std::string;
 class IControladorIniciarSesion {
 public:
 	virtual ~IControladorIniciarSesion() {}
-	virtual bool iniciarSesion(const string &usuario, const string &contrasena) = 0;
-	virtual void cerrarSesion() = 0;
+	virtual bool iniciarSesion(string,string) = 0;
 };
 
 #endif // ICONTROLADORINICIARSESION_H

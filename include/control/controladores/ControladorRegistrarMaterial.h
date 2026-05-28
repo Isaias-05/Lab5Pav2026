@@ -2,6 +2,9 @@
 #define CONTROLADORREGISTRARMATERIAL_H
 
 #include "IControladorRegistrarMaterial.h"
+#include "DtLibro.h"
+#include "DtRevista.h"
+#include "TipoMaterial.h"
 #include <string>
 using std::string;
 
@@ -10,7 +13,11 @@ public:
 	ControladorRegistrarMaterial();
 	~ControladorRegistrarMaterial();
 
-	bool registrarMaterial(const string &codigo, const string &titulo) override;
+	void registrarMaterial(string, string, int, TipoMaterial) override;
+	DtLibro ingresarDatosLibro(string, int) override;
+	DtRevista ingresarDatosRevista(int, bool) override;
+	void confirmar() override;
+	
 };
 
 #endif // CONTROLADORREGISTRARMATERIAL_H

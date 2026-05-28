@@ -2,6 +2,7 @@
 #define CONTROLADORREGISTRARFUNCIONARIO_H
 
 #include "IControladorRegistrarFuncionario.h"
+#include "DtLector.h"
 #include <string>
 using std::string;
 
@@ -10,7 +11,7 @@ public:
 	ControladorRegistrarFuncionario();
 	~ControladorRegistrarFuncionario();
 
-	bool registrarFuncionario(const string &nombre, const string &email) override;
+	DtLector registrarFuncionario(string, string, int) override;
 };
 
 #endif // CONTROLADORREGISTRARFUNCIONARIO_H

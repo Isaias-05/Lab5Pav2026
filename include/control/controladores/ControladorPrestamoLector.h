@@ -2,6 +2,7 @@
 #define CONTROLADORPRESTAMOLECTOR_H
 
 #include "IControladorPrestamoLector.h"
+#include "DtPrestamoLector.h"
 #include <string>
 using std::string;
 
@@ -10,8 +11,8 @@ public:
 	ControladorPrestamoLector();
 	~ControladorPrestamoLector();
 
-	bool registrarPrestamo(const string &lectorEmail, const string &codigoMaterial) override;
-	bool devolverMaterial(const string &codigoMaterial) override;
+	DtPrestamoLector obtenerLector(int) override;
+
 };
 
 #endif // CONTROLADORPRESTAMOLECTOR_H
