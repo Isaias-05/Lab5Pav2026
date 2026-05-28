@@ -5,6 +5,7 @@
 #include "DtMaterial.h"
 #include "DtMaterialBasico.h"
 #include "DtMaterialFull.h"
+#include "DtPuntaje.h"
 #include "Puntaje.h"
 
 class Material{ 
@@ -13,9 +14,10 @@ class Material{
         string titulo;
         int anioPublicacion;
         float PuntajePromedio; 
+        Puntaje * puntajes;
 
     public:
-        Material(string , string, int , float);
+        Material(string, string, int , float, Puntaje*);
 
 
         string getCodigo();
@@ -28,7 +30,10 @@ class Material{
         void setAnioPublicacion(int);
 
         float getPuntajePromedio();
-        void actualizarPuntaje(float);   
+        void actualizarPuntaje(float);
+
+        Puntaje* getPuntajes();
+        void setPuntajes(Puntaje*);
 
         DtMaterial getDtMaterial();
         DtMaterialBasico getDtMaterialBasico();
