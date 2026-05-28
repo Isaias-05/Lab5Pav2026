@@ -1,6 +1,8 @@
 #ifndef CONTROLADORPRESTAMOLECTOR_H
 #define CONTROLADORPRESTAMOLECTOR_H
 
+#include "Lector.h"
+#include "ManejadorUsuario.h"
 #include "IControladorPrestamoLector.h"
 #include "DtPrestamoLector.h"
 #include <string>

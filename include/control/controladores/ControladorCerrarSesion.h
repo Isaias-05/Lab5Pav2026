@@ -2,6 +2,7 @@
 #define CONTROLADORCERRARSESION_H
 
 #include "IControladorCerrarSesion.h"
+#include "Sesion.h"
 
 class ControladorCerrarSesion : public IControladorCerrarSesion {
 public:

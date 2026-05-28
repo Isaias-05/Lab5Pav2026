@@ -1,6 +1,11 @@
 #ifndef ICONTROLADORREGISTRARPRESTAMO_H
 #define ICONTROLADORREGISTRARPRESTAMO_H
 
+#include "Lector.h"
+#include "ManejadorUsuario.h"
+#include "Material.h"
+#include "ManejadorMaterial.h"
+
 #include "DtLector.h"
 #include "DtMaterial.h"
 #include "DtFecha.h"

@@ -1,6 +1,9 @@
 #ifndef CONTROLADORELIMINARMATERIAL_H
 #define CONTROLADORELIMINARMATERIAL_H
 
+#include "ManejadorMaterial.h"
+#include "Material.h"
+
 #include "IControladorEliminarMaterial.h"
 #include "DtMaterialBasico.h"
 #include <string>
