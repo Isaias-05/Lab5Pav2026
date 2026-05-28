@@ -1,23 +1,26 @@
-#ifndef DT_PUNTAJE
-#define DT_PUNTAJE
+#ifndef DTPUNTAJE
+#define DTPUNTAJE
 
 #include <string>
 using namespace std;
 
-class DtPuntaje{
+class DtPuntaje {
     private:
-        string idUsuario;
+        string idLector;
         string codigoMaterial;
         int valor;
-
     public:
-        DtPuntaje(string, string, int);
+        DtPuntaje();
+        DtPuntaje(string idLector, string codigoMaterial, int valor);
+        ~DtPuntaje();
 
-        string getIdUsuario();
+        string getIdLector();
+        void setIdLector(string idLector);
 
         string getCodigoMaterial();
+        void setCodigoMaterial(string codigoMaterial);
 
         int getValor();
+        void setValor(int valor);
 };
-
 #endif

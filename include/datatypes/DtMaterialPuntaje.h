@@ -1,23 +1,27 @@
-#ifndef DT_MATERIAL_PUNTAJE
-#define DT_MATERIAL_PUNTAJE
+#ifndef DTMATERIALPUNTAJE
+#define DTMATERIALPUNTAJE
 
 #include <string>
 using namespace std;
 
-class DtMaterialPuntaje{
+class DtMaterialPuntaje {
     private:
         string codigo;
         string titulo;
         float puntajePromedio;
-
+        
     public:
-        DtMaterialPuntaje(string, string, float);
+        DtMaterialPuntaje();
+        DtMaterialPuntaje(string codigo, string titulo, float puntajePromedio);
+        ~DtMaterialPuntaje();
 
         string getCodigo();
+        void setCodigo(string codigo);
 
         string getTitulo();
+        void setTitulo(string titulo);
 
         float getPuntajePromedio();
+        void setPuntajePromedio(float puntajePromedio);
 };
-
 #endif

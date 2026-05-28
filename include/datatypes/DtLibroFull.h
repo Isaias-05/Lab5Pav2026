@@ -1,19 +1,24 @@
-#ifndef DT_LIBRO_FULL
-#define DT_LIBRO_FULL
+#ifndef DTLIBROFULL
+#define DTLIBROFULL
 
 #include "DtMaterialFull.h"
+#include "TipoMaterial.h"
+#include <string>
+using namespace std;
 
-class DtLibroFull : public DtMaterialFull{
+class DtLibroFull : public DtMaterialFull {
     private:
-        int numeroEdicion;
-        bool publicacionMensual;
-
+        string autor; 
+        int cantPaginas;
     public:
-        DtLibroFull(string, string, int, float, TipoMaterial, int, bool);
+        DtLibroFull();
+        DtLibroFull(string codigo, string titulo, int anioPublicacion, float puntajePromedio, TipoMaterial tipoMaterial,string autor, int cantPaginas);
+        ~DtLibroFull();
 
-        int getNumeroEdicion();
+        int getCantPaginas();
+        void setCantPaginas(int cantPaginas);
 
-        bool getPublicacionMensual();
+        string getAutor();
+        void setAutor(string autor);
 };
-
 #endif

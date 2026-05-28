@@ -1,30 +1,35 @@
-#ifndef DT_MATERIAL_FULL
-#define DT_MATERIAL_FULL
+#ifndef DTMATERIALFULL
+#define DTMATERIALFULL
 
-#include "Tipomaterial.h"
+#include "TipoMaterial.h"
 #include <string>
 using namespace std;
 
-class DtMaterialFull{
+class DtMaterialFull {
     private:
         string codigo;
         string titulo;
         int anioPublicacion;
         float puntajePromedio;
         TipoMaterial tipoMaterial;
-
     public:
-        DtMaterialFull(string, string, int, float, TipoMaterial);
-
+        DtMaterialFull();
+        DtMaterialFull(string codigo, string titulo, int anioPublicacion, float puntajePromedio, TipoMaterial tipoMaterial);
+        ~DtMaterialFull();
 
         string getCodigo();
+        void setCodigo(string codigo);
 
         string getTitulo();
+        void setTitulo(string titulo);
 
         int getAnioPublicacion();
+        void setAnioPublicacion(int anioPublicacion);
 
         float getPuntajePromedio();
+        void setPuntajePromedio(float puntajePromedio);
 
         TipoMaterial getTipoMaterial();
+        void setTipoMaterial(TipoMaterial tipoMaterial);
 };
 #endif

@@ -1,19 +1,21 @@
-#ifndef DT_REVISTA_FULL
-#define DT_REVISTA_FULL
+#ifndef DTREVISTAFULL
+#define DTREVISTAFULL
 
 #include "DtMaterialFull.h"
 
-class DtRevistaFull : public DtMaterialFull{
+class DtRevistaFull : public DtMaterialFull {
     private:
-        string autor;
-        int cantidadPaginas;
-
+        int numeroEdicion;
+        bool publicacionMensual;
     public:
-        DtRevistaFull(string, string, int, float, TipoMaterial, string, int);
+        DtRevistaFull();
+        DtRevistaFull(string codigo, string titulo, int anioPublicacion, float puntajePromedio, TipoMaterial tipoMaterial, int numeroEdicion, bool publicacionMensual);
+        ~DtRevistaFull();
 
-        string getAutor();
+        int getNumeroEdicion();
+        void setNumeroEdicion(int numeroEdicion);
 
-        int getCantidadPaginas();
+        bool getPublicacionMensual();
+        void setPublicacionMensual(bool publicacionMensual);
 };
-
 #endif

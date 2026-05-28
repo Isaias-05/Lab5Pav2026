@@ -1,7 +1,11 @@
 #ifndef CONTROLADORVERINFORMACIONMATERIAL_H
 #define CONTROLADORVERINFORMACIONMATERIAL_H
 
+#include "ManejadorMaterial.h"
+#include "Material.h"
+
 #include "IControladorVerInformacionMaterial.h"
+#include "DtMaterialBasico.h"
 #include <string>
 using std::string;
 
@@ -10,7 +14,8 @@ public:
 	ControladorVerInformacionMaterial();
 	~ControladorVerInformacionMaterial();
 
-	void verInformacion(const string &codigo) override;
+	set<DtMaterialBasico> listarMateriales() override;
+	DtMaterialBasico seleccionarMaterial(string codigo) override;
 };
 
 #endif // CONTROLADORVERINFORMACIONMATERIAL_H

@@ -1,27 +1,31 @@
-#ifndef DT_PRESTAMO
-#define DT_PRESTAMO
+#ifndef DTPRESTAMO
+#define DTPRESTAMO
 
 #include "DtFecha.h"
 #include <string>
 using namespace std;
 
-class DtPrestamo{
+class DtPrestamo {
     private:
-        int idUsuario;
+        string idLector;
         string codigoMaterial;
+        DtFecha fechaPrestamo;
         int cantDias;
-        DtFecha fecha;
-
     public:
-        DtPrestamo(int, string, int, DtFecha);
+        DtPrestamo();
+        DtPrestamo(string idLector, string codigoMaterial, DtFecha fechaPrestamo, int cantDias);
+        ~DtPrestamo();
 
-        int getIdUsuario();
+        string getIdLector();
+        void setIdLector(string idLector);
 
         string getCodigoMaterial();
+        void setCodigoMaterial(string codigoMaterial);
+
+        DtFecha getFechaPrestamo();
+        void setFechaPrestamo(DtFecha fechaPrestamo);
 
         int getCantDias();
-
-        DtFecha getFecha();
+        void setCantDias(int cantDias);
 };
-
 #endif

@@ -1,21 +1,17 @@
-#ifndef DT_FECHA
-#define DT_FECHA
-
-#include <string>
-using namespace std;
+#ifndef DTFECHA
+#define DTFECHA
 
 class DtFecha{
     private:
         int dia;
         int mes;
         int anio;
-
-    public:
-        DtFecha(int, int, int);
-
-        int getDia();
-        int getMes();
-        int getAnio();
+	public:
+		DtFecha();
+		DtFecha(int, int, int);
+		~DtFecha();
+        int getDia() const;
+        int getMes() const;
+        int getAnio() const;
 };
-
 #endif

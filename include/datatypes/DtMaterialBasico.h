@@ -1,19 +1,22 @@
-#ifndef DT_MATERIAL_BASICO
-#define DT_MATERIAL_BASICO
+#ifndef DTMATERIALBASICO
+#define DTMATERIALBASICO
 
 #include <string>
 using namespace std;
 
-class DtMaterialBasico{
+class DtMaterialBasico {
     private:
         string codigo;
         string titulo;
-
     public:
-        DtMaterialBasico(string, string);
+        DtMaterialBasico();
+        DtMaterialBasico(string codigo, string titulo);
+        ~DtMaterialBasico();
 
         string getCodigo();
+        void setCodigo(string codigo);
 
         string getTitulo();
+        void setTitulo(string titulo);
 };
 #endif
