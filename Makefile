@@ -8,30 +8,30 @@ LDFLAGS :=
 SRCDIR := src
 OBJDIR := obj
 BINDIR := bin
+INCLDIR := include
 
-SRCS := $(shell find $(SRCDIR) -name '*.cpp' -print)
-OBJS := $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRCS))
+
+CONTROLS_SRCS = $(wildcard $(SRCDIR)/controladores/*.cpp)
+DATATYPS_SRCS = $(wildcard $(SRCDIR)/datatypes/*.cpp)
+MANEJADR_SRCS = $(wildcard $(SRCDIR)/manejadores/*.cpp)
+ICONTROL_SRCS = $(wildcard $(SRCDIR)/interfaces/*.cpp)
+DOMINIO_SRCS = $(wildcard $(SRCDIR)/dominio/*.cpp)
+FABRICA_SRCS = $(wildcard $(SRCDIR)/fabrica/*.cpp)
+
+
+
+
 
 TARGET := $(BINDIR)/main
 
-.PHONY: all clean dirs print
+
 
 all: dirs $(TARGET)
 
 dirs:
 	@mkdir -p $(OBJDIR) $(BINDIR)
 
-$(TARGET): $(OBJS)
-	@mkdir -p $(dir $@)
-	$(CXX) $(LDFLAGS) -o $@ $^
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-print:
-	@echo "SRCS=$(SRCS)"
-	@echo "OBJS=$(OBJS)"
 
 clean:
 	@rm -rf $(OBJDIR) $(BINDIR)
