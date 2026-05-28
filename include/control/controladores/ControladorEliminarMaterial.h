@@ -2,6 +2,7 @@
 #define CONTROLADORELIMINARMATERIAL_H
 
 #include "IControladorEliminarMaterial.h"
+#include "DtMaterialBasico.h"
 #include <string>
 using std::string;
 
@@ -10,7 +11,9 @@ public:
 	ControladorEliminarMaterial();
 	~ControladorEliminarMaterial();
 
-	bool eliminarMaterial(const string &codigo) override;
+	set<DtMaterialBasico> listarMateriales() override;
+	DtMaterialBasico seleccionarMaterial(string codigo) override;
+	void confirmar() override;
 };
 
 #endif // CONTROLADORELIMINARMATERIAL_H

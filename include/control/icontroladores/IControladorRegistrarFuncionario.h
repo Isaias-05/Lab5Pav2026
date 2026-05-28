@@ -1,14 +1,14 @@
 #ifndef ICONTROLADORREGISTRARFUNCIONARIO_H
 #define ICONTROLADORREGISTRARFUNCIONARIO_H
 
+#include "DtLector.h"
 #include <string>
 using std::string;
 
 class IControladorRegistrarFuncionario {
 public:
 	virtual ~IControladorRegistrarFuncionario() {}
-	virtual bool registrarFuncionario(const string &nombre, const string &email) = 0;
+	virtual DtLector registrarFuncionario(string, string, int) = 0;
 };
 
 #endif // ICONTROLADORREGISTRARFUNCIONARIO_H
-

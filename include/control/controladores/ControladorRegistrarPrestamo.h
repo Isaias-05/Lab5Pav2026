@@ -1,0 +1,22 @@
+#ifndef ICONTROLADORREGISTRARPRESTAMO_H
+#define ICONTROLADORREGISTRARPRESTAMO_H
+
+#include "DtLector.h"
+#include "DtMaterial.h"
+#include "DtFecha.h"
+#include "DtPrestamo.h"
+#include <string>
+using std::string;
+
+class ControladorRegistrarPrestamo: public IControladorRegistrarPrestamo {
+    public:
+        ControladorRegistrarPrestamo();
+	    ~ControladorRegistrarPrestamo();
+
+        DtLector obtenerLector(string) override;
+        DtMaterial obtenerMaterial(string) override;
+        DtPrestamo registrarPrestamo(DtFecha, int, DtFecha) override;
+        void confirmar() override;
+};
+
+#endif //

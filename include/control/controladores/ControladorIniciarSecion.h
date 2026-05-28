@@ -10,8 +10,7 @@ public:
 	ControladorIniciarSecion();
 	~ControladorIniciarSecion();
 
-	bool iniciarSesion(const string &usuario, const string &contrasena) override;
-	void cerrarSesion() override;
+	bool iniciarSesion(string, string) override;
 };
 
 #endif // CONTROLADORINICIARSESION_H
