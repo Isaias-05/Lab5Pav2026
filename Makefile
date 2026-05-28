@@ -2,7 +2,7 @@
 SHELL := /bin/bash
 
 CXX := g++
-CXXFLAGS := -std=gnu++17 -O2 -Wall -Wextra -Iinclude
+CXXFLAGS := -Iinclude
 LDFLAGS :=
 
 SRCDIR := src
