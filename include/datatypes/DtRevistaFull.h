@@ -13,9 +13,7 @@ class DtRevistaFull : public DtMaterialFull {
         ~DtRevistaFull();
 
         int getNumeroEdicion();
-        void setNumeroEdicion(int numeroEdicion);
 
         bool getPublicacionMensual();
-        void setPublicacionMensual(bool publicacionMensual);
 };
 #endif

@@ -15,12 +15,9 @@ class DtPuntaje {
         ~DtPuntaje();
 
         string getIdLector();
-        void setIdLector(string idLector);
 
         string getCodigoMaterial();
-        void setCodigoMaterial(string codigoMaterial);
 
         int getValor();
-        void setValor(int valor);
 };
 #endif

@@ -17,15 +17,11 @@ class DtPrestamo {
         ~DtPrestamo();
 
         string getIdLector();
-        void setIdLector(string idLector);
 
         string getCodigoMaterial();
-        void setCodigoMaterial(string codigoMaterial);
 
         DtFecha getFechaPrestamo();
-        void setFechaPrestamo(DtFecha fechaPrestamo);
 
         int getCantDias();
-        void setCantDias(int cantDias);
 };
 #endif
