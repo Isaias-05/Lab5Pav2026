@@ -2,15 +2,16 @@
 #define LECTOR
 #define MAX_PRESTAMOS 100
 
-#include <iostream>
-#include <set>
 #include "Usuario.h"
 #include "Prestamo.h"
 
 #include "DtFecha.h"
-#include "Prestamo.h"
-#include "DtMaterialPrestado.h"
 #include "DtLector.h"
+#include "DtMaterialPrestado.h"
+
+#include <string>
+#include <iostream>
+#include <set>
 using namespace std;
 
 class Lector: public Usuario{

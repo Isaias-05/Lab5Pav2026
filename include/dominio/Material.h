@@ -2,12 +2,12 @@
 #define MATERIAL
 #define MAX_PUNTAJES 100
 
-#include "ManejadorMaterial.h"
 #include "DtMaterial.h"
 #include "DtMaterialBasico.h"
 #include "DtMaterialFull.h"
 #include "DtPuntaje.h"
 #include "Puntaje.h"
+#include <string>
 
 class Material{ 
     private:

@@ -4,6 +4,8 @@
 #include <iostream>
 using namespace std;
 
+#include <string>
+
 class Usuario{
     private:
         string id;

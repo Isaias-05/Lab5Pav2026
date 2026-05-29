@@ -2,11 +2,13 @@
 #define MANEJADORMATERIAL_H
 
 #include "Material.h"
-
+#include <map>
+#include <string>
+using namespace std;
 class ManejadorMaterial {
     private:
         static ManejadorMaterial* instancia;
-        set<Material*> materiales;
+        map<string, Material*> Materiales;
         ManejadorMaterial();
     public:
         
@@ -18,7 +20,8 @@ class ManejadorMaterial {
 
         Material* obtenerMaterial(string codigo);
 
-        set<Material*> obtenerMateriales();
+        map<string, Material*> obtenerMateriales();
 
         void eliminarMaterial(string codigo);
-}
+    };
+#endif

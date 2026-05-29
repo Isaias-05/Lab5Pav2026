@@ -18,7 +18,6 @@ class Puntaje{
 
         Lector* getLector();
         void setLector(Lector*);
-    };
-
+};
 
 #endif
