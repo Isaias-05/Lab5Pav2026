@@ -21,4 +21,5 @@ class ManejadorUsuario{
 
         void eliminarUsuario(string idUsuario);
 
-}
+};
+#endif
