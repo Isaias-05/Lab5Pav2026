@@ -1,5 +1,5 @@
-#ifndef DTREVISTAFULL_H
-#define DTREVISTAFULL_H
+#ifndef DTREVISTAFULL
+#define DTREVISTAFULL
 
 #include "DtMaterialFull.h"
 
@@ -9,12 +9,11 @@ class DtRevistaFull : public DtMaterialFull {
         bool publicacionMensual;
     public:
         DtRevistaFull();
-        DtRevistaFull(string codigo, string titulo, int anioPublicacion, float puntajePromedio, TipoMaterial tipoMaterial,int numeroEdicion, bool publicacionMensual);
+        DtRevistaFull(string codigo, string titulo, int anioPublicacion, float puntajePromedio, TipoMaterial tipoMaterial, int numeroEdicion, bool publicacionMensual);
         ~DtRevistaFull();
 
         int getNumeroEdicion();
-        void setNumeroEdicion(int numeroEdicion);
 
         bool getPublicacionMensual();
-        void setPublicacionMensual(bool publicacionMensual);
 };
+#endif

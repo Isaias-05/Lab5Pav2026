@@ -1,5 +1,8 @@
-#ifndef MATERIALBASICO_H
-#define MATERIALBASICO_H
+#ifndef DTMATERIALBASICO
+#define DTMATERIALBASICO
+
+#include <string>
+using namespace std;
 
 class DtMaterialBasico {
     private:
@@ -11,8 +14,7 @@ class DtMaterialBasico {
         ~DtMaterialBasico();
 
         string getCodigo();
-        void setCodigo(string codigo);
 
         string getTitulo();
-        void setTitulo(string titulo);
 };
+#endif

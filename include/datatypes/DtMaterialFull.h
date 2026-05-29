@@ -1,7 +1,9 @@
-#ifndef DTMATERIALFULL_H
-#define DTMATERIALFULL_H
+#ifndef DTMATERIALFULL
+#define DTMATERIALFULL
 
 #include "TipoMaterial.h"
+#include <string>
+using namespace std;
 
 class DtMaterialFull {
     private:
@@ -16,17 +18,13 @@ class DtMaterialFull {
         ~DtMaterialFull();
 
         string getCodigo();
-        void setCodigo(string codigo);
 
         string getTitulo();
-        void setTitulo(string titulo);
 
         int getAnioPublicacion();
-        void setAnioPublicacion(int anioPublicacion);
 
         float getPuntajePromedio();
-        void setPuntajePromedio(float puntajePromedio);
 
         TipoMaterial getTipoMaterial();
-        void setTipoMaterial(TipoMaterial tipoMaterial);
-}
+};
+#endif

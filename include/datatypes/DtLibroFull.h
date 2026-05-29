@@ -1,7 +1,10 @@
-#ifndef DTLIBROFULL_H
-#define DTLIBROFULL_H
+#ifndef DTLIBROFULL
+#define DTLIBROFULL
 
 #include "DtMaterialFull.h"
+#include "TipoMaterial.h"
+#include <string>
+using namespace std;
 
 class DtLibroFull : public DtMaterialFull {
     private:
@@ -13,8 +16,7 @@ class DtLibroFull : public DtMaterialFull {
         ~DtLibroFull();
 
         int getCantPaginas();
-        void setCantPaginas(int cantPaginas);
 
         string getAutor();
-        void setAutor(string autor);
 };
+#endif

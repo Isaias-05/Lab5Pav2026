@@ -5,20 +5,20 @@
 
 class Puntaje{
     private:
-        Lector* lector;
         int valor;
+        Lector* lector;
     
     public:
         Puntaje();
-        Puntaje(Lector*, int);
+        Puntaje(int, Lector*);
         ~Puntaje();
+        
+        int getValor();
+        void setValor(int);
 
         Lector* getLector();
         void setLector(Lector*);
-
-        int getValor();
-        void setValor(int);
-};
+    };
 
 
 #endif

@@ -1,20 +1,19 @@
-#ifndef DTLECTOR_H
-#define DTLECTOR_H
+#ifndef DTLECTOR
+#define DTLECTOR
 
 #include "DtMaterialPrestado.h"
-#include <set>
 #include <string>
 using namespace std;
 
 class DtLector{
     private:
         string nombre;
-        set<DtMaterialPrestado> materialesPrestados;
+        DtMaterialPrestado * materialesPrestados;
 	public:
 		DtLector();
-		DtLector(string nombre, set<DtMaterialPrestado> materialesPrestados);
+		DtLector(string nombre, DtMaterialPrestado * materialesPrestados);
 		~DtLector();
         string getNombre();
-        set<DtMaterialPrestado> getMaterialesPrestados();
+        DtMaterialPrestado * getMaterialesPrestados();
 };
 #endif

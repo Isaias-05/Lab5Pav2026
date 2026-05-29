@@ -1,4 +1,6 @@
-#ifndef TIPOMATERILAL_H
-#define TIPOMATERILAL_H
-enum TipoMaterial {Libro, Revista};
+#ifndef TIPOMATERIAL
+#define TIPOMATERIAL
+enum TipoMaterial {
+    LIBRO, REVISTA
+};
 #endif

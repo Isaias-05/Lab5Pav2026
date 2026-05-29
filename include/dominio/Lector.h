@@ -15,16 +15,12 @@ using namespace std;
 
 class Lector: public Usuario{
 	private:
-		string id;
-        string nombre;
-        string contrasenia;
         DtFecha fechaRegistro;
-		set<Prestamo> prestamos;
+		Prestamo * prestamos;
 		
-	
 	public:
 		Lector();
-		Lector(string, string,  DtFecha, DtFecha);
+		Lector(string, string, string, DtFecha);
 		~Lector();
         
         DtFecha getFechaRegistro();

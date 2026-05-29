@@ -1,5 +1,8 @@
-#ifndef MATERIAL_H
-#define MATERIAL_H
+#ifndef DTMATERIAL
+#define DTMATERIAL
+
+#include <string>
+using namespace std;
 
 class DtMaterial {
     private:
@@ -12,11 +15,9 @@ class DtMaterial {
         ~DtMaterial();
 
         string getCodigo();
-        void setCodigo(string codigo);
 
         string getTitulo();
-        void setTitulo(string titulo);
 
         int getAnioPublicacion();
-        void setAnioPublicacion(int anioPublicacion);
 };
+#endif
