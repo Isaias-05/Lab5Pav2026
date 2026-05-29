@@ -2,19 +2,17 @@
 
 DtPrestamoLector::DtPrestamoLector() {}
 
-DtPrestamoLector::DtPrestamoLector(string nombreLector, DtMaterial * materialesPrestados) {
+DtPrestamoLector::DtPrestamoLector(string nombreLector, set<DtMaterial> materialesPrestados) {
     this->nombreLector = nombreLector;
     this->materialesPrestados = materialesPrestados;
 }
 
-DtPrestamoLector::~DtPrestamoLector() {
-    delete this->materialesPrestados;
-}
+DtPrestamoLector::~DtPrestamoLector() {}
 
 string DtPrestamoLector::getNombreLector() {
-    return this->nombreLector;
+    return nombreLector;
 }
 
-DtMaterial * DtPrestamoLector::getMaterialesPrestados() {
-    return this->materialesPrestados;
+set<DtMaterial> DtPrestamoLector::getMaterialesPrestados() {
+    return materialesPrestados;
 }
