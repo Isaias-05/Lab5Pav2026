@@ -1,7 +1,8 @@
 #ifndef LECTOR
 #define LECTOR
-#define MAX_PRESTAMOS 100
 
+#include <iostream>
+#include <vector>	
 #include "Usuario.h"
 #include "Prestamo.h"
 
@@ -17,8 +18,7 @@ using namespace std;
 class Lector: public Usuario{
 	private:
         DtFecha fechaRegistro;
-		Prestamo * prestamos[MAX_PRESTAMOS];
-		int topePrestamos;
+		vector<Prestamo*> prestamos;
 	public:
 		Lector();
 		Lector(string, string, string, DtFecha);
