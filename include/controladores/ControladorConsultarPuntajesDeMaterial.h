@@ -1,5 +1,5 @@
-#ifndef CONTROLADORCONSULTARPUNTAJEMATERIAL
-#define CONTROLADORCONSULTARPUNTAJEMATERIAL
+#ifndef CONTROLADORCONSULTARPUNTAJESDEMATERIAL
+#define CONTROLADORCONSULTARPUNTAJESDEMATERIAL
 
 #include "ManejadorMaterial.h"
 #include "Material.h"
@@ -10,10 +10,10 @@
 #include <string>
 using namespace std;
 
-class ControladorConsultarPuntajeMaterial : public IControladorConsultarPuntajeMaterial {
+class ControladorConsultarPuntajesDeMaterial : public IControladorConsultarPuntajesDeMaterial {
 public:
-	ControladorConsultarPuntajeMaterial();
-	~ControladorConsultarPuntajeMaterial();
+	ControladorConsultarPuntajesDeMaterial();
+	~ControladorConsultarPuntajesDeMaterial();
 
 	set<DtMaterialBasico> listarMateriales() override;
 	DtMaterialPuntaje seleccionarMaterial(string codigo) override;

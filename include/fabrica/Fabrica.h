@@ -1,33 +1,46 @@
 #ifndef FABRICA
 #define FABRICA
 
-#include "IControladorCerrarSesion.h"
-#include "IControladorConsultarPuntajeMaterial.h"
-#include "IControladorEliminarLector.h"
-#include "IControladorEliminarMaterial.h"
+//Obligatorios
 #include "IControladorIniciarSesion.h"
-#include "IControladorPrestamoLector.h"
-#include "IControladorPuntuarMaterial.h"
-#include "IControladorRegistrarFuncionario.h"
+#include "IControladorCerrarSesion.h"
 #include "IControladorRegistrarLector.h"
+#include "IControladorRegistrarFuncionario.h"
 #include "IControladorRegistrarMaterial.h"
 #include "IControladorRegistrarPrestamo.h"
-#include "IControladorVerInformacionMaterial.h"
+#include "IControladorConsultarPrestamosDeLector.h"
+#include "IControladorVerInformacionDeMaterial.h"
+
+//Opcionales
+#include "IControladorPuntuarMaterial.h"
+#include "IControladorConsultarPuntajesDeMaterial.h"
+#include "IControladorEliminarLector.h"
+#include "IControladorEliminarMaterial.h"
 
 class Fabrica {
+private:
+    static Fabrica* instancia;
+    Fabrica();
 public:
-    static IControladorCerrarSesion* getControladorCerrarSesion();
-    static IControladorConsultarPuntajeMaterial* getControladorConsultarPuntajeMaterial();
-    static IControladorEliminarLector* getControladorEliminarLector();
-    static IControladorEliminarMaterial* getControladorEliminarMaterial();
+    static Fabrica* getInstancia();
+    
+    //Obligatorios
     static IControladorIniciarSesion* getControladorIniciarSesion();
-    static IControladorPrestamoLector* getControladorPrestamoLector();
-    static IControladorPuntuarMaterial* getControladorPuntuarMaterial();
-    static IControladorRegistrarFuncionario* getControladorRegistrarFuncionario();
+    static IControladorCerrarSesion* getControladorCerrarSesion();
     static IControladorRegistrarLector* getControladorRegistrarLector();
+    static IControladorRegistrarFuncionario* getControladorRegistrarFuncionario();
     static IControladorRegistrarMaterial* getControladorRegistrarMaterial();
     static IControladorRegistrarPrestamo* getControladorRegistrarPrestamo();
-    static IControladorVerInformacionMaterial* getControladorVerInformacionMaterial();
+    static IControladorConsultarPrestamosDeLector* getControladorConsultarPrestamosDeLector();
+    static IControladorVerInformacionDeMaterial* getControladorVerInformacionDeMaterial();
+
+    //Opcionales
+    static IControladorPuntuarMaterial* getControladorPuntuarMaterial();
+    static IControladorConsultarPuntajesDeMaterial* getControladorConsultarPuntajesDeMaterial();
+    static IControladorEliminarLector* getControladorEliminarLector();
+    static IControladorEliminarMaterial* getControladorEliminarMaterial();
+
+    ~Fabrica();
 };
 
 #endif // FABRICA

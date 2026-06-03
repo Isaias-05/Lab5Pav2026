@@ -1,5 +1,5 @@
-#ifndef ICONTROLADORCONSULTARPUNAJEMATERIAL
-#define ICONTROLADORCONSULTARPUNAJEMATERIAL
+#ifndef ICONTROLADORCONSULTARPUNAJESDEMATERIAL
+#define ICONTROLADORCONSULTARPUNAJESDEMATERIAL
 
 #include "DtMaterialBasico.h"
 #include "DtMaterialPuntaje.h"
@@ -7,9 +7,9 @@
 #include <string>
 using namespace std;
 
-class IControladorConsultarPuntajeMaterial {
+class IControladorConsultarPuntajesDeMaterial {
 public:
-	~IControladorConsultarPuntajeMaterial() {};
+	~IControladorConsultarPuntajesDeMaterial() {};
 
 	virtual set<DtMaterialBasico> listarMateriales() = 0;
 	virtual DtMaterialPuntaje seleccionarMaterial(string codigo) = 0;
