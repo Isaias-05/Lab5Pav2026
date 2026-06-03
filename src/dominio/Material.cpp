@@ -5,7 +5,7 @@ Material::Material() {
     this->titulo = "";
     this->anioPublicacion = 0;
     this->PuntajePromedio = 0.0;
-    this->topePuntajes = 0;
+    this->puntajes.clear();
 }
 
 Material::Material(string codigo, string titulo, int anioPublicacion, float PuntajePromedio) {
@@ -13,11 +13,16 @@ Material::Material(string codigo, string titulo, int anioPublicacion, float Punt
     this->titulo = titulo;
     this->anioPublicacion = anioPublicacion;
     this->PuntajePromedio = PuntajePromedio;
-    this->topePuntajes = 0;
+    this->puntajes.clear();
 }
 
 Material::~Material() {
-    delete[] puntajes;
+    /*pair es cada elemento del map.
+    pair.first es la clave (string con el id del lector).
+    pair.second es el valor (Puntaje*, puntero a un objeto Puntaje).*/
+    for (auto& pair : puntajes) {
+        delete pair.second; 
+    }
 }
 
 string Material::getCodigo() {
@@ -50,13 +55,12 @@ float Material::getPuntajePromedio() {
 
 void Material::actualizarPuntaje(float nuevoPuntaje) {}
 
-Puntaje** Material::getPuntajes() {
+const map<string, Puntaje*>& Material::getPuntajes() {
     return puntajes;
 }
 
 void Material::agregarPuntaje(Puntaje* puntaje) {
-    this->puntajes[topePuntajes] = puntaje;
-    this->topePuntajes ++;
+    this->puntajes[puntaje->getLector()->getId()] = puntaje;
 }
 
 DtMaterial Material::getDtMaterial() {
@@ -68,8 +72,11 @@ DtMaterialBasico Material::getDtMaterialBasico() {
 }
 
 DtPuntaje Material::getDtPuntajeUsuario(string idUsuario) {
-    for (Puntaje * puntaje : puntajes) {
-        if (puntaje->getLector()->getId() == idUsuario)
-            return DtPuntaje(idUsuario, this->codigo, puntaje->getValor());
+    //Verifica si el usuario ha dado un puntaje a este material
+    if (puntajes.find(idUsuario) != puntajes.end()) {
+        return DtPuntaje(idUsuario, this->codigo, puntajes[idUsuario]->getValor());
+    } else {
+        // Si el usuario no ha dado un puntaje, devuelve un DtPuntaje vacío
+        return DtPuntaje();
     }
 }

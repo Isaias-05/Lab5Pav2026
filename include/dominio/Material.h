@@ -1,7 +1,7 @@
 #ifndef MATERIAL
 #define MATERIAL
-#define MAX_PUNTAJES 100
 
+#include <map>
 #include "ManejadorMaterial.h"
 #include "DtMaterial.h"
 #include "DtMaterialBasico.h"
@@ -15,8 +15,8 @@ class Material{
         string titulo;
         int anioPublicacion;
         float PuntajePromedio; 
-        Puntaje * puntajes[MAX_PUNTAJES];
-        int topePuntajes;
+        // clave: idLector, valor: Puntaje*
+        map<string, Puntaje*> puntajes; 
     public:
         Material();
         Material(string, string, int , float);
@@ -34,7 +34,7 @@ class Material{
         float getPuntajePromedio();
         void actualizarPuntaje(float);
 
-        Puntaje** getPuntajes();
+        const map<string, Puntaje*>& getPuntajes();
         void agregarPuntaje(Puntaje*);
 
         DtMaterial getDtMaterial();

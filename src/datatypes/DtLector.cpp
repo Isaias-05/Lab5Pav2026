@@ -2,12 +2,9 @@
 
 DtLector::DtLector(){}
 
-DtLector::DtLector(string nombre, DtMaterialPrestado * materialesPrestados, int topeMaterialesPrestados) {
+DtLector::DtLector(string nombre, vector<DtMaterialPrestado> materialesPrestados) {
     this->nombre = nombre;
-    this->topeMaterialesPrestados = topeMaterialesPrestados;
-    for (int i = 0; i < topeMaterialesPrestados; i++) {
-        this->materialesPrestados[i] = materialesPrestados[i];
-    }
+    this->materialesPrestados = materialesPrestados;
 }
 
 DtLector::~DtLector(){}
@@ -16,10 +13,10 @@ string DtLector::getNombre(){
     return this->nombre;
 }
 
-DtMaterialPrestado * DtLector::getMaterialesPrestados(){
+const vector<DtMaterialPrestado>& DtLector::getMaterialesPrestados(){
     return this->materialesPrestados;
 }
 
-int DtLector::getTopeMaterialesPrestados(){
-    return this->topeMaterialesPrestados;
+size_t DtLector::getTopeMaterialesPrestados(){
+    return this->materialesPrestados.size();
 }
