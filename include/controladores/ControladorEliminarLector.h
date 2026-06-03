@@ -1,5 +1,5 @@
-#ifndef CONTROLADORELIMINARLECTOR_H
-#define CONTROLADORELIMINARLECTOR_H
+#ifndef CONTROLADORELIMINARLECTOR
+#define CONTROLADORELIMINARLECTOR
 
 #include "Lector.h"
 #include "ManejadorUsuario.h"
@@ -15,5 +15,5 @@ public:
 	void confirmar() override; 
 };
 
-#endif // CONTROLADORELIMINARLECTOR_H
+#endif // CONTROLADORELIMINARLECTOR
 

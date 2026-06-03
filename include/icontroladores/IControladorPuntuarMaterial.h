@@ -1,5 +1,5 @@
-#ifndef ICONTROLADORPUNTUARMATERIAL_H
-#define ICONTROLADORPUNTUARMATERIAL_H
+#ifndef ICONTROLADORPUNTUARMATERIAL
+#define ICONTROLADORPUNTUARMATERIAL
 
 #include "DtMaterialBasico.h"
 #include "DtPuntaje.h"
@@ -18,5 +18,5 @@ public:
 	virtual void puntuarMaterial(string idUsuario, int puntaje) = 0;
 };
 
-#endif // ICONTROLADORPUNTUARMATERIAL_H
+#endif // ICONTROLADORPUNTUARMATERIAL
 

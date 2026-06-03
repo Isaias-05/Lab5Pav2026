@@ -1,5 +1,5 @@
-#ifndef ICONTROLADORREGISTRARLECTOR_H
-#define ICONTROLADORREGISTRARLECTOR_H
+#ifndef ICONTROLADORREGISTRARLECTOR
+#define ICONTROLADORREGISTRARLECTOR
 
 #include "DtLector.h"
 #include "DtFecha.h"
@@ -14,5 +14,5 @@ public:
 	virtual void altaLector() = 0;
 };
 
-#endif // ICONTROLADORREGISTRARLECTOR_H
+#endif // ICONTROLADORREGISTRARLECTOR
 

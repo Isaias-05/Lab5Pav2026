@@ -1,5 +1,5 @@
-#ifndef CONTROLADORINICIARSESION_H
-#define CONTROLADORINICIARSESION_H
+#ifndef CONTROLADORINICIARSESION
+#define CONTROLADORINICIARSESION
 
 #include "Sesion.h"
 #include "ManejadorUsuario.h"
@@ -15,5 +15,5 @@ public:
 	bool iniciarSesion(string, string) override;
 };
 
-#endif // CONTROLADORINICIARSESION_H
+#endif // CONTROLADORINICIARSESION
 

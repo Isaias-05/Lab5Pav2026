@@ -1,5 +1,5 @@
-#ifndef CONTROLADORELIMINARMATERIAL_H
-#define CONTROLADORELIMINARMATERIAL_H
+#ifndef CONTROLADORELIMINARMATERIAL
+#define CONTROLADORELIMINARMATERIAL
 
 #include "ManejadorMaterial.h"
 #include "Material.h"
@@ -19,5 +19,5 @@ public:
 	void confirmar() override;
 };
 
-#endif // CONTROLADORELIMINARMATERIAL_H
+#endif // CONTROLADORELIMINARMATERIAL
 

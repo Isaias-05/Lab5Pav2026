@@ -1,5 +1,5 @@
-#ifndef ICONTROLADORCONSULTARPUNAJEMATERIAL_H
-#define ICONTROLADORCONSULTARPUNAJEMATERIAL_H
+#ifndef ICONTROLADORCONSULTARPUNAJEMATERIAL
+#define ICONTROLADORCONSULTARPUNAJEMATERIAL
 
 #include "DtMaterialBasico.h"
 #include "DtMaterialPuntaje.h"
@@ -15,5 +15,5 @@ public:
 	virtual DtMaterialPuntaje seleccionarMaterial(string codigo) = 0;
 };
 
-#endif 
+#endif
 

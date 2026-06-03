@@ -1,5 +1,5 @@
-#ifndef ICONTROLADORREGISTRARPRESTAMO_H
-#define ICONTROLADORREGISTRARPRESTAMO_H
+#ifndef CONTROLADORREGISTRARPRESTAMO
+#define CONTROLADORREGISTRARPRESTAMO
 
 #include "Lector.h"
 #include "ManejadorUsuario.h"
@@ -24,4 +24,4 @@ class ControladorRegistrarPrestamo: public IControladorRegistrarPrestamo {
         void confirmar() override;
 };
 
-#endif //
+#endif // CONTROLADORREGISTRARPRESTAMO

@@ -1,5 +1,5 @@
-#ifndef ICONTROLADORELIMINARLECTOR_H
-#define ICONTROLADORELIMINARLECTOR_H
+#ifndef ICONTROLADORELIMINARLECTOR
+#define ICONTROLADORELIMINARLECTOR
 
 #include <string>
 using std::string;
@@ -11,5 +11,5 @@ public:
 	virtual confirmar() = 0; 
 };
 
-#endif // ICONTROLADORELIMINARLECTOR_H
+#endif // ICONTROLADORELIMINARLECTOR
 

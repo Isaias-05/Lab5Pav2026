@@ -1,5 +1,5 @@
-#ifndef FABRICA_H
-#define FABRICA_H
+#ifndef FABRICA
+#define FABRICA
 
 #include "IControladorCerrarSesion.h"
 #include "IControladorConsultarPuntajeMaterial.h"
@@ -12,7 +12,7 @@
 #include "IControladorRegistrarLector.h"
 #include "IControladorRegistrarMaterial.h"
 #include "IControladorRegistrarPrestamo.h"
-#include "IControladorVerInformacionMaterial.h
+#include "IControladorVerInformacionMaterial.h"
 
 class Fabrica {
 public:
@@ -29,3 +29,5 @@ public:
     static IControladorRegistrarPrestamo* getControladorRegistrarPrestamo();
     static IControladorVerInformacionMaterial* getControladorVerInformacionMaterial();
 };
+
+#endif // FABRICA

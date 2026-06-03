@@ -1,5 +1,5 @@
-#ifndef ICONTROLADORPRESTAMOLECTOR_H
-#define ICONTROLADORPRESTAMOLECTOR_H
+#ifndef ICONTROLADORPRESTAMOLECTOR
+#define ICONTROLADORPRESTAMOLECTOR
 
 #include "DtPrestamoLector.h"
 #include <string>
@@ -12,5 +12,5 @@ public:
 	virtual DtPrestamoLector obtenerLector(int) = 0; 
 };
 
-#endif // ICONTROLADORPRESTAMOLECTOR_H
+#endif // ICONTROLADORPRESTAMOLECTOR
 

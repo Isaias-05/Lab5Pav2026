@@ -1,5 +1,5 @@
-#ifndef CONTROLADORCERRARSESION_H
-#define CONTROLADORCERRARSESION_H
+#ifndef CONTROLADORCERRARSESION
+#define CONTROLADORCERRARSESION
 
 #include "IControladorCerrarSesion.h"
 #include "Sesion.h"
@@ -12,5 +12,5 @@ public:
 	void cerrarSesion() override;
 };
 
-#endif // CONTROLADORCERRARSESION_H
+#endif // CONTROLADORCERRARSESION
 

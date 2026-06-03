@@ -1,5 +1,5 @@
-#ifndef ICONTROLADORCERRARSESION_H
-#define ICONTROLADORCERRARSESION_H
+#ifndef ICONTROLADORCERRARSESION
+#define ICONTROLADORCERRARSESION
 
 class IControladorCerrarSesion {
 public:
@@ -7,5 +7,5 @@ public:
 	virtual void cerrarSesion() = 0;
 };
 
-#endif // ICONTROLADORCERRARSESION_H
+#endif // ICONTROLADORCERRARSESION
 

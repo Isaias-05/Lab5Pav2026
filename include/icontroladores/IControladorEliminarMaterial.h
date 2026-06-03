@@ -1,5 +1,5 @@
-#ifndef ICONTROLADORELIMINARMATERIAL_H
-#define ICONTROLADORELIMINARMATERIAL_H
+#ifndef ICONTROLADORELIMINARMATERIAL
+#define ICONTROLADORELIMINARMATERIAL
 
 #include "DtMaterialBasico.h"
 #include <string>
@@ -14,5 +14,5 @@ public:
 	virtual void confirmar() = 0;
 };
 
-#endif // ICONTROLADORELIMINARMATERIAL_H
+#endif // ICONTROLADORELIMINARMATERIAL
 

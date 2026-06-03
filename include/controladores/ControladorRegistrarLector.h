@@ -1,5 +1,5 @@
-#ifndef CONTROLADORREGISTRARLECTOR_H
-#define CONTROLADORREGISTRARLECTOR_H
+#ifndef CONTROLADORREGISTRARLECTOR
+#define CONTROLADORREGISTRARLECTOR
 
 #include "Lector.h"
 #include "ManejadorUsuario.h"
@@ -18,5 +18,5 @@ public:
 	void altaLector() override; 
 };
 
-#endif // CONTROLADORREGISTRARLECTOR_H
+#endif // CONTROLADORREGISTRARLECTOR
 

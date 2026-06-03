@@ -1,5 +1,5 @@
-#ifndef ICONTROLADORINICIARSESION_H
-#define ICONTROLADORINICIARSESION_H
+#ifndef ICONTROLADORINICIARSESION
+#define ICONTROLADORINICIARSESION
 
 #include <string>
 using std::string;
@@ -10,4 +10,4 @@ public:
 	virtual bool iniciarSesion(string,string) = 0;
 };
 
-#endif // ICONTROLADORINICIARSESION_H
+#endif // ICONTROLADORINICIARSESION

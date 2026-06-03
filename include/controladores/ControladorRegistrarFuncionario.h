@@ -1,5 +1,5 @@
-#ifndef CONTROLADORREGISTRARFUNCIONARIO_H
-#define CONTROLADORREGISTRARFUNCIONARIO_H
+#ifndef CONTROLADORREGISTRARFUNCIONARIO
+#define CONTROLADORREGISTRARFUNCIONARIO
 
 #include "Funcionario.h"
 #include "ManejadorUsuario.h"
@@ -16,5 +16,5 @@ public:
 	DtLector registrarFuncionario(string, string, int) override;
 };
 
-#endif // CONTROLADORREGISTRARFUNCIONARIO_H
+#endif // CONTROLADORREGISTRARFUNCIONARIO
 

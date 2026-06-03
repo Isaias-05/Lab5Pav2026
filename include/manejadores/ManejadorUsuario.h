@@ -1,5 +1,5 @@
-#ifndef MANEJADORUSUARIO_H
-#define MANEJADORUSUARIO_H  
+#ifndef MANEJADORUSUARIO
+#define MANEJADORUSUARIO
 
 #include "Usuario.h"
 

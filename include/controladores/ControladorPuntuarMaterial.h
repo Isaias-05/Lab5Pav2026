@@ -1,5 +1,5 @@
-#ifndef CONTROLADORPUNTUARMATERIAL_H
-#define CONTROLADORPUNTUARMATERIAL_H
+#ifndef CONTROLADORPUNTUARMATERIAL
+#define CONTROLADORPUNTUARMATERIAL
 
 #include "ManejadorMaterial.h"
 #include "Material.h"
@@ -23,5 +23,5 @@ public:
 	void puntuarMaterial(string idUsuario, int puntaje) override;
 };
 
-#endif // CONTROLADORPUNTUARMATERIAL_H
+#endif // CONTROLADORPUNTUARMATERIAL
 
