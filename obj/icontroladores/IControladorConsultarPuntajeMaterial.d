@@ -1,2 +1,0 @@
-obj/icontroladores/IControladorConsultarPuntajeMaterial.o: \
- src/icontroladores/IControladorConsultarPuntajeMaterial.cpp
