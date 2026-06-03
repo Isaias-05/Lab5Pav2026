@@ -8,6 +8,7 @@
 #include "DtMaterialFull.h"
 #include "DtPuntaje.h"
 #include "Puntaje.h"
+#include <string>
 
 class Material{ 
     private:
@@ -20,7 +21,7 @@ class Material{
     public:
         Material();
         Material(string, string, int , float);
-        ~Material();
+        virtual ~Material();
 
         string getCodigo();
         void setCodigo(string);
@@ -40,6 +41,7 @@ class Material{
         DtMaterial getDtMaterial();
         DtMaterialBasico getDtMaterialBasico();
         DtPuntaje getDtPuntajeUsuario(string);
+        
         virtual DtMaterialFull getDtMaterialFull() = 0;
 };
 #endif

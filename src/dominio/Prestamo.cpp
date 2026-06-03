@@ -1,4 +1,5 @@
 #include "Prestamo.h"
+#include "Material.h"
 
 Prestamo::Prestamo()
 {

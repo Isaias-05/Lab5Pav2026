@@ -2,11 +2,13 @@
 #define PRESTAMO
 
 #include <iostream>
+#include <string>
 using namespace std;
 
-#include "Material.h"
 #include "DtFecha.h"
 #include "DtMaterialPrestado.h"
+
+class Material; //Declaracion forward para evitar dependencias circualres. 
 
 class Prestamo
 {
