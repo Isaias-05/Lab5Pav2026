@@ -1,14 +1,15 @@
 #ifndef MATERIAL
 #define MATERIAL
 
-#include <map>
-#include "ManejadorMaterial.h"
 #include "DtMaterial.h"
 #include "DtMaterialBasico.h"
 #include "DtMaterialFull.h"
 #include "DtPuntaje.h"
 #include "Puntaje.h"
+
+#include <map>
 #include <string>
+using namespace std;
 
 class Material{ 
     private:
