@@ -7,8 +7,8 @@ using std::string;
 class IControladorEliminarLector {
 public:
 	~IControladorEliminarLector();
-	virtual consultarLector(string) = 0;
-	virtual confirmar() = 0; 
+	virtual DtLector consultarLector(string) = 0;
+	virtual void confirmar() = 0; 
 };
 
 #endif // ICONTROLADORELIMINARLECTOR

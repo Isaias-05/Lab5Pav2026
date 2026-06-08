@@ -2,15 +2,15 @@
 #define CONTROLADORINICIARSESION
 
 #include "Sesion.h"
-#include "ManejadorUsuario.h"
 #include "IControladorIniciarSesion.h"
-#include <string>
-using std::string;
 
-class ControladorIniciarSecion : public IControladorIniciarSesion {
+#include <string>
+using namespace std;
+
+class ControladorIniciarSesion : public IControladorIniciarSesion {
 public:
-	ControladorIniciarSecion();
-	~ControladorIniciarSecion();
+	ControladorIniciarSesion();
+	~ControladorIniciarSesion();
 
 	bool iniciarSesion(string, string) override;
 };

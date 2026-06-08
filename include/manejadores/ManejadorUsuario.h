@@ -3,10 +3,14 @@
 
 #include "Usuario.h"
 
+#include <map>
+#include <string>
+using namespace std;
+
 class ManejadorUsuario{
     private:
         static ManejadorUsuario* instancia;
-        set<Usuario*> usuarios;
+        map<string, Usuario*> usuarios;
         ManejadorUsuario();
     public:
         ~ManejadorUsuario();
@@ -17,7 +21,7 @@ class ManejadorUsuario{
 
         Usuario* obtenerUsuario(string idUsuario);
 
-        set<Usuario*> obtenerUsuarios();
+        map<string, Usuario*> obtenerUsuarios();
 
         void eliminarUsuario(string idUsuario);
 

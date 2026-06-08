@@ -2,7 +2,7 @@
 #define ICONTROLADORINICIARSESION
 
 #include <string>
-using std::string;
+using namespace std;
 
 class IControladorIniciarSesion {
 public:
