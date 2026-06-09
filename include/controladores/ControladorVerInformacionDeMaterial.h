@@ -3,9 +3,10 @@
 
 #include "ManejadorMaterial.h"
 #include "Material.h"
-
 #include "IControladorVerInformacionDeMaterial.h"
 #include "DtMaterialBasico.h"
+
+#include <set>
 #include <string>
 using std::string;
 
