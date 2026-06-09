@@ -11,8 +11,8 @@ public:
 	ControladorEliminarLector();
 	~ControladorEliminarLector();
 
-	DtLector consultarLector(string) override;
-	void confirmar() override; 
+	DtLector consultarLector(string idUsuario) override;
+	void confirmar(string idUsuario) override; 
 };
 
 #endif // CONTROLADORELIMINARLECTOR
