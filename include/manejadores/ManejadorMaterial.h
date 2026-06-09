@@ -18,12 +18,12 @@ class ManejadorMaterial {
 
         static ManejadorMaterial* getInstancia();
         
-        void agregarMaterial(Material* material);
+        bool agregarMaterial(Material* material);
 
         Material* obtenerMaterial(string codigo);
 
         map<string, Material*> obtenerMateriales();
 
-        void eliminarMaterial(string codigo);
+        bool eliminarMaterial(string codigo);
     };
 #endif
