@@ -3,6 +3,7 @@
 #include "Fabrica.h"
 
 //Obligatorios
+/*
 #include "IControladorIniciarSesion.h"
 #include "IControladorCerrarSesion.h"
 #include "IControladorRegistrarLector.h"
@@ -17,7 +18,7 @@
 #include "IControladorConsultarPuntajesDeMaterial.h"
 #include "IControladorEliminarLector.h"
 #include "IControladorEliminarMaterial.h"
-
+*/
 //Datatypes
 #include "DtFecha.h"
 #include "DtFuncionario.h"
@@ -42,7 +43,7 @@ Fabrica * fabrica = Fabrica::getInstancia();
 
 //Declaración de funciones
 
-void iniciarSesion();
+/*void iniciarSesion();
 void cerrarSesion();
 void registrarLector();
 void registrarFuncionario();
@@ -57,7 +58,7 @@ void eliminarLector();
 void eliminarMaterial();
 
 void menu();
-
+*/
 //Implementación de funciones
 
 void menu() {
@@ -82,7 +83,7 @@ void menu() {
 
 		cin >> opcion;
 
-		switch (opcion) {
+		/*switch (opcion) {
 			case 1: iniciarSesion(); break;
 			case 2: cerrarSesion(); break;
 			case 3: registrarLector(); break;
@@ -97,7 +98,7 @@ void menu() {
 			case 12: eliminarMaterial(); break;
 			case 0: cout << "Saliendo..." << endl; break;
 			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
-		}
+		}*/
 	} while (opcion != 0);
 }
 
