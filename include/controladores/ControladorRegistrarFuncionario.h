@@ -4,7 +4,7 @@
 #include "Funcionario.h"
 #include "ManejadorUsuario.h"
 #include "IControladorRegistrarFuncionario.h"
-#include "DtLector.h"
+#include "DtFuncionario.h"
 #include <string>
 using std::string;
 
@@ -13,7 +13,8 @@ public:
 	ControladorRegistrarFuncionario();
 	~ControladorRegistrarFuncionario();
 
-	DtLector registrarFuncionario(string, string, int) override;
+	DtFuncionario* registrarFuncionario(string idUsuario, string nombre, string contrasenia, int numEmpleado) override;
+	void altaFuncionario(DtFuncionario* dtFuncionario) override;
 };
 
 #endif // CONTROLADORREGISTRARFUNCIONARIO

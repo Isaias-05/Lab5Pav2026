@@ -7,13 +7,15 @@ using namespace std;
 class DtFuncionario{
     private:
         string id;
+        string contrasenia;
         string nombre;
         int numeroEmpleado;
     public:
         DtFuncionario();
-        DtFuncionario(string nombre, string id, int numeroEmpleado);
+        DtFuncionario(string nombre,string contrasenia, string id, int numeEmpleado);
         ~DtFuncionario();
         string getId();
+        string getContrasenia();
         string getNombre();
         int getNumeroEmpleado();
 };
