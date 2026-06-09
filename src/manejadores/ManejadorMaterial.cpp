@@ -15,7 +15,7 @@ ManejadorMaterial* ManejadorMaterial::getInstancia() {
 
 bool ManejadorMaterial::agregarMaterial(Material* material) {
     map<string, Material*>::iterator iterador = materiales.find(material->getCodigo());
-    if (iterador != materiales.end()) {
+    if (iterador == materiales.end()) {
         materiales.insert({material->getCodigo(), material});
         return true;
     } else {
@@ -33,12 +33,17 @@ Material* ManejadorMaterial::obtenerMaterial(string codigo) {
 }
 
 map<string, Material*> ManejadorMaterial::obtenerMateriales() {
-    map<string, Material*> copiaMateriales;
+    return materiales;
+}
+
+vector<DtMaterialBasico*> ManejadorMaterial::obtenerVectorMaterialesBasicos() {
+    vector<DtMaterialBasico*> copiaMateriales;
     for (const auto& i : materiales) {
-        copiaMateriales.insert({i.first, i.second});
+        copiaMateriales.push_back(new DtMaterialBasico(i.second->getDtMaterialBasico()));
     }
     return copiaMateriales;
 }
+
 
 bool ManejadorMaterial::eliminarMaterial(string codigo) {
     map<string, Material*>::iterator iterador = materiales.find(codigo);

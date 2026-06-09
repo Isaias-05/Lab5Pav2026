@@ -14,8 +14,8 @@ ManejadorUsuario* ManejadorUsuario::getInstancia() {
 }
 
 bool ManejadorUsuario::agregarUsuario(Usuario* usuario) {
-    map<string, Usuario*>::iterator iterador = usuarios.find(usuario->getId());
-    if (iterador != usuarios.end()) {
+    auto iterador = usuarios.find(usuario->getId());
+    if (iterador == usuarios.end()){
         usuarios.insert({usuario->getId(), usuario});
         return true;
     } else {
@@ -33,12 +33,7 @@ Usuario* ManejadorUsuario::obtenerUsuario(string idUsuario) {
 }
 
 map<string, Usuario*> ManejadorUsuario::obtenerUsuarios() {
-    map<string, Usuario*> copiaUsuarios;
-
-    for (const auto& i : usuarios) {
-        copiaUsuarios.insert({i.first, i.second});
-    }
-    return copiaUsuarios;
+    return usuarios;
 }
 
 bool ManejadorUsuario::eliminarUsuario(string idUsuario) {
