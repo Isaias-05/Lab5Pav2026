@@ -50,7 +50,7 @@ void Prestamo::setDiasPermitidos(int diasPermitidos)
     this->diasPermitidos = diasPermitidos;
 }
 
-DtMaterialPrestado Prestamo::getDtMaterialPrestado()
+DtMaterialPrestado* Prestamo::getDtMaterialPrestado()
 {
-    return DtMaterialPrestado(this->material->getCodigo(), this->material->getTitulo(), this->fechaPrestamo, this->diasPermitidos);
+    return new DtMaterialPrestado(this->material->getCodigo(), this->material->getTitulo(), this->fechaPrestamo, this->diasPermitidos);
 }

@@ -7,7 +7,7 @@ Lector::Lector(): Usuario() {
     this->prestamos = vector<Prestamo*>();
 }
 
-Lector::Lector(string id, string nombre, string contrasenia, DtFecha fechaRegistro): Usuario(id, nombre, contrasenia) {
+Lector::Lector(string id, string nombre, string contrasenia, DtFecha fechaRegistro, vector<Prestamo*> prestamos): Usuario(id, nombre, contrasenia) {
     this->fechaRegistro = fechaRegistro;
     this->prestamos = vector<Prestamo*>();
 }
@@ -31,9 +31,15 @@ void Lector::agregarPrestamo(Prestamo * prestamo) {
 }
 
 DtLector Lector::getDtLector() {
-    vector<DtMaterialPrestado> materialesPrestados;
+    return DtLector(this->getId(), this->getContrasenia(), this->getNombre(), this->fechaRegistro);
+}
+
+DtPrestamoLector Lector::getDtPrestamoLector(){
+    
+    vector<DtMaterialPrestado*> materialesPrestados;
     for (Prestamo * prestamo : prestamos) {
         materialesPrestados.push_back(prestamo->getDtMaterialPrestado());
     }
-    return DtLector(this->getNombre(), materialesPrestados);
+    return DtPrestamoLector(this->getNombre(), materialesPrestados);
+
 }

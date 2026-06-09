@@ -2,17 +2,15 @@
 #define LECTOR
 
 #include <iostream>
-#include <vector>	
+#include <vector>
+#include <string>
+
 #include "Usuario.h"
 #include "Prestamo.h"
-
 #include "DtFecha.h"
 #include "DtLector.h"
-#include "DtMaterialPrestado.h"
+#include "DtPrestamoLector.h"
 
-#include <string>
-#include <iostream>
-#include <set>
 using namespace std;
 
 class Lector: public Usuario{
@@ -21,13 +19,15 @@ class Lector: public Usuario{
 		vector<Prestamo*> prestamos;
 	public:
 		Lector();
-		Lector(string, string, string, DtFecha);
+		Lector(string id, string nombre, string contrasenia, DtFecha fechaRegistro, vector<Prestamo*> prestamos);
 		~Lector();
         
         DtFecha getFechaRegistro();
         void setFechaRegistro(DtFecha); 
 
         void agregarPrestamo(Prestamo*);
+
+		DtPrestamoLector getDtPrestamoLector();
 
         DtLector getDtLector();
         

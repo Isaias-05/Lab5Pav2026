@@ -1,21 +1,23 @@
 #ifndef DTPRESTAMOLECTOR
 #define DTPRESTAMOLECTOR
 
-#include "DtMaterial.h"
-#include <set>
+#include "DtMaterialPrestado.h"
+#include <vector>
 using namespace std;
 
 class DtPrestamoLector {
     private:
         string nombreLector;
-        set<DtMaterial> materialesPrestados;
+        vector<DtMaterialPrestado*> materialesPrestados;
     public:
         DtPrestamoLector();
-        DtPrestamoLector(string nombreLector, set<DtMaterial> materialesPrestados);
+        DtPrestamoLector(string nombreLector, vector<DtMaterialPrestado*> materialesPrestados);
         ~DtPrestamoLector();
 
         string getNombreLector();
 
-        set<DtMaterial> getMaterialesPrestados();
+        vector<DtMaterialPrestado*> getMaterialesPrestados();
+        
+        size_t getTopeMaterialesPrestados();
 };
 #endif
