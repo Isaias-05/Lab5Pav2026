@@ -3,9 +3,10 @@
 
 #include "ManejadorMaterial.h"
 #include "Material.h"
-
 #include "IControladorEliminarMaterial.h"
 #include "DtMaterialBasico.h"
+
+#include <vector>
 #include <string>
 using std::string;
 
@@ -14,7 +15,7 @@ public:
 	ControladorEliminarMaterial();
 	~ControladorEliminarMaterial();
 
-	set<DtMaterialBasico> listarMateriales() override;
+	vector<DtMaterialBasico*> listarMateriales() override;
 	DtMaterialBasico seleccionarMaterial(string codigo) override;
 	void confirmar() override;
 };
