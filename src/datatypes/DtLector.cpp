@@ -2,21 +2,31 @@
 
 DtLector::DtLector(){}
 
-DtLector::DtLector(string nombre, vector<DtMaterialPrestado> materialesPrestados) {
-    this->nombre = nombre;
-    this->materialesPrestados = materialesPrestados;
+DtLector::DtLector(string id, string contrasenia, string nombre, DtFecha fechReg) {
+    this->id = id;
+    this->contrasenia = contrasenia;
+    this->nombre = nombre;    
+    this->fechReg = fechReg;
+   
 }
 
 DtLector::~DtLector(){}
+
+string DtLector::getId(){
+    return this->id;
+}
+
+string DtLector::getContrasenia(){
+    return this->contrasenia; 
+}
 
 string DtLector::getNombre(){
     return this->nombre;
 }
 
-const vector<DtMaterialPrestado>& DtLector::getMaterialesPrestados(){
-    return this->materialesPrestados;
+DtFecha DtLector::getFechaRegistro(){
+    return this->fechReg; 
 }
 
-size_t DtLector::getTopeMaterialesPrestados(){
-    return this->materialesPrestados.size();
-}
+
+

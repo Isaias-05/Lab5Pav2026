@@ -32,7 +32,7 @@ class Prestamo
         int getDiasPermitidos();
         void setDiasPermitidos(int);
 
-        DtMaterialPrestado getDtMaterialPrestado();
+        DtMaterialPrestado* getDtMaterialPrestado();
 };
     
 
