@@ -1,3 +1,4 @@
+
 #ifndef MANEJADORUSUARIO
 #define MANEJADORUSUARIO
 
@@ -17,13 +18,13 @@ class ManejadorUsuario{
 
         static ManejadorUsuario* getInstancia();
         
-        void agregarUsuario(Usuario* usuario);
+        bool agregarUsuario(Usuario* usuario);
 
         Usuario* obtenerUsuario(string idUsuario);
 
         map<string, Usuario*> obtenerUsuarios();
 
-        void eliminarUsuario(string idUsuario);
+        bool eliminarUsuario(string idUsuario);
 
 };
 #endif
