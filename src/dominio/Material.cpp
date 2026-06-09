@@ -72,11 +72,13 @@ DtMaterialBasico Material::getDtMaterialBasico() {
 }
 
 DtPuntaje Material::getDtPuntajeUsuario(string idUsuario) {
-    //Verifica si el usuario ha dado un puntaje a este material
-    if (puntajes.find(idUsuario) != puntajes.end()) {
-        return DtPuntaje(idUsuario, this->codigo, puntajes[idUsuario]->getValor());
+ 
+    // Busca el puntaje del usuario en el mapa de puntajes
+    map<string, Puntaje*>::const_iterator iterador = puntajes.find(idUsuario);
+    if (iterador != puntajes.end()) {
+        return DtPuntaje(idUsuario, this->codigo, iterador->second->getValor());
     } else {
-        // Si el usuario no ha dado un puntaje, devuelve un DtPuntaje vacío
+        //Si el usuario no ha dado un puntaje, devuelve un DtPuntaje vacío
         return DtPuntaje();
     }
 }
