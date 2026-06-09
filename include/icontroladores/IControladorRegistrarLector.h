@@ -10,8 +10,8 @@ class IControladorRegistrarLector {
 public:
 	virtual ~IControladorRegistrarLector() {}
 
-	virtual DtLector registrarLector(string, string, string, DtFecha) = 0;
-	virtual void altaLector() = 0;
+	virtual DtLector* registrarLector(string, string, string, DtFecha) = 0;
+	virtual void altaLector(DtLector* dtLector) = 0;
 };
 
 #endif // ICONTROLADORREGISTRARLECTOR
