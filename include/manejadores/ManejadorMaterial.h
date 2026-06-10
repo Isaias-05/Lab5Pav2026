@@ -28,6 +28,8 @@ class ManejadorMaterial {
 
         vector<DtMaterialBasico> obtenerVectorMaterialesBasicos();
 
+        DtMaterialFull* obtenerMaterialFull(string codigo);
+
         bool eliminarMaterial(string codigo);
     };
 #endif

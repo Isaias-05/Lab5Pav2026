@@ -3,12 +3,19 @@
 ControladorVerInformacionDeMaterial::ControladorVerInformacionDeMaterial() {}
 ControladorVerInformacionDeMaterial::~ControladorVerInformacionDeMaterial() {}
 
-set<DtMaterialBasico> ControladorVerInformacionDeMaterial::listarMateriales() {
-	// Implementar lógica aquí
-	return set<DtMaterialBasico>();
+vector<DtMaterialBasico> ControladorVerInformacionDeMaterial::listarMateriales() {
+	ManejadorMaterial* manejadorMaterial = ManejadorMaterial::getInstancia();
+	vector<DtMaterialBasico> copiaMateriales = manejadorMaterial->obtenerVectorMaterialesBasicos();
+	return copiaMateriales;
 }
 
-DtMaterialBasico ControladorVerInformacionDeMaterial::seleccionarMaterial(string codigo) {
-	// Implementar lógica aquí
-	return DtMaterialBasico();
+DtMaterialFull ControladorVerInformacionDeMaterial::seleccionarMaterial(string codigo) {
+	ManejadorMaterial* manejadorMaterial = ManejadorMaterial::getInstancia();
+	Material* material = manejadorMaterial->obtenerMaterial(codigo);
+	if (material != nullptr) {
+		return material->getDtMaterialFull();
+	}else{
+		throw invalid_argument("ERROR: No existe un material con codigo: " + codigo + " En el Sistema\n");
+	}
+	
 }
