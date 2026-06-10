@@ -1,5 +1,7 @@
 #ifndef DTFECHA
 #define DTFECHA
+#include <string>
+using namespace std;
 
 class DtFecha{
     private:
@@ -13,5 +15,7 @@ class DtFecha{
         int getDia() const;
         int getMes() const;
         int getAnio() const;
+
+        string toString() const;
 };
 #endif

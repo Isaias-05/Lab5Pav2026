@@ -8,6 +8,7 @@
 
 #include "DtFecha.h"
 #include "DtLector.h"
+#include "DtPrestamoLector.h"
 #include "DtMaterialPrestado.h"
 
 #include <string>
@@ -31,5 +32,6 @@ class Lector: public Usuario{
 
         DtLector getDtLector();
         
+		DtPrestamoLector getDtPrestamoLector();
 };
 #endif

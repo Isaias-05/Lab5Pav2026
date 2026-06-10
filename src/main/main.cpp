@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 #include "Fabrica.h"
 
@@ -38,6 +39,8 @@
 
 using namespace std;
 
+DtFecha fechaActual = DtFecha(1,1,2001);
+
 Fabrica * fabrica = Fabrica::getInstancia();
 
 //Declaración de funciones
@@ -58,7 +61,73 @@ void eliminarMaterial();
 
 void menu();
 
+//Auxiliares
+
+void pausa();
+
 //Implementación de funciones
+
+void iniciarSesion() {
+	string email, contrasenia;
+	system("clear");
+	cout << "Ingrese su email: ";
+	cin >> email;
+	cout << "Ingrese su contrasenia: ";
+	cin >> contrasenia;
+
+	IControladorIniciarSesion * controlador = fabrica->getControladorIniciarSesion();
+	bool exito = controlador->iniciarSesion(email, contrasenia);
+	if (exito) {
+		cout << "Inicio de sesion exitoso." << endl;
+	} else {
+		cout << "Error al iniciar sesion. Verifique sus credenciales." << endl;
+	}
+
+	delete controlador;
+}
+
+void cerrarSesion() {
+	IControladorCerrarSesion * controlador = fabrica->getControladorCerrarSesion();
+	controlador->cerrarSesion();
+	system("clear");
+	cout << "Sesion cerrada exitosamente." << endl;
+
+	delete controlador;
+}
+
+void registrarLector() {
+	string id, nombre, contrasenia;
+	system("clear");
+	cout << "Ingrese el id del lector: ";
+	cin >> id;
+	cout << "Ingrese el nombre del Lector: ";
+	cin >> nombre;
+	cout << "Ingrese la contrasenia del lector ";
+	cin >> contrasenia;
+
+
+	IControladorRegistrarLector * controlador = fabrica->getControladorRegistrarLector();
+
+	DtLector resultado = controlador->registrarLector(id, nombre, contrasenia, fechaActual);
+
+	int opcion;
+	do {
+		system("clear");
+		cout << "Desea guardar el lector con los datos: " << endl;
+		cout << resultado.toString() << endl;
+		cout << "1. Si" << endl;
+		cout << "2. No" << endl;
+		cin >> opcion;
+		switch (opcion) {
+			case 1: controlador->altaLector(); cout << "Lector registrado exitosamente." << endl; break;
+			case 2: cout << "Registro de lector cancelado." << endl; break;
+			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
+		}
+		pausa();
+	} while (opcion != 1 && opcion != 2);
+	
+	delete controlador;
+}
 
 void menu() {
 	int opcion;
@@ -101,6 +170,13 @@ void menu() {
 	} while (opcion != 0);
 }
 
+void pausa() {
+	cout << "Presione Enter para continuar...";
+	// Limpiar el buffer de entrada para evitar que el siguiente cin se salte
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	// Esperar a que el usuario presione Enter
+	cin.get();
+}
 
 
 int main() {

@@ -10,6 +10,11 @@
 using std::string;
 
 class ControladorRegistrarLector : public IControladorRegistrarLector {
+private:
+	string id;
+	string nombre;
+	string contrasenia;
+	DtFecha fechaRegistro;
 public:
 	ControladorRegistrarLector();
 	~ControladorRegistrarLector();

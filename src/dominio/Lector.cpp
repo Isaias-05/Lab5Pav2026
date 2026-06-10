@@ -1,6 +1,4 @@
 #include "Lector.h"
-#include "DtLector.h"
-#include "DtMaterialPrestado.h"
 
 Lector::Lector(): Usuario() {
     this->fechaRegistro = DtFecha();
@@ -31,9 +29,13 @@ void Lector::agregarPrestamo(Prestamo * prestamo) {
 }
 
 DtLector Lector::getDtLector() {
+    return DtLector(this->getId(), this->getNombre(), this->getContrasenia(), this->fechaRegistro);
+}
+
+DtPrestamoLector Lector::getDtPrestamoLector() {
     vector<DtMaterialPrestado> materialesPrestados;
     for (Prestamo * prestamo : prestamos) {
         materialesPrestados.push_back(prestamo->getDtMaterialPrestado());
     }
-    return DtLector(this->getNombre(), materialesPrestados);
+    return DtPrestamoLector(this->getNombre(), materialesPrestados);
 }

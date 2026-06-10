@@ -1,24 +1,27 @@
 #ifndef DTLECTOR
 #define DTLECTOR
 
-#include "DtMaterialPrestado.h"
+#include "DtFecha.h"
+
 #include <string>
-#include <vector>
 using namespace std;
 
 class DtLector{
     private:
+        string id;
         string nombre;
-        vector<DtMaterialPrestado> materialesPrestados;
+        string contrasenia;
+        DtFecha fechaRegistro;
 	public:
 		DtLector();
-		DtLector(string nombre, vector<DtMaterialPrestado> materialesPrestados);
+		DtLector(string id, string nombre, string contrasenia, DtFecha fechaRegistro);
 		~DtLector();
 
+        string getId();
         string getNombre();
+        string getContrasenia();
+        DtFecha getFechaRegistro();
 
-        const vector<DtMaterialPrestado>& getMaterialesPrestados();
-
-        size_t getTopeMaterialesPrestados();
+        string toString();
 };
 #endif

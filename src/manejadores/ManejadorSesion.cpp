@@ -2,7 +2,9 @@
 
 ManejadorSesion* ManejadorSesion::instancia = nullptr;
 
-ManejadorSesion::ManejadorSesion() : sesionActiva(nullptr) {}
+ManejadorSesion::ManejadorSesion() {
+    this->sesionActiva = nullptr;
+}
 
 ManejadorSesion::~ManejadorSesion() {
     delete sesionActiva;

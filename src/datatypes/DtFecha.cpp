@@ -21,3 +21,7 @@ int DtFecha::getMes() const{
 int DtFecha::getAnio() const{
     return this->anio;
 }
+
+string DtFecha::toString() const {
+    return to_string(dia) + "/" + to_string(mes) + "/" + to_string(anio);
+}
