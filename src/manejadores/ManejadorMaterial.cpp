@@ -36,6 +36,15 @@ map<string, Material*> ManejadorMaterial::obtenerMateriales() {
     return materiales;
 }
 
+DtMaterialFull* ManejadorMaterial::obtenerMaterialFull(string codigo) {
+    map<string, Material*>::iterator iterador = materiales.find(codigo);
+    if (iterador != materiales.end()) {
+        return new DtMaterialFull(iterador->second->getDtMaterialFull());
+    } else {
+        return nullptr; 
+    }
+}
+
 vector<DtMaterialBasico> ManejadorMaterial::obtenerVectorMaterialesBasicos() {
     vector<DtMaterialBasico> copiaMateriales;
     for (const auto& i : materiales) {

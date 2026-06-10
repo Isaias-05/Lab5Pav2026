@@ -1,18 +1,20 @@
 #ifndef ICONTROLADORVERINFORMACIONDEMATERIAL
 #define ICONTROLADORVERINFORMACIONDEMATERIAL
 
-#include <string>
-#include <set>
 #include "DtMaterialBasico.h"
-using std::string;
-using std::set;
+#include "DtMaterialFull.h"
+
+#include <string>
+#include <vector>
+
+using namespace std;
 
 class IControladorVerInformacionDeMaterial {
 public:
 	virtual ~IControladorVerInformacionDeMaterial() {}
 
-	virtual set<DtMaterialBasico> listarMateriales() = 0;
-	virtual DtMaterialBasico seleccionarMaterial(string codigo) = 0;
+	virtual vector<DtMaterialBasico> listarMateriales() = 0;
+	virtual DtMaterialFull seleccionarMaterial(string codigo) = 0;
 };
 
 #endif // ICONTROLADORVERINFORMACIONDEMATERIAL
