@@ -6,6 +6,7 @@
 #include "Material.h"
 #include "ManejadorMaterial.h"
 
+#include "IControladorRegistrarPrestamo.h"
 #include "DtLector.h"
 #include "DtMaterial.h"
 #include "DtFecha.h"

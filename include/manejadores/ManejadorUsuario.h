@@ -24,7 +24,7 @@ class ManejadorUsuario{
 
         map<string, Usuario*> obtenerUsuarios();
 
-        void eliminarUsuario(string idUsuario);
+        bool eliminarUsuario(string idUsuario);
 
 };
 #endif

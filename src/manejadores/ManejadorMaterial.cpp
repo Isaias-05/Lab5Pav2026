@@ -39,7 +39,7 @@ map<string, Material*> ManejadorMaterial::obtenerMateriales() {
 vector<DtMaterialBasico> ManejadorMaterial::obtenerVectorMaterialesBasicos() {
     vector<DtMaterialBasico> copiaMateriales;
     for (const auto& i : materiales) {
-        copiaMateriales.push_back(DtMaterialBasico(i.second->getDtMaterialBasico()));
+        copiaMateriales.push_back(i.second->getDtMaterialBasico());
     }
     return copiaMateriales;
 }

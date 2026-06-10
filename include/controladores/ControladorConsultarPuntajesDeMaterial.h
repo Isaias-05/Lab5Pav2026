@@ -4,6 +4,7 @@
 #include "ManejadorMaterial.h"
 #include "Material.h"
 
+#include "IControladorConsultarPuntajesDeMaterial.h"
 #include "DtMaterialBasico.h"
 #include "DtMaterialPuntaje.h"
 #include <set>

@@ -32,9 +32,11 @@ map<string, Usuario*> ManejadorUsuario::obtenerUsuarios() {
     return usuarios;
 }
 
-void ManejadorUsuario::eliminarUsuario(string idUsuario) {
+bool ManejadorUsuario::eliminarUsuario(string idUsuario) {
     if (usuarios.find(idUsuario) != usuarios.end()) {
         delete usuarios[idUsuario];
         usuarios.erase(idUsuario);
+        return true;
     }
+    return false;
 }

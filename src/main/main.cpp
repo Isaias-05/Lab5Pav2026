@@ -3,23 +3,6 @@
 
 #include "Fabrica.h"
 
-//Obligatorios
-/*
-#include "IControladorIniciarSesion.h"
-#include "IControladorCerrarSesion.h"
-#include "IControladorRegistrarLector.h"
-#include "IControladorRegistrarFuncionario.h"
-#include "IControladorRegistrarMaterial.h"
-#include "IControladorRegistrarPrestamo.h"
-#include "IControladorConsultarPrestamosDeLector.h"
-#include "IControladorVerInformacionDeMaterial.h"
-
-//Opcionales
-#include "IControladorPuntuarMaterial.h"
-#include "IControladorConsultarPuntajesDeMaterial.h"
-#include "IControladorEliminarLector.h"
-#include "IControladorEliminarMaterial.h"
-*/
 //Datatypes
 #include "DtFecha.h"
 #include "DtFuncionario.h"
@@ -153,7 +136,7 @@ void menu() {
 		cin >> opcion;
 
 		switch (opcion) {
-			case 1: iniciarSesion(); break;
+/*			case 1: iniciarSesion(); break;
 			case 2: cerrarSesion(); break;
 			case 3: registrarLector(); break;
 			case 4: registrarFuncionario(); break;
@@ -164,7 +147,7 @@ void menu() {
 			case 9: puntuarMaterial(); break;
 			case 10: consultarPuntajesDeMaterial(); break;
 			case 11: eliminarLector(); break;
-			case 12: eliminarMaterial(); break;
+			case 12: eliminarMaterial(); break;*/
 			case 0: cout << "Saliendo..." << endl; break;
 			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
 		}

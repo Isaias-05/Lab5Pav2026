@@ -27,8 +27,6 @@ class Lector: public Usuario{
 
         void agregarPrestamo(Prestamo*);
 
-		DtPrestamoLector getDtPrestamoLector();
-
         DtLector getDtLector();
         
 		DtPrestamoLector getDtPrestamoLector();

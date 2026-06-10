@@ -11,7 +11,7 @@ class IControladorEliminarMaterial {
 public:
 	virtual ~IControladorEliminarMaterial() {}
 
-	virtual vector<DtMaterialBasico*> listarMateriales() = 0;
+	virtual vector<DtMaterialBasico> listarMateriales() = 0;
 	virtual DtMaterialBasico seleccionarMaterial(string codigo) = 0;
 	virtual void confirmar() = 0;
 };

@@ -15,7 +15,7 @@ public:
 	ControladorEliminarMaterial();
 	~ControladorEliminarMaterial();
 
-	vector<DtMaterialBasico*> listarMateriales() override;
+	vector<DtMaterialBasico> listarMateriales() override;
 	DtMaterialBasico seleccionarMaterial(string codigo) override;
 	void confirmar() override;
 };
