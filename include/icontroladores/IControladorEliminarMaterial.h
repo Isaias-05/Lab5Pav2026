@@ -2,14 +2,16 @@
 #define ICONTROLADORELIMINARMATERIAL
 
 #include "DtMaterialBasico.h"
+
+#include <vector>
 #include <string>
-using std::string;
+using namespace std;
 
 class IControladorEliminarMaterial {
 public:
 	virtual ~IControladorEliminarMaterial() {}
 
-	virtual set<DtMaterialBasico> listarMateriales() = 0;
+	virtual vector<DtMaterialBasico*> listarMateriales() = 0;
 	virtual DtMaterialBasico seleccionarMaterial(string codigo) = 0;
 	virtual void confirmar() = 0;
 };

@@ -10,9 +10,9 @@ DtPrestamoLector::DtPrestamoLector(string nombreLector, vector<DtMaterialPrestad
 DtPrestamoLector::~DtPrestamoLector() {}
 
 string DtPrestamoLector::getNombreLector() {
-    return nombreLector;
+    return this->nombreLector;
 }
 
 vector<DtMaterialPrestado> DtPrestamoLector::getMaterialesPrestados() {
-    return materialesPrestados;
+    return this->materialesPrestados;
 }

@@ -19,7 +19,8 @@ public:
 	ControladorRegistrarLector();
 	~ControladorRegistrarLector();
 
-	DtLector registrarLector(string, string, string, DtFecha) override;
+	DtLector registrarLector(string id, string nombre, string contrasenia, DtFecha fechaRegistro) override;
+	
 	void altaLector() override; 
 };
 

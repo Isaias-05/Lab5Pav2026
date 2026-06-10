@@ -8,7 +8,7 @@ class IControladorEliminarLector {
 public:
 	~IControladorEliminarLector();
 	virtual DtLector consultarLector(string) = 0;
-	virtual void confirmar() = 0; 
+	virtual void confirmar(string) = 0; 
 };
 
 #endif // ICONTROLADORELIMINARLECTOR

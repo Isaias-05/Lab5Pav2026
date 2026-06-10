@@ -2,7 +2,10 @@
 #define ICONTROLADORVERINFORMACIONDEMATERIAL
 
 #include <string>
+#include <set>
+#include "DtMaterialBasico.h"
 using std::string;
+using std::set;
 
 class IControladorVerInformacionDeMaterial {
 public:

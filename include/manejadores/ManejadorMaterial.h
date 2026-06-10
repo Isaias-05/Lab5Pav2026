@@ -2,8 +2,10 @@
 #define MANEJADORMATERIAL
 
 #include "Material.h"
+#include "DtMaterialBasico.h"
 
 #include <map>
+#include <vector>
 #include <string>
 using namespace std;
 
@@ -18,12 +20,14 @@ class ManejadorMaterial {
 
         static ManejadorMaterial* getInstancia();
         
-        void agregarMaterial(Material* material);
+        bool agregarMaterial(Material* material);
 
         Material* obtenerMaterial(string codigo);
 
         map<string, Material*> obtenerMateriales();
 
-        void eliminarMaterial(string codigo);
+        vector<DtMaterialBasico> obtenerVectorMaterialesBasicos();
+
+        bool eliminarMaterial(string codigo);
     };
 #endif

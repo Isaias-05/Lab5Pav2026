@@ -15,7 +15,7 @@ class Usuario{
     public:
         Usuario();
         Usuario(string, string, string);
-        ~Usuario();
+        virtual ~Usuario();
         
         string getId();
         void setId(string);

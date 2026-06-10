@@ -4,6 +4,7 @@
 #include "Fabrica.h"
 
 //Obligatorios
+/*
 #include "IControladorIniciarSesion.h"
 #include "IControladorCerrarSesion.h"
 #include "IControladorRegistrarLector.h"
@@ -18,7 +19,7 @@
 #include "IControladorConsultarPuntajesDeMaterial.h"
 #include "IControladorEliminarLector.h"
 #include "IControladorEliminarMaterial.h"
-
+*/
 //Datatypes
 #include "DtFecha.h"
 #include "DtFuncionario.h"

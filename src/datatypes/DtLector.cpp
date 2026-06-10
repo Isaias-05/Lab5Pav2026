@@ -11,7 +11,7 @@ DtLector::DtLector(string id, string nombre, string contrasenia, DtFecha fechaRe
 
 DtLector::~DtLector(){}
 
-string DtLector::getId() {
+string DtLector::getId(){
     return this->id;
 }
 
@@ -19,8 +19,8 @@ string DtLector::getNombre(){
     return this->nombre;
 }
 
-string DtLector::getContrasenia() {
-    return this->contrasenia;
+string DtLector::getContrasenia(){
+    return this->contrasenia; 
 }
 
 DtFecha DtLector::getFechaRegistro() {
