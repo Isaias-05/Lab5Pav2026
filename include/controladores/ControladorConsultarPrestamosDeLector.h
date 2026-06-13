@@ -13,7 +13,7 @@ public:
 	ControladorConsultarPrestamosDeLector();
 	~ControladorConsultarPrestamosDeLector();
 
-	DtPrestamoLector obtenerLector(int) override;
+	DtPrestamoLector obtenerLector(string) override;
 
 };
 

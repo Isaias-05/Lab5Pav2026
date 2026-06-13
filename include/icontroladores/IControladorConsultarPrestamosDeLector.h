@@ -9,7 +9,7 @@ class IControladorConsultarPrestamosDeLector {
 public:
 	virtual ~IControladorConsultarPrestamosDeLector() {}
 	
-	virtual DtPrestamoLector obtenerLector(int) = 0; 
+	virtual DtPrestamoLector obtenerLector(string) = 0; 
 };
 
 #endif // ICONTROLADORCONSULTARPRESTAMOSDELECTOR
