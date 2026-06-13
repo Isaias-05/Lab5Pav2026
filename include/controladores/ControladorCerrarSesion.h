@@ -7,6 +7,7 @@
 class ControladorCerrarSesion : public IControladorCerrarSesion {
 public:
 	ControladorCerrarSesion();
+	
 	~ControladorCerrarSesion();
 
 	void cerrarSesion() override;

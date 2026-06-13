@@ -1,4 +1,3 @@
-
 #ifndef MANEJADORUSUARIO
 #define MANEJADORUSUARIO
 

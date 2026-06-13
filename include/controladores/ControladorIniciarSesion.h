@@ -8,11 +8,12 @@
 using namespace std;
 
 class ControladorIniciarSesion : public IControladorIniciarSesion {
-public:
-	ControladorIniciarSesion();
-	~ControladorIniciarSesion();
+	public:
+		ControladorIniciarSesion();
+		
+		~ControladorIniciarSesion();
 
-	bool iniciarSesion(string, string) override;
+		bool iniciarSesion(string, string) override;
 };
 
 #endif // CONTROLADORINICIARSESION

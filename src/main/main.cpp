@@ -52,21 +52,23 @@ void pausa();
 //Implementación de funciones
 
 void iniciarSesion() {
-	string email, contrasenia;
+	string id, contrasenia;
 	system("clear");
-	cout << "Ingrese su email: ";
-	cin >> email;
+	cout << "Ingrese su id: ";
+	cin >> id;
 	cout << "Ingrese su contrasenia: ";
 	cin >> contrasenia;
 
-	IControladorIniciarSesion * controlador = fabrica->getControladorIniciarSesion();
-	bool exito = controlador->iniciarSesion(email, contrasenia);
+	IControladorIniciarSesion* controlador = fabrica->getControladorIniciarSesion();
+	bool exito = controlador->iniciarSesion(id, contrasenia);
+
 	if (exito) {
 		cout << "Inicio de sesion exitoso." << endl;
 	} else {
 		cout << "Error al iniciar sesion. Verifique sus credenciales." << endl;
 	}
-
+	
+	pausa();
 	delete controlador;
 }
 
@@ -75,7 +77,7 @@ void cerrarSesion() {
 	controlador->cerrarSesion();
 	system("clear");
 	cout << "Sesion cerrada exitosamente." << endl;
-
+	pausa();
 	delete controlador;
 }
 

@@ -2,9 +2,18 @@
 
 ManejadorMaterial* ManejadorMaterial::instancia = nullptr;
 
-ManejadorMaterial::ManejadorMaterial() {}
+ManejadorMaterial::ManejadorMaterial() {
+    this->materiales = map<string, Material*>();
+}
 
-ManejadorMaterial::~ManejadorMaterial() {}
+ManejadorMaterial::~ManejadorMaterial() {
+    for (auto& pair : materiales) {
+        delete pair.second;
+    }
+
+    delete instancia;
+    instancia = nullptr;
+}
 
 ManejadorMaterial* ManejadorMaterial::getInstancia() {
     if (instancia == nullptr) {

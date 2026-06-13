@@ -1,27 +1,21 @@
 #include "Sesion.h"
 
-Sesion::Sesion() {}
+Sesion* Sesion::instancia = nullptr;
 
-Sesion::Sesion(string identificador, string nombre, string contrasenia) {
-    this->identificador = identificador;
-    this->nombre = nombre;
-    this->contrasenia = contrasenia;
+Sesion::Sesion(){
+    this->usuario = nullptr;
 }
 
-Sesion::~Sesion() {}
-
-string Sesion::getIdentificador() {
-    return this->identificador;
+Sesion* Sesion::getInstancia(){
+    if(!instancia) instancia = new Sesion();
+    return instancia;
 }
 
-void Sesion::setIdentificador(string identificador) {
-    this->identificador = identificador;
+Sesion::~Sesion(){
+    delete instancia;
+    instancia = nullptr;
 }
 
-string Sesion::getNombre() {
-    return this->nombre;
-}
-
-void Sesion::setNombre(string nombre) {
-    this->nombre = nombre;
+void Sesion::setUsuario(Usuario* usuario){
+    this->usuario = usuario;
 }

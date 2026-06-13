@@ -10,6 +10,9 @@ ManejadorUsuario::~ManejadorUsuario() {
     for (auto& pair : usuarios) {
         delete pair.second;
     }
+
+    delete instancia;
+    instancia = nullptr;
 }
 
 ManejadorUsuario* ManejadorUsuario::getInstancia() {

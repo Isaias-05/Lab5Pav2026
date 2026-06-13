@@ -4,6 +4,7 @@
 class IControladorCerrarSesion {
 public:
 	virtual ~IControladorCerrarSesion() {}
+	
 	virtual void cerrarSesion() = 0;
 };
 

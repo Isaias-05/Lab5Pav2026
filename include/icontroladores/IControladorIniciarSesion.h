@@ -7,7 +7,7 @@ using namespace std;
 class IControladorIniciarSesion {
 public:
 	virtual ~IControladorIniciarSesion() {}
-	virtual bool iniciarSesion(string,string) = 0;
+	virtual bool iniciarSesion(string, string) = 0;
 };
 
 #endif // ICONTROLADORINICIARSESION

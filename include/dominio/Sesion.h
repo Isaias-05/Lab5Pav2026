@@ -2,24 +2,20 @@
 #define SESION
 
 #include <string>
+#include "Usuario.h"
 using namespace std;
 
 class Sesion{
     private:
-        string identificador;
-        string nombre;
-        string contrasenia;
-    public:
+        Usuario* usuario;
+        static Sesion* instancia;
         Sesion();
-        Sesion(string, string, string);
+    public:
+        static Sesion* getInstancia();
+
         ~Sesion();
 
-        string getIdentificador();
-        void setIdentificador(string);
-
-        string getNombre();
-        void setNombre(string);
-
+        void setUsuario(Usuario* usuario);
 };
 
 #endif
