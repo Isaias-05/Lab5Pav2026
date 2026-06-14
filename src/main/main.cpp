@@ -28,7 +28,6 @@ DtFecha fechaActual = DtFecha(1,1,2001);
 Fabrica * fabrica = Fabrica::getInstancia();
 
 //Declaración de funciones
-
 void iniciarSesion();
 void cerrarSesion();
 void registrarLector();
@@ -37,20 +36,23 @@ void registrarMaterial();
 void registrarPrestamo();
 void consultarPrestamosDeLector();
 void verInformacionDeMaterial();
-
 void puntuarMaterial();
 void consultarPuntajesDeMaterial();
 void eliminarLector();
 void eliminarMaterial();
-
+//Declaración de funciones Auxiliares
 void menu();
-
-//Auxiliares
-
 void pausa();
 
-//Implementación de funciones
+//MAIN
+int main() {
+	std::cout << "Proyecto compilado correctamente" << std::endl;
 
+	menu();
+	return 0;
+}
+
+//Implementación de funciones
 void iniciarSesion() {
 	string id, contrasenia;
 	system("clear");
@@ -115,6 +117,22 @@ void registrarLector() {
 	delete controlador;
 }
 
+void consultarPuntajesDeMaterial() {
+	IControladorConsultarPuntajesDeMaterial* controlador = fabrica->getControladorConsultarPuntajesDeMaterial();
+	string codigoDeMaterial;
+
+	cout << "Ingrese el codigo del material a consultar: ";
+	cin >> codigoDeMaterial;
+	cout << endl;
+
+	DtMaterialPuntaje resultado = controlador->seleccionarMaterial(codigoDeMaterial);
+	cout << "Titulo de material: " << resultado.getTitulo() << endl;
+	cout << "Puntaje promedio: " << resultado.getPuntajePromedio() << endl;
+
+	pausa();
+	delete controlador;
+}
+
 void menu() {
 	int opcion;
 	do {
@@ -162,12 +180,4 @@ void pausa() {
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	// Esperar a que el usuario presione Enter
 	cin.get();
-}
-
-
-int main() {
-	std::cout << "Proyecto compilado correctamente" << std::endl;
-
-	menu();
-	return 0;
 }
