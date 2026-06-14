@@ -8,8 +8,8 @@ using std::string;
 class IControladorRegistrarFuncionario {
 public:
 	virtual ~IControladorRegistrarFuncionario() {}
-	virtual DtFuncionario* registrarFuncionario(string, string, string, int) = 0;
-	virtual void altaFuncionario(DtFuncionario*) = 0;
+	virtual DtFuncionario registrarFuncionario(string, string, string, int) = 0;
+	virtual void altaFuncionario() = 0;
 };
 
 #endif // ICONTROLADORREGISTRARFUNCIONARIO

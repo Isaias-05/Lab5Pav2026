@@ -18,5 +18,6 @@ class DtFuncionario{
         string getContrasenia();
         string getNombre();
         int getNumeroEmpleado();
+        string toString();
 };
 #endif

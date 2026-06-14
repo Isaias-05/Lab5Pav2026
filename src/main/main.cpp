@@ -105,15 +105,66 @@ void registrarLector() {
 		cout << "2. No" << endl;
 		cin >> opcion;
 		switch (opcion) {
-			case 1: controlador->altaLector(); cout << "Lector registrado exitosamente." << endl; break;
-			case 2: cout << "Registro de lector cancelado." << endl; break;
-			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
+			case 1: 
+				controlador->altaLector(); 
+				cout << "Lector registrado exitosamente." << endl; 
+				break;
+			case 2: 
+				cout << "Registro de lector cancelado." << endl;
+				break;
+			default: 
+				cout << "Opcion invalida, intente nuevamente." << endl; 
+				break;
 		}
 		pausa();
 	} while (opcion != 1 && opcion != 2);
 	
 	delete controlador;
 }
+
+void registrarFuncionario() {
+	string id, nombre, contrasenia;
+	int numEmpleado;
+	system("clear");
+	cout << "Ingrese el id del funcionario: ";
+	cin >> id;
+	cout << "Ingrese el nombre del funcionario: ";
+	cin >> nombre;
+	cout << "Ingrese la contrasenia del funcionario: ";
+	cin >> contrasenia;
+	cout << "Ingrese el numero de empleado del funcionario: ";
+	cin >> numEmpleado;
+
+	IControladorRegistrarFuncionario * controlador = fabrica->getControladorRegistrarFuncionario();
+	DtFuncionario resultado = controlador->registrarFuncionario(id, nombre, contrasenia, numEmpleado);
+
+	int opcion;
+	do {
+		system("clear");
+		cout << "Desea guardar el funcionario con los datos: " << endl;
+		cout << resultado.toString() << endl;
+		cout << "1. Si" << endl;
+		cout << "2. No" << endl;
+		cin >> opcion;
+		switch (opcion) {
+			case 1: 
+				controlador->altaFuncionario();
+				cout << "Funcionario registrado exitosamente." << endl; 
+				break;
+			case 2: 
+				cout << "Registro de funcionario cancelado." << endl; 
+				break;
+			default: 
+				cout << "Opcion invalida, intente nuevamente." << endl; 
+				break;
+		}
+		pausa();
+	} while (opcion != 1 && opcion != 2);
+
+	delete controlador;
+}
+
+
 
 void menu() {
 	int opcion;
