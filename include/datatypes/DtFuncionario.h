@@ -12,7 +12,7 @@ class DtFuncionario{
         int numeroEmpleado;
     public:
         DtFuncionario();
-        DtFuncionario(string nombre,string contrasenia, string id, int numeEmpleado);
+        DtFuncionario(string id,string nombre, string contrasenia, int numeEmpleado);
         ~DtFuncionario();
         string getId();
         string getContrasenia();

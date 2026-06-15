@@ -28,5 +28,5 @@ DtFecha DtLector::getFechaRegistro() {
 }
 
 string DtLector::toString() {
-    return "ID: " + id + "\nNombre: " + nombre + "\nFecha de Registro: " + fechaRegistro.toString();
+    return "ID: " + id + "\nNombre: " + nombre + "\nContrasenia: " + contrasenia + "\nFecha de Registro: " + fechaRegistro.toString();
 }

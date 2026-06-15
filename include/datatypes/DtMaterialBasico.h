@@ -16,5 +16,7 @@ class DtMaterialBasico {
         string getCodigo();
 
         string getTitulo();
+
+        string toString() const;
 };
 #endif

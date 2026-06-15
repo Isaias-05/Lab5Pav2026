@@ -2,7 +2,7 @@
 
 DtFuncionario::DtFuncionario(){}
 
-DtFuncionario::DtFuncionario(string nombre, string id, string contrasenia, int numeroEmpleado){
+DtFuncionario::DtFuncionario(string id, string nombre, string contrasenia, int numeroEmpleado){
     this->id = id;
     this->contrasenia = contrasenia; 
     this->nombre = nombre;
@@ -28,5 +28,5 @@ int DtFuncionario::getNumeroEmpleado(){
 }
 
 string DtFuncionario::toString() {
-            return "ID: " + id + "\nNombre: " + nombre + "\nNumero de Empleado: " + to_string(numeroEmpleado);
+            return "ID: " + id + "\nNombre: " + nombre + "\nContrasenia: " + contrasenia + "\nNumero de Empleado: " + to_string(numeroEmpleado);
 }

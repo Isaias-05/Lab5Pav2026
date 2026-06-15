@@ -16,3 +16,7 @@ string DtMaterialBasico::getCodigo() {
 string DtMaterialBasico::getTitulo() {
     return this->titulo;
 }
+
+string DtMaterialBasico::toString() const {
+    return "Codigo: " + this->codigo + ", Titulo: " + this->titulo;
+}

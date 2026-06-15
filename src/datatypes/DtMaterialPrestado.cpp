@@ -27,3 +27,7 @@ DtFecha DtMaterialPrestado::getFechaPrestamo() {
 int DtMaterialPrestado::getCantDias() {
     return this->cantDias;
 }
+
+string DtMaterialPrestado::toString() const {
+    return "Codigo: " + codigo + ", Titulo: " + titulo + ", Fecha de prestamo: " + fechaPrestamo.toString() + ", Cantidad de dias: " + to_string(cantDias);
+}

@@ -16,3 +16,11 @@ string DtPrestamoLector::getNombreLector() {
 vector<DtMaterialPrestado> DtPrestamoLector::getMaterialesPrestados() {
     return this->materialesPrestados;
 }
+
+string DtPrestamoLector::toString() const {
+    string retorno = "Nombre del lector: " + nombreLector + "\nMateriales del lector:\n";
+    for (DtMaterialPrestado material : materialesPrestados) {
+        retorno += material.toString() + "\n";
+    }
+    return retorno;
+}

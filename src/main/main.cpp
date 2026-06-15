@@ -116,7 +116,7 @@ void registrarLector() {
 	cin >> id;
 	cout << "Ingrese el nombre del Lector: ";
 	cin >> nombre;
-	cout << "Ingrese la contrasenia del lector ";
+	cout << "Ingrese la contrasenia del lector: ";
 	cin >> contrasenia;
 
 
@@ -296,7 +296,21 @@ void registrarPrestamo() {
 }
 
 void consultarPrestamosDeLector() {
-	// Implementar lógica aquí
+	string idLector;
+	cout << "Ingrese el id del lector para consultar sus prestamos: ";
+	cin >> idLector;
+
+	IControladorConsultarPrestamosDeLector* controlador = fabrica->getControladorConsultarPrestamosDeLector();
+	try {
+		DtPrestamoLector dtPrestamoLector = controlador->obtenerLector(idLector);
+		cout << dtPrestamoLector.toString();
+	} catch (const invalid_argument& e) {
+		cout << e.what() << endl;
+	}
+
+	pausa();
+	
+	delete controlador;
 }
 
 void verInformacionDeMaterial() {
@@ -388,7 +402,7 @@ void menuLector() {
 			case 3: puntuarMaterial(); break;*/
 			case 4: consultarPuntajesDeMaterial(); break;
 			case 0: cout << "Saliendo..." << endl; break;
-			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
+			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
 		};
 	} while (opcion != 0);
 }
@@ -425,7 +439,7 @@ void menuFuncionario() {
 /*			case 9: eliminarLector(); break;
 			case 10: eliminarMaterial(); break;*/
 			case 0: cout << "Saliendo..." << endl; break;
-			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
+			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
 		}
 	} while (opcion != 0);
 }

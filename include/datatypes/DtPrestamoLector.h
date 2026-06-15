@@ -17,5 +17,7 @@ class DtPrestamoLector {
         string getNombreLector();
 
         vector<DtMaterialPrestado> getMaterialesPrestados();
+
+        string toString() const;
 };
 #endif

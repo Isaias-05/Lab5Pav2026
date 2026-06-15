@@ -23,5 +23,7 @@ class DtMaterialPrestado {
         DtFecha getFechaPrestamo();
 
         int getCantDias();
+
+        string toString() const;
 };
 #endif
