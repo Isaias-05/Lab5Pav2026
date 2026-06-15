@@ -21,7 +21,7 @@ class Material{
         map<string, Puntaje*> puntajes; 
     public:
         Material();
-        Material(string, string, int , float);
+        Material(string, string, int);
         virtual ~Material();
 
         string getCodigo();

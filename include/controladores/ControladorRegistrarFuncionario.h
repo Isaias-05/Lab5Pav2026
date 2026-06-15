@@ -2,19 +2,23 @@
 #define CONTROLADORREGISTRARFUNCIONARIO
 
 #include "Funcionario.h"
-#include "ManejadorUsuario.h"
 #include "IControladorRegistrarFuncionario.h"
 #include "DtFuncionario.h"
 #include <string>
 using std::string;
 
 class ControladorRegistrarFuncionario : public IControladorRegistrarFuncionario {
+private:
+	string id;
+	string nombre;
+	string contrasenia;
+	int numeroEmpleado;
 public:
 	ControladorRegistrarFuncionario();
 	~ControladorRegistrarFuncionario();
 
-	DtFuncionario* registrarFuncionario(string idUsuario, string nombre, string contrasenia, int numEmpleado) override;
-	void altaFuncionario(DtFuncionario* dtFuncionario) override;
+	DtFuncionario registrarFuncionario(string idUsuario, string nombre, string contrasenia, int numeroEmpleado) override;
+	void altaFuncionario() override;
 };
 
 #endif // CONTROLADORREGISTRARFUNCIONARIO

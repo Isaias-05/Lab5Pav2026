@@ -15,5 +15,7 @@ class DtRevista : public DtMaterial {
         int getNumeroEdicion();
 
         bool getPublicacionMensual();
+
+        string toString();
 };
 #endif

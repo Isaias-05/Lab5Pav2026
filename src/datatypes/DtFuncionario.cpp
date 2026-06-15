@@ -26,3 +26,7 @@ string DtFuncionario::getNombre(){
 int DtFuncionario::getNumeroEmpleado(){
     return this->numeroEmpleado;
 }
+
+string DtFuncionario::toString() {
+            return "ID: " + id + "\nNombre: " + nombre + "\nNumero de Empleado: " + to_string(numeroEmpleado);
+}

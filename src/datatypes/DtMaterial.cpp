@@ -21,3 +21,7 @@ string DtMaterial::getTitulo(){
 int DtMaterial::getAnioPublicacion(){
     return this->anioPublicacion;
 }
+
+string DtMaterial::toString() {
+    return "Codigo: " + codigo + "\nTitulo: " + titulo + "\nAnio de Publicacion: " + to_string(anioPublicacion);
+}

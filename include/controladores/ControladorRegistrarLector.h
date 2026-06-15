@@ -1,8 +1,6 @@
 #ifndef CONTROLADORREGISTRARLECTOR
 #define CONTROLADORREGISTRARLECTOR
 
-#include "Lector.h"
-#include "ManejadorUsuario.h"
 #include "IControladorRegistrarLector.h"
 #include "DtLector.h"
 #include "DtFecha.h"

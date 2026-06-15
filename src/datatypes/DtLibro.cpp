@@ -16,3 +16,7 @@ int DtLibro::getCantPaginas(){
 string DtLibro::getAutor(){
     return this->autor;
 }
+
+string DtLibro::toString(){
+    return DtMaterial::toString() + "\nAutor: " + this->autor + "\nCantidad de Paginas: " + to_string(this->cantPaginas);
+}

@@ -10,7 +10,7 @@ class Libro: public Material{
         int cantidadPaginas;
 
     public:
-        Libro(string, string, int, float, string, int);
+        Libro(string, string, int, string, int);
 
         string getAutor();
         void setAutor(string);
