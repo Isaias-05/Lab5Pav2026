@@ -7,18 +7,20 @@
 #include "IControladorConsultarPuntajesDeMaterial.h"
 #include "DtMaterialBasico.h"
 #include "DtMaterialPuntaje.h"
-#include <set>
+#include <vector>
 #include <string>
+
 using namespace std;
 
 class ControladorConsultarPuntajesDeMaterial : public IControladorConsultarPuntajesDeMaterial {
-public:
-	ControladorConsultarPuntajesDeMaterial();
-	~ControladorConsultarPuntajesDeMaterial();
+	public:
+		ControladorConsultarPuntajesDeMaterial();
 
-	set<DtMaterialBasico> listarMateriales() override;
-	DtMaterialPuntaje seleccionarMaterial(string codigo) override;
-	
+		~ControladorConsultarPuntajesDeMaterial();
+
+		vector<DtMaterialBasico> listarMateriales() override;
+
+		DtMaterialPuntaje seleccionarMaterial(string codigo) override;
 };
 
 #endif

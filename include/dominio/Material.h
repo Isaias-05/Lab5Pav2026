@@ -40,7 +40,9 @@ class Material{
         void agregarPuntaje(Puntaje*);
 
         DtMaterial getDtMaterial();
+
         DtMaterialBasico getDtMaterialBasico();
+        
         DtPuntaje getDtPuntajeUsuario(string);
         
         virtual DtMaterialFull getDtMaterialFull() = 0;
