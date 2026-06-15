@@ -1,7 +1,7 @@
 #include "Libro.h"
 #include "DtLibroFull.h"
 
-Libro::Libro(string codigo, string titulo, int anioPublicacion, float PuntajePromedio, string autor, int cantidadPaginas): Material(codigo, titulo, anioPublicacion, PuntajePromedio) {
+Libro::Libro(string codigo, string titulo, int anioPublicacion, string autor, int cantidadPaginas): Material(codigo, titulo, anioPublicacion) {
     this->autor = autor;
     this->cantidadPaginas = cantidadPaginas;
 }
@@ -23,5 +23,5 @@ void Libro::setCantidadPaginas(int cantidadPaginas) {
 }
 
 DtMaterialFull Libro::getDtMaterialFull() {
-    return DtLibroFull(this->getCodigo(), this->getTitulo(), this->getAnioPublicacion(), this->getPuntajePromedio(), TipoMaterial::Libro, this->autor, this->cantidadPaginas);
+    return DtLibroFull(this->getCodigo(), this->getTitulo(), this->getAnioPublicacion(), this->getPuntajePromedio(), TipoMaterial::TM_LIBRO, this->autor, this->cantidadPaginas);
 }

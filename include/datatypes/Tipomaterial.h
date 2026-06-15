@@ -1,6 +1,6 @@
 #ifndef TIPOMATERIAL
 #define TIPOMATERIAL
 enum TipoMaterial {
-    Libro, Revista
+    TM_LIBRO, TM_REVISTA
 };
 #endif

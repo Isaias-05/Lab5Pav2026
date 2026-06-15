@@ -8,11 +8,11 @@ Material::Material() {
     this->puntajes.clear();
 }
 
-Material::Material(string codigo, string titulo, int anioPublicacion, float PuntajePromedio) {
+Material::Material(string codigo, string titulo, int anioPublicacion) {
     this->codigo = codigo;
     this->titulo = titulo;
     this->anioPublicacion = anioPublicacion;
-    this->PuntajePromedio = PuntajePromedio;
+    this->PuntajePromedio = 0.0;
     this->puntajes.clear();
 }
 
@@ -61,10 +61,6 @@ const map<string, Puntaje*>& Material::getPuntajes() {
 
 void Material::agregarPuntaje(Puntaje* puntaje) {
     this->puntajes[puntaje->getLector()->getId()] = puntaje;
-}
-
-DtMaterial Material::getDtMaterial() {
-    return DtMaterial(this->codigo, this->titulo, this->anioPublicacion);
 }
 
 DtMaterialBasico Material::getDtMaterialBasico() {

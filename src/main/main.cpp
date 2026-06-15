@@ -53,22 +53,26 @@ void pausa();
 
 void iniciarSesion() {
 	string id, contrasenia;
-	system("clear");
-	cout << "Ingrese su id: ";
-	cin >> id;
-	cout << "Ingrese su contrasenia: ";
-	cin >> contrasenia;
-
 	IControladorIniciarSesion* controlador = fabrica->getControladorIniciarSesion();
-	bool exito = controlador->iniciarSesion(id, contrasenia);
 
-	if (exito) {
-		cout << "Inicio de sesion exitoso." << endl;
-	} else {
-		cout << "Error al iniciar sesion. Verifique sus credenciales." << endl;
-	}
+	bool exito = false;
+	do {
+		system("clear");
+		cout << "Ingrese su id: ";
+		cin >> id;
+		cout << "Ingrese su contrasenia: ";
+		cin >> contrasenia;
+
+		exito = controlador->iniciarSesion(id, contrasenia);
+
+		if (exito) {
+			cout << "Inicio de sesion exitoso." << endl;
+		} else {
+			cout << "Error al iniciar sesion. Verifique sus credenciales." << endl;
+		}
+		pausa();
+	} while (!exito);
 	
-	pausa();
 	delete controlador;
 }
 
@@ -83,6 +87,7 @@ void cerrarSesion() {
 
 void registrarLector() {
 	string id, nombre, contrasenia;
+
 	system("clear");
 	cout << "Ingrese el id del lector: ";
 	cin >> id;
@@ -125,6 +130,7 @@ void registrarLector() {
 void registrarFuncionario() {
 	string id, nombre, contrasenia;
 	int numEmpleado;
+
 	system("clear");
 	cout << "Ingrese el id del funcionario: ";
 	cin >> id;
@@ -164,6 +170,104 @@ void registrarFuncionario() {
 	delete controlador;
 }
 
+void registrarMaterial() {
+	string codigo, titulo;
+	int anioPublicacion;
+	TipoMaterial tipo;
+
+	system("clear");
+
+	cout << "Ingrese el codigo del material: ";
+	cin >> codigo;
+	cout << "Ingrese el titulo del material: ";
+	cin >> titulo;
+	cout << "Ingrese el anio de publicacion del material: ";
+	cin >> anioPublicacion;
+	int tipoInt;
+	do {
+		cout << "Ingrese el tipo de material (1 para Libro, 2 para Revista): ";
+		cin >> tipoInt;
+		switch (tipoInt) {
+		case 1:
+			tipo = TipoMaterial::TM_LIBRO;
+			break;
+		case 2:
+			tipo = TipoMaterial::TM_REVISTA;
+			break;
+		default:
+			cout << "Opcion invalida, intente nuevamente." << endl;
+			break;
+		}
+	} while (tipoInt != 0 && tipoInt != 1);
+
+	IControladorRegistrarMaterial * controlador = fabrica->getControladorRegistrarMaterial();
+	controlador->registrarMaterial(codigo, titulo, anioPublicacion, tipo);
+
+	if (tipo == TipoMaterial::TM_LIBRO) {
+		string autor;
+		int cantPaginas;
+
+		system("clear");
+
+		cout << "Ingrese el autor del libro: ";
+		cin >> autor;
+		cout << "Ingrese la cantidad de paginas del libro: ";
+		cin >> cantPaginas;
+
+		DtLibro resultado = controlador->ingresarDatosLibro(autor, cantPaginas);
+		cout << "Datos ingresados para el libro: " << endl;
+		cout << resultado.toString() << endl;
+	} else if (tipo == TipoMaterial::TM_REVISTA) {
+		int numEdicion;
+		bool publicacionMensual;
+		cout << "Ingrese el numero de edicion de la revista: ";
+		cin >> numEdicion;
+		int pubMensualInt;
+		do {
+			cout << "La revista es de publicacion mensual? (1 para Si, 2 para No): ";
+			cin >> pubMensualInt;
+			switch (pubMensualInt) {
+			case 1:
+				publicacionMensual = true;
+				break;
+			case 2:
+				publicacionMensual = false;
+				break;
+			default:
+				cout << "Opcion invalida, intente nuevamente." << endl;
+				break;
+			}
+		} while (pubMensualInt != 1 && pubMensualInt != 2);
+		
+		DtRevista resultado = controlador->ingresarDatosRevista(numEdicion, publicacionMensual);
+		cout << "Datos ingresados para la revista: " << endl;
+		cout << resultado.toString() << endl;
+	}
+
+	int opcion;
+	do {
+		cout << "Desea confirmar el registro del material? " << endl;
+		cout << "1. Si" << endl;
+		cout << "2. No" << endl;
+		cin >> opcion;
+		switch (opcion) {
+			case 1: 
+				controlador->confirmar();
+				cout << "Material registrado exitosamente." << endl; 
+				break;
+			case 2: 
+				cout << "Registro de material cancelado." << endl; 
+				break;
+			default: 
+				cout << "Opcion invalida, intente nuevamente." << endl; 
+				break;
+		}
+		pausa();
+	} while (opcion != 1 && opcion != 2);
+
+	delete controlador;
+}
+
 
 
 void menu() {
@@ -189,18 +293,80 @@ void menu() {
 		cin >> opcion;
 
 		switch (opcion) {
-/*			case 1: iniciarSesion(); break;
+			case 1: iniciarSesion(); break;
 			case 2: cerrarSesion(); break;
 			case 3: registrarLector(); break;
 			case 4: registrarFuncionario(); break;
 			case 5: registrarMaterial(); break;
-			case 6: registrarPrestamo(); break;
+/*			case 6: registrarPrestamo(); break;
 			case 7: consultarPrestamosDeLector(); break;
 			case 8: verInformacionDeMaterial(); break;
 			case 9: puntuarMaterial(); break;
 			case 10: consultarPuntajesDeMaterial(); break;
 			case 11: eliminarLector(); break;
 			case 12: eliminarMaterial(); break;*/
+			case 0: cout << "Saliendo..." << endl; break;
+			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
+		}
+	} while (opcion != 0);
+}
+
+void menuLector() {
+	int opcion;
+	do {
+		system("clear");
+		cout << "Menu Principal:" << endl;
+		cout << "1. Cerrar Sesion" << endl;
+		cout << "2. Ver Informacion de Material" << endl;
+		cout << "3. Puntuar Material" << endl;
+		cout << "4. Consultar Puntajes de Material" << endl;
+		cout << "0. Salir" << endl << endl;
+		cout << "Seleccione una opcion: ";
+
+		cin >> opcion;
+
+		switch (opcion) {
+			case 1: cerrarSesion(); break;
+/*			case 2: verInformacionDeMaterial(); break;
+			case 3: puntuarMaterial(); break;
+			case 4: consultarPuntajesDeMaterial(); break;*/
+			case 0: cout << "Saliendo..." << endl; break;
+			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
+		};
+	} while (opcion != 0);
+}
+
+void menuFuncionario() {
+	int opcion;
+	do {
+		system("clear");
+		cout << "Menu Principal:" << endl;
+		cout << "1. Cerrar Sesion" << endl;
+		cout << "2. Registrar Lector" << endl;
+		cout << "3. Registrar Funcionario" << endl;
+		cout << "4. Registrar Material" << endl;
+		cout << "5. Registrar Prestamo" << endl;
+		cout << "6. Consultar Prestamos de Lector" << endl;
+		cout << "7. Ver Informacion de Material" << endl;
+		cout << "8. Consultar Puntajes de Material" << endl;
+		cout << "9. Eliminar Lector" << endl;
+		cout << "10. Eliminar Material" << endl;
+		cout << "0. Salir" << endl << endl;
+		cout << "Seleccione una opcion: ";
+
+		cin >> opcion;
+
+		switch (opcion) {
+			case 1: cerrarSesion(); break;
+			case 2: registrarLector(); break;
+			case 3: registrarFuncionario(); break;
+			case 4: registrarMaterial(); break;
+/*			case 5: registrarPrestamo(); break;
+			case 6: consultarPrestamosDeLector(); break;
+			case 7: verInformacionDeMaterial(); break;
+			case 8: consultarPuntajesDeMaterial(); break;
+			case 9: eliminarLector(); break;
+			case 10: eliminarMaterial(); break;*/
 			case 0: cout << "Saliendo..." << endl; break;
 			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
 		}
@@ -217,8 +383,13 @@ void pausa() {
 
 
 int main() {
-	std::cout << "Proyecto compilado correctamente" << std::endl;
+/*	IControladorRegistrarFuncionario* controladorRegistrarFuncionario = fabrica->getControladorRegistrarFuncionario();
+	controladorRegistrarFuncionario->registrarFuncionario("admin", "Administrador", "admin", 1);
+	controladorRegistrarFuncionario->altaFuncionario();
+	iniciarSesion();
 
+
+	menuFuncionario();*/
 	menu();
 	return 0;
 }

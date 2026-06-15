@@ -16,3 +16,7 @@ int DtRevista::getNumeroEdicion(){
 bool DtRevista::getPublicacionMensual(){
     return this->publicacionMensual;
 }
+
+string DtRevista::toString(){
+    return DtMaterial::toString() + "\nNumero de Edicion: " + to_string(this->numeroEdicion) + "\nPublicacion Mensual: " + (this->publicacionMensual ? "Si" : "No");
+}

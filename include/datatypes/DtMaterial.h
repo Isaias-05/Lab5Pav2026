@@ -19,5 +19,7 @@ class DtMaterial {
         string getTitulo();
 
         int getAnioPublicacion();
+
+        string toString();
 };
 #endif

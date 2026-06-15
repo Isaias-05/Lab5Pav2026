@@ -1,5 +1,6 @@
 #include "ControladorRegistrarLector.h"
 #include "ManejadorUsuario.h"
+#include "Lector.h"
 
 ControladorRegistrarLector::ControladorRegistrarLector(){}
 ControladorRegistrarLector::~ControladorRegistrarLector(){}

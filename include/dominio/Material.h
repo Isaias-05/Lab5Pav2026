@@ -21,7 +21,7 @@ class Material{
         map<string, Puntaje*> puntajes; 
     public:
         Material();
-        Material(string, string, int , float);
+        Material(string, string, int);
         virtual ~Material();
 
         string getCodigo();
@@ -39,7 +39,6 @@ class Material{
         const map<string, Puntaje*>& getPuntajes();
         void agregarPuntaje(Puntaje*);
 
-        DtMaterial getDtMaterial();
         DtMaterialBasico getDtMaterialBasico();
         DtPuntaje getDtPuntajeUsuario(string);
         

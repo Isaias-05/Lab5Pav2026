@@ -9,7 +9,7 @@ class Revista: public Material{
         bool publicacionMensual;
 
     public:
-        Revista(string, string, int, float, int, bool);
+        Revista(string, string, int, int, bool);
 
         int getNumeroEdicion();
         void setNumeroEdicion(int);

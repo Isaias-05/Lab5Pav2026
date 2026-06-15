@@ -18,5 +18,7 @@ class DtLibro : public DtMaterial {
         int getCantPaginas();
 
         string getAutor();
+
+        string toString();
 };
 #endif

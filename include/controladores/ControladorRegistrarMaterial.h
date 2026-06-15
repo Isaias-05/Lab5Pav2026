@@ -1,10 +1,6 @@
 #ifndef CONTROLADORREGISTRARMATERIAL
 #define CONTROLADORREGISTRARMATERIAL
 
-#include "ManejadorMaterial.h"
-#include "Libro.h"
-#include "Revista.h"
-
 #include "IControladorRegistrarMaterial.h"
 #include "DtLibro.h"
 #include "DtRevista.h"
@@ -13,6 +9,19 @@
 using std::string;
 
 class ControladorRegistrarMaterial : public IControladorRegistrarMaterial {
+private:
+	string codigo;
+	string titulo;
+	int anioPublicacion;
+	TipoMaterial tipo;
+
+	//Libro
+	string autor;
+	int cantidadPaginas;
+
+	//Revista
+	int numeroEdicion;
+	bool publicacionMensual;
 public:
 	ControladorRegistrarMaterial();
 	~ControladorRegistrarMaterial();
