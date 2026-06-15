@@ -12,6 +12,7 @@
 #include "ControladorConsultarPuntajesDeMaterial.h"
 #include "ControladorEliminarLector.h"
 #include "ControladorEliminarMaterial.h"
+#include "ControladorVerificarSesion.h"
 
 Fabrica* Fabrica::instancia = nullptr;
 
@@ -70,4 +71,8 @@ IControladorEliminarLector* Fabrica::getControladorEliminarLector() {
 
 IControladorEliminarMaterial* Fabrica::getControladorEliminarMaterial() {
     return new ControladorEliminarMaterial();
+}
+
+IControladorVerificarSesion* Fabrica::getControladorVerificarSesion() {
+    return new ControladorVerificarSesion();
 }

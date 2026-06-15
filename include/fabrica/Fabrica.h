@@ -16,6 +16,7 @@
 #include "IControladorConsultarPuntajesDeMaterial.h"
 #include "IControladorEliminarLector.h"
 #include "IControladorEliminarMaterial.h"
+#include "IControladorVerificarSesion.h"
 
 class Fabrica {
 private:
@@ -39,6 +40,7 @@ public:
     static IControladorConsultarPuntajesDeMaterial* getControladorConsultarPuntajesDeMaterial();
     static IControladorEliminarLector* getControladorEliminarLector();
     static IControladorEliminarMaterial* getControladorEliminarMaterial();
+    static IControladorVerificarSesion* getControladorVerificarSesion();
 
     ~Fabrica();
 };

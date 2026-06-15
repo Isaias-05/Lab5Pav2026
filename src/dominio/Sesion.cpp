@@ -16,6 +16,10 @@ Sesion::~Sesion(){
     instancia = nullptr;
 }
 
+Usuario* Sesion::getUsuario() {
+    return this->usuario;
+}
+
 void Sesion::setUsuario(Usuario* usuario){
     this->usuario = usuario;
 }

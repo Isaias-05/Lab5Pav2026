@@ -18,6 +18,7 @@ class Funcionario: public Usuario{
         int getNumeroEmpleado();
         void setNumeroEmpleado(int);
 
+        TipoUsuario getTipo() override;
 };
 
 #endif

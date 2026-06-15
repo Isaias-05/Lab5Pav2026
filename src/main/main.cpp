@@ -20,6 +20,7 @@
 #include "DtRevista.h"
 #include "DtRevistaFull.h"
 #include "Tipomaterial.h"
+#include "TipoUsuario.h"
 
 using namespace std;
 
@@ -42,18 +43,33 @@ void eliminarLector();
 void eliminarMaterial();
 //Declaración de funciones Auxiliares
 void menu();
+void menuLector();
+void menuFuncionario();
 void pausa();
 
 //MAIN
 int main() {
-/*	IControladorRegistrarFuncionario* controladorRegistrarFuncionario = fabrica->getControladorRegistrarFuncionario();
+	IControladorRegistrarFuncionario* controladorRegistrarFuncionario = fabrica->getControladorRegistrarFuncionario();
 	controladorRegistrarFuncionario->registrarFuncionario("admin", "Administrador", "admin", 1);
 	controladorRegistrarFuncionario->altaFuncionario();
+	delete controladorRegistrarFuncionario;
+
 	iniciarSesion();
 
+	IControladorVerificarSesion* controladorVerificarSesion = fabrica->getControladorVerificarSesion();
 
-	menuFuncionario();*/
-	menu();
+	TipoUsuario tipoUsuario = controladorVerificarSesion->verificarSesion();
+
+	delete controladorVerificarSesion;
+
+	if (tipoUsuario == TipoUsuario::TU_LECTOR) {
+		menuLector();
+	} else if (tipoUsuario == TipoUsuario::TU_FUNCIONARIO) {
+		menuFuncionario();
+	} else {
+		cout << "Tipo de usuario desconocido. Saliendo..." << endl;
+	}
+
 	return 0;
 }
 
@@ -356,7 +372,7 @@ void menuLector() {
 	int opcion;
 	do {
 		system("clear");
-		cout << "Menu Principal:" << endl;
+		cout << "Menu de Lector:" << endl;
 		cout << "1. Cerrar Sesion" << endl;
 		cout << "2. Ver Informacion de Material" << endl;
 		cout << "3. Puntuar Material" << endl;
@@ -369,8 +385,8 @@ void menuLector() {
 		switch (opcion) {
 			case 1: cerrarSesion(); break;
 /*			case 2: verInformacionDeMaterial(); break;
-			case 3: puntuarMaterial(); break;
-			case 4: consultarPuntajesDeMaterial(); break;*/
+			case 3: puntuarMaterial(); break;*/
+			case 4: consultarPuntajesDeMaterial(); break;
 			case 0: cout << "Saliendo..." << endl; break;
 			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
 		};
@@ -381,7 +397,7 @@ void menuFuncionario() {
 	int opcion;
 	do {
 		system("clear");
-		cout << "Menu Principal:" << endl;
+		cout << "Menu de Funcionario:" << endl;
 		cout << "1. Cerrar Sesion" << endl;
 		cout << "2. Registrar Lector" << endl;
 		cout << "3. Registrar Funcionario" << endl;
@@ -404,9 +420,9 @@ void menuFuncionario() {
 			case 4: registrarMaterial(); break;
 /*			case 5: registrarPrestamo(); break;
 			case 6: consultarPrestamosDeLector(); break;
-			case 7: verInformacionDeMaterial(); break;
+			case 7: verInformacionDeMaterial(); break;*/
 			case 8: consultarPuntajesDeMaterial(); break;
-			case 9: eliminarLector(); break;
+/*			case 9: eliminarLector(); break;
 			case 10: eliminarMaterial(); break;*/
 			case 0: cout << "Saliendo..." << endl; break;
 			default: cout << "Opcion invalida, intente nuevamente." << endl; break;

@@ -30,5 +30,7 @@ class Lector: public Usuario{
         DtLector getDtLector();
         
 		DtPrestamoLector getDtPrestamoLector();
+
+		TipoUsuario getTipo() override;
 };
 #endif

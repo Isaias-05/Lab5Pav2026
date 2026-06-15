@@ -15,6 +15,7 @@ class Sesion{
 
         ~Sesion();
 
+        Usuario* getUsuario();
         void setUsuario(Usuario* usuario);
 };
 

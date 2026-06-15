@@ -17,3 +17,7 @@ int Funcionario::getNumeroEmpleado() {
 void Funcionario::setNumeroEmpleado(int numeroEmpleado) {
     this->numeroEmpleado = numeroEmpleado;
 }
+
+TipoUsuario Funcionario::getTipo() {
+    return TipoUsuario::TU_FUNCIONARIO;
+}

@@ -1,6 +1,8 @@
 #ifndef USUARIO
 #define USUARIO
 
+#include "TipoUsuario.h"
+
 #include <iostream>
 using namespace std;
 
@@ -25,6 +27,8 @@ class Usuario{
 
         string getContrasenia();
         void setContrasenia(string);
+
+        virtual TipoUsuario getTipo() = 0;
 };
 
 #endif

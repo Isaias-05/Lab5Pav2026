@@ -39,3 +39,7 @@ DtPrestamoLector Lector::getDtPrestamoLector() {
     }
     return DtPrestamoLector(this->getNombre(), materialesPrestados);
 }
+
+TipoUsuario Lector::getTipo() {
+    return TipoUsuario::TU_LECTOR;
+}
