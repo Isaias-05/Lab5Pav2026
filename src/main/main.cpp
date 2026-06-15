@@ -301,8 +301,8 @@ void consultarPuntajesDeMaterial() {
 
 	try {
 		DtMaterialPuntaje resultado = controlador->seleccionarMaterial(codigoDeMaterial);
-		cout << "Titulo de material: " << resultado.getTitulo() << endl;
-		cout << "Puntaje promedio: " << resultado.getPuntajePromedio() << endl;
+		cout << "Informacion del material: " << endl;
+		cout << resultado.toString() << endl;
 	} catch (const invalid_argument& e) {
 		cout << e.what() << endl;
 	}

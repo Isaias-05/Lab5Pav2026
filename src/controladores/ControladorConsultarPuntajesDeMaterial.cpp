@@ -12,18 +12,14 @@ DtMaterialPuntaje ControladorConsultarPuntajesDeMaterial::seleccionarMaterial(st
 
 	vector<DtMaterialBasico> vector = ControladorConsultarPuntajesDeMaterial::listarMateriales();
 	int vectorSize = vector.size(), count = 0;
-	bool encontrado = false;
 
 	while(count < vectorSize) {
-		if (vector[count].getCodigo() == codigo) {
+		if (vector.at(count).getCodigo() == codigo) {
 			Material* material = ManejadorMaterial::getInstancia()->obtenerMaterial(codigo);
-			encontrado = true;
-			return DtMaterialPuntaje(material->getCodigo(), material->getTitulo(), material->getPuntajePromedio());
+			return DtMaterialPuntaje(material->getCodigo(), material->getTitulo(), material->getPuntajePromedio(), material->getPuntajes().size());
 		}
 		count++;
 	}
-	
-	if (!encontrado) {
-		throw invalid_argument("Material no encontrado");
-	}
+
+	throw invalid_argument("Material no encontrado");
 }

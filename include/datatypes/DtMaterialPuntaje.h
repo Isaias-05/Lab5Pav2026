@@ -9,10 +9,10 @@ class DtMaterialPuntaje {
         string codigo;
         string titulo;
         float puntajePromedio;
-        
+        int puntajesRegistrados;
     public:
         DtMaterialPuntaje();
-        DtMaterialPuntaje(string codigo, string titulo, float puntajePromedio);
+        DtMaterialPuntaje(string codigo, string titulo, float puntajePromedio, int puntajesRegistrados);
         ~DtMaterialPuntaje();
 
         string getCodigo();
@@ -20,5 +20,9 @@ class DtMaterialPuntaje {
         string getTitulo();
 
         float getPuntajePromedio();
+
+        int getPuntajesRegistrados();
+
+        string toString();
 };
 #endif

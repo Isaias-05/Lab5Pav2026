@@ -11,7 +11,7 @@ using namespace std;
 class IControladorConsultarPuntajesDeMaterial {
 
 	public:
-		~IControladorConsultarPuntajesDeMaterial() {};
+		virtual ~IControladorConsultarPuntajesDeMaterial() {};
 
 		virtual vector<DtMaterialBasico> listarMateriales() = 0;
 		virtual DtMaterialPuntaje seleccionarMaterial(string codigo) = 0;
