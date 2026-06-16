@@ -107,7 +107,6 @@ int main() {
 		}
 	}	while (!salir);
 
-	
 
 	return 0;
 }
@@ -265,7 +264,7 @@ void registrarMaterial() {
 			cout << "Opcion invalida, intente nuevamente." << endl;
 			break;
 		}
-	} while (tipoInt != 0 && tipoInt != 1);
+	} while (tipoInt != 1 && tipoInt != 2);
 
 	IControladorRegistrarMaterial * controlador = fabrica->getControladorRegistrarMaterial();
 	controlador->registrarMaterial(codigo, titulo, anioPublicacion, tipo);
@@ -307,6 +306,7 @@ void registrarMaterial() {
 		} while (pubMensualInt != 1 && pubMensualInt != 2);
 		
 		DtRevista resultado = controlador->ingresarDatosRevista(numEdicion, publicacionMensual);
+		system("clear");
 		cout << "Datos ingresados para la revista: " << endl;
 		cout << resultado.toString() << endl << endl;
 	}
@@ -369,7 +369,7 @@ void verInformacionDeMaterial() {
 		return;
 	}
 
-	cout << "	< Ver Informacion de Material>	" << endl; 
+	cout << "	< Ver Informacion de Material >" << endl; 
 
 	vector<DtMaterialBasico> copiaMateriales = controlador->listarMateriales();
 	for (DtMaterialBasico material : copiaMateriales){
@@ -377,7 +377,7 @@ void verInformacionDeMaterial() {
 	}
 	
 	string codigo;
-	cout << "\nIngres codigo del Material: ";
+	cout << "\nIngrese codigo del Material: ";
 	cin >> codigo;
 
 	try

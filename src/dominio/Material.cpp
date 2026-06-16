@@ -67,6 +67,10 @@ DtMaterialBasico Material::getDtMaterialBasico() {
     return DtMaterialBasico(this->codigo, this->titulo);
 }
 
+DtMaterial Material::getDtMaterial() {
+    return DtMaterial(this->codigo, this->titulo, this->anioPublicacion);
+}
+
 DtPuntaje Material::getDtPuntajeUsuario(string idUsuario) {
  
     // Busca el puntaje del usuario en el mapa de puntajes
