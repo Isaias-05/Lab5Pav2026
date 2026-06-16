@@ -13,7 +13,8 @@ public:
 
 	virtual vector<DtMaterialBasico> listarMateriales() = 0;
 	virtual DtMaterialBasico seleccionarMaterial(string codigo) = 0;
-	virtual void confirmar() = 0;
+	virtual void confirmar(string codigo) = 0;
+	virtual bool isEmpty() = 0;
 };
 
 #endif // ICONTROLADORELIMINARMATERIAL
