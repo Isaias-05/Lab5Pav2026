@@ -386,92 +386,49 @@ void consultarPuntajesDeMaterial() {
 	delete controlador;
 }
 
-void eliminarLector() {
-
-}
-
-void eliminarMaterial() {
-
-}
-
-void relojDelSistema() {
-
-	int opcion;
-	do {
-		system("clear");
-		cout << "Reloj del sistema" << endl;
-		cout << "1. Ver fecha del sistema" << endl;
-		cout << "2. Cambiar fecha del sistema" << endl;
-		cout << "0. Volver" << endl << endl;
-		cout << "Seleccione una opcion: ";
-
-		cin >> opcion;
-
-		switch(opcion) {
-			case 0: cout << "Volviendo..." << endl; pausa(); break;
-			case 1: verFechaActualDelSistema(); break;
-			case 2: cambiarFechaActualDelSistema(); break;
-			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
-		}
-	} while (opcion != 0);
-}
-
-void verFechaActualDelSistema() {
-	IControladorVerFechaActualDelSistema* controlador = fabrica->getControladorVerFechaActualDelSistema();
-	DtFecha fechaActual = controlador->verFechaActualDelSistema();
+void eliminarLector(){
 	system("clear");
-	cout << "La fecha actual en el sistema es: " + fechaActual.toString() << endl;
-	pausa();
-	delete controlador;
-}
-
-void cambiarFechaActualDelSistema() {
-	int dia, mes, anio, hora, minuto;
-	system("clear");
-	cout << "A continuacion se le pediran los datos en el formato: [dd/mm/aaaa hh:mm]" << endl << endl;
-	cout << "Ingrese el dia (dd): ";
-	cin >> dia;
-	cout << "Ingrese el mes (mm): ";
-	cin >> mes;
-	cout << "Ingrese el anio (aaaa): ";
-	cin >> anio;
-	cout << "Ingrese la hora (hh): ";
-	cin >> hora;
-	cout << "Ingrese el minuto (mm): ";
-	cin >> minuto;
-
-	IControladorCambiarFechaActualDelSistema* controlador = fabrica->getControladorCambiarFechaActualDelSistema();
-	DtFecha nuevaFecha = controlador->cambiarFechaActualDelSistema(dia, mes, anio, hora, minuto);
+	IControladorEliminarLector* controlador = fabrica->getControladorEliminarLector();
+	string id;
 	
-	cout << "Datos ingresados para la fecha: " << endl;
-	cout << nuevaFecha.toString() << endl << endl;
+	cout << "	< Eliminar Lector >	" << endl; 
+	cout << "Ingres ID del Lector: ";
+	cin >> id;
 
-	int opcion;
-	do {
-		cout << "Desea confirmar el cambio de fecha? " << endl;
-		cout << "1. Si" << endl;
-		cout << "2. No" << endl;
-		cout << "Seleccione una opcion: ";
-		cin >> opcion;
-		switch (opcion) {
-			case 1: 
-				controlador->confirmar();
-				cout << "Fecha cambiada exitosamente." << endl; 
-				break;
-			case 2: 
-				cout << "Cambio de hora cancelado." << endl; 
-				break;
-			default: 
-				cout << "Opcion invalida, intente nuevamente." << endl; 
-				break;
-		}
+	try
+	{
+		DtLector dtLector = controlador->consultarLector(id);
+		int opcion;
+		do {
+			cout << "Desea a eliminar el usuario: " << dtLector.getNombre() << " con ID: " << dtLector.getId() << "?" << endl;
+			cout << "1. Si" << endl;
+			cout << "2. No" << endl;
+			cin >> opcion;
+			switch (opcion) {
+				case 1: 
+					controlador->confirmar(dtLector.getId());
+					cout << "Lector eliminado exitosamente..." << endl; 
+					break;
+				case 2: 
+					cout << "Operación cancelada exitosamente." << endl; 
+					break;
+				default: 
+					cout << "Opcion invalida, intente nuevamente." << endl; 
+					break;
+			}
+			pausa();
+		} while (opcion != 1 && opcion != 2);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
 		pausa();
-	} while (opcion != 1 && opcion != 2);
+	}
 
 	delete controlador;
+	
 }
 
-//Menu viejo (Obsoleto)
 void menu() {
 	int opcion;
 	do {
@@ -504,11 +461,11 @@ void menu() {
 			case 7: consultarPrestamosDeLector(); break;
 			case 8: verInformacionDeMaterial(); break;
 			case 9: puntuarMaterial(); break;
-			case 10: consultarPuntajesDeMaterial(); break;
+			case 10: consultarPuntajesDeMaterial(); break;*/
 			case 11: eliminarLector(); break;
-			case 12: eliminarMaterial(); break;
-			case 0: cout << "Saliendo..." << endl; pausa(); break;
-			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
+			/*case 12: eliminarMaterial(); break;*/
+			case 0: cout << "Saliendo..." << endl; break;
+			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
 		}
 	} while (opcion != 0);
 }
@@ -571,9 +528,8 @@ bool menuFuncionario() {
 			case 7: verInformacionDeMaterial(); break;
 			case 8: consultarPuntajesDeMaterial(); break;
 			case 9: eliminarLector(); break;
-			case 10: eliminarMaterial(); break;
-			case 11: relojDelSistema();
-			case 0: cout << "Saliendo..." << endl; pausa(); break;
+		/*	case 10: eliminarMaterial(); break;*/
+			case 0: cout << "Saliendo..." << endl; break;
 			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
 		}
 	} while (opcion != 0 && opcion != 1);

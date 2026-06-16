@@ -23,13 +23,11 @@ class Lector: public Usuario{
 		~Lector();
         
         DtFecha getFechaRegistro();
-        void setFechaRegistro(DtFecha); 
-
-        void agregarPrestamo(Prestamo*);
-
-        DtLector getDtLector();
-        
+		DtLector getDtLector();
 		DtPrestamoLector getDtPrestamoLector();
+
+        void setFechaRegistro(DtFecha); 
+        void agregarPrestamo(Prestamo*);
 
 		TipoUsuario getTipo() override;
 };

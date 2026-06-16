@@ -14,7 +14,9 @@ DtLector ControladorEliminarLector::consultarLector(string idUsuario) {
 }
 
 void ControladorEliminarLector::confirmar(string idUsuario) {
+// Pre: El lector debe existir. 
     ManejadorUsuario * manejadorUsuario = ManejadorUsuario::getInstancia();
+ 
     bool eliminado = manejadorUsuario->eliminarUsuario(idUsuario);
     if(!eliminado)
         throw invalid_argument("ERROR: No se pudo eliminar el lector con ID: " + idUsuario + "\n");
