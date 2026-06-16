@@ -283,7 +283,7 @@ void registrarMaterial() {
 		cin >> numEdicion;
 		int pubMensualInt;
 		do {
-			cout << "¿La revista es de publicacion mensual? (1 para Si, 2 para No): ";
+			cout << "La revista es de publicacion mensual? (1 para Si, 2 para No): ";
 			cin >> pubMensualInt;
 			switch (pubMensualInt) {
 			case 1:
