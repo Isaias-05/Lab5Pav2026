@@ -15,10 +15,7 @@ Prestamo::Prestamo(string codigo, Material* material, DtFecha fechaPrestamo, int
     this->diasPermitidos = diasPermitidos;
 }
 
-Prestamo::~Prestamo()
-{
-    delete material;
-}
+Prestamo::~Prestamo(){}
 
 Material* Prestamo::getMaterial()
 {

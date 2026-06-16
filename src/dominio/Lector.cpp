@@ -14,6 +14,7 @@ Lector::~Lector() {
     for (Prestamo* prestamo : prestamos) {
         delete prestamo;
     }
+    prestamos.clear();
 }
 
 DtFecha Lector::getFechaRegistro() {
@@ -43,3 +44,4 @@ DtPrestamoLector Lector::getDtPrestamoLector() {
 TipoUsuario Lector::getTipo() {
     return TipoUsuario::TU_LECTOR;
 }
+

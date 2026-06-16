@@ -23,5 +23,6 @@ class DtLector{
         DtFecha getFechaRegistro();
 
         string toString();
+       
 };
 #endif
