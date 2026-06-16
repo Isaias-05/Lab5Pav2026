@@ -31,6 +31,8 @@ class ManejadorMaterial {
 
         DtMaterialFull* obtenerMaterialFull(string codigo);
 
+        bool isEmpty();
+
         bool eliminarMaterial(string codigo);
 
         bool existeMaterial(string codigo);

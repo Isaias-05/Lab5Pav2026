@@ -17,7 +17,8 @@ public:
 
 	vector<DtMaterialBasico> listarMateriales() override;
 	DtMaterialBasico seleccionarMaterial(string codigo) override;
-	void confirmar() override;
+	void confirmar(string codigo) override;
+	bool isEmpty() override;
 };
 
 #endif // CONTROLADORELIMINARMATERIAL

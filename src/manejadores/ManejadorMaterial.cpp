@@ -77,3 +77,7 @@ bool ManejadorMaterial::eliminarMaterial(string codigo) {
 bool ManejadorMaterial::existeMaterial(string codigo){
     return this->materiales.at(codigo) != nullptr;
 }
+
+bool ManejadorMaterial::isEmpty(){
+    return materiales.empty();
+}
