@@ -14,8 +14,8 @@ public:
 	virtual ~IControladorVerInformacionDeMaterial() {}
 
 	virtual vector<DtMaterialBasico> listarMateriales() = 0;
-	virtual DtMaterialFull seleccionarMaterial(string codigo) = 0;
+	virtual DtMaterialFull* seleccionarMaterial(string codigo) = 0;
+	virtual bool isEmpty() = 0;
 };
 
 #endif // ICONTROLADORVERINFORMACIONDEMATERIAL
-

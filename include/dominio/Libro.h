@@ -18,6 +18,6 @@ class Libro: public Material{
         int getCantidadPaginas();
         void setCantidadPaginas(int);
 
-        DtMaterialFull getDtMaterialFull() override;
+        DtMaterialFull* getDtMaterialFull() override;
 };
 #endif

@@ -18,7 +18,8 @@ public:
 	~ControladorVerInformacionDeMaterial();
 
 	vector<DtMaterialBasico> listarMateriales() override;
-	DtMaterialFull seleccionarMaterial(string codigo) override;
+	DtMaterialFull* seleccionarMaterial(string codigo) override;
+	bool isEmpty() override;
 };
 
 #endif // CONTROLADORVERINFORMACIONDEMATERIAL

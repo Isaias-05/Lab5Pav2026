@@ -9,7 +9,7 @@ vector<DtMaterialBasico> ControladorVerInformacionDeMaterial::listarMateriales()
 	return copiaMateriales;
 }
 
-DtMaterialFull ControladorVerInformacionDeMaterial::seleccionarMaterial(string codigo) {
+DtMaterialFull* ControladorVerInformacionDeMaterial::seleccionarMaterial(string codigo) {
 	ManejadorMaterial* manejadorMaterial = ManejadorMaterial::getInstancia();
 	Material* material = manejadorMaterial->obtenerMaterial(codigo);
 	if (material != nullptr) {
@@ -18,4 +18,9 @@ DtMaterialFull ControladorVerInformacionDeMaterial::seleccionarMaterial(string c
 		throw invalid_argument("ERROR: No existe un material con codigo: " + codigo + " En el Sistema\n");
 	}
 	
+}
+
+bool ControladorVerInformacionDeMaterial::isEmpty(){
+	ManejadorMaterial* manejadorMaterial = ManejadorMaterial::getInstancia();
+	return manejadorMaterial->isEmpty();
 }

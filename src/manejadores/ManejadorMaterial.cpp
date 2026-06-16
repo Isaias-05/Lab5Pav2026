@@ -47,7 +47,7 @@ map<string, Material*> ManejadorMaterial::obtenerMateriales() {
 DtMaterialFull* ManejadorMaterial::obtenerMaterialFull(string codigo) {
     map<string, Material*>::iterator iterador = materiales.find(codigo);
     if (iterador != materiales.end()) {
-        return new DtMaterialFull(iterador->second->getDtMaterialFull());
+        return iterador->second->getDtMaterialFull();
     } else {
         return nullptr; 
     }

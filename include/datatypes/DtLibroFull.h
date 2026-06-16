@@ -16,7 +16,7 @@ class DtLibroFull : public DtMaterialFull {
         ~DtLibroFull();
 
         int getCantPaginas();
-
         string getAutor();
+        string toString() override;
 };
 #endif

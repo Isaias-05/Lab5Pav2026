@@ -22,6 +22,6 @@ void Libro::setCantidadPaginas(int cantidadPaginas) {
     this->cantidadPaginas = cantidadPaginas;
 }
 
-DtMaterialFull Libro::getDtMaterialFull() {
-    return DtLibroFull(this->getCodigo(), this->getTitulo(), this->getAnioPublicacion(), this->getPuntajePromedio(), TipoMaterial::TM_LIBRO, this->autor, this->cantidadPaginas);
+DtMaterialFull* Libro::getDtMaterialFull() {
+    return new DtLibroFull(this->getCodigo(), this->getTitulo(), this->getAnioPublicacion(), this->getPuntajePromedio(), TipoMaterial::TM_LIBRO, this->autor, this->cantidadPaginas);
 }

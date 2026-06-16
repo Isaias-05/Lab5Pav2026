@@ -45,6 +45,6 @@ class Material{
         
         DtPuntaje getDtPuntajeUsuario(string);
         
-        virtual DtMaterialFull getDtMaterialFull() = 0;
+        virtual DtMaterialFull* getDtMaterialFull() = 0;
 };
 #endif
