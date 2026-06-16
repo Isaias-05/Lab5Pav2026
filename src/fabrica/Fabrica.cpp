@@ -13,6 +13,8 @@
 #include "ControladorEliminarLector.h"
 #include "ControladorEliminarMaterial.h"
 #include "ControladorVerificarSesion.h"
+#include "ControladorVerFechaActualDelSistema.h"
+#include "ControladorCambiarFechaActualDelSistema.h"
 
 Fabrica* Fabrica::instancia = nullptr;
 
@@ -75,4 +77,12 @@ IControladorEliminarMaterial* Fabrica::getControladorEliminarMaterial() {
 
 IControladorVerificarSesion* Fabrica::getControladorVerificarSesion() {
     return new ControladorVerificarSesion();
+}
+
+IControladorVerFechaActualDelSistema* Fabrica::getControladorVerFechaActualDelSistema() {
+    return new ControladorVerFechaActualDelSistema();
+}
+
+IControladorCambiarFechaActualDelSistema* Fabrica::getControladorCambiarFechaActualDelSistema() {
+    return new ControladorCambiarFechaActualDelSistema();
 }
