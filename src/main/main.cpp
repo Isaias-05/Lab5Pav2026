@@ -44,11 +44,14 @@ void consultarPuntajesDeMaterial();
 void eliminarLector();
 void eliminarMaterial();
 void relojDelSistema();
-//Declaración de funciones Auxiliares
+
+//Declaracíón de funciones Menú
 void menu();
 bool menuLector();
 bool menuFuncionario();
 
+//Declaración de funciones Auxiliares
+int  inputOp();
 void pausa();
 
 void verFechaActualDelSistema();
@@ -105,7 +108,7 @@ int main() {
 			cout << "Tipo de usuario desconocido. Saliendo...";
 			pausa();
 		}
-	}	while (!salir);
+	}while (!salir);
 
 
 	return 0;
@@ -127,8 +130,10 @@ void iniciarSesion() {
 		exito = controlador->iniciarSesion(id, contrasenia);
 
 		if (exito) {
+			system("clear");
 			cout << "Inicio de sesion exitoso." << endl;
 		} else {
+			system("clear");
 			cout << "Error al iniciar sesion. Verifique sus credenciales." << endl;
 		}
 		pausa();
@@ -173,16 +178,19 @@ void registrarLector() {
 		cout << "1. Si" << endl;
 		cout << "2. No" << endl;
 		cout << "Seleccione una opcion: ";
-		cin >> opcion;
+		opcion = inputOp();
 		switch (opcion) {
 			case 1: 
-				controladorLector->altaLector(); 
+				controladorLector->altaLector();
+				system("clear");
 				cout << "Lector registrado exitosamente." << endl; 
 				break;
-			case 2: 
+			case 2:
+				system("clear");
 				cout << "Registro de lector cancelado." << endl;
 				break;
-			default: 
+			default:
+				system("clear");
 				cout << "Opcion invalida, intente nuevamente." << endl; 
 				break;
 		}
@@ -217,7 +225,7 @@ void registrarFuncionario() {
 		cout << "1. Si" << endl;
 		cout << "2. No" << endl;
 		cout << "Seleccione una opcion: ";
-		cin >> opcion;
+		opcion = inputOp();
 		switch (opcion) {
 			case 1: 
 				controlador->altaFuncionario();
@@ -252,7 +260,7 @@ void registrarMaterial() {
 	int tipoInt;
 	do {
 		cout << "Ingrese el tipo de material (1 para Libro, 2 para Revista): ";
-		cin >> tipoInt;
+		tipoInt = inputOp();
 		switch (tipoInt) {
 		case 1:
 			tipo = TipoMaterial::TM_LIBRO;
@@ -293,7 +301,7 @@ void registrarMaterial() {
 		int pubMensualInt;
 		do {
 			cout << "La revista es de publicacion mensual? (1 para Si, 2 para No): ";
-			cin >> pubMensualInt;
+			pubMensualInt = inputOp();
 			switch (pubMensualInt) {
 			case 1:
 				publicacionMensual = true;
@@ -319,7 +327,7 @@ void registrarMaterial() {
 		cout << "1. Si" << endl;
 		cout << "2. No" << endl;
 		cout << "Seleccione una opcion: ";
-		cin >> opcion;
+		opcion = inputOp();
 		switch (opcion) {
 			case 1: 
 				controlador->confirmar();
@@ -410,7 +418,7 @@ void registrarPrestamo() {
 		cout << "1. Si" << endl;
 		cout << "2. No" << endl;
 		cout << "Seleccione una opcion: ";
-		cin >> opcion;
+		opcion = inputOp();
 		switch (opcion) {
 			case 1: 
 				controlador->confirmar();
@@ -526,7 +534,7 @@ void eliminarLector(){
 			cout << "Desea a eliminar el usuario: " << dtLector.getNombre() << " con ID: " << dtLector.getId() << "?" << endl;
 			cout << "1. Si" << endl;
 			cout << "2. No" << endl;
-			cin >> opcion;
+			opcion = inputOp();
 			switch (opcion) {
 				case 1: 
 					controlador->confirmar(dtLector.getId());
@@ -582,7 +590,7 @@ void eliminarMaterial(){
 			cout << "Desea a eliminar el material : " << dtMaterialBasico.getTitulo() << " con Código: " << dtMaterialBasico.getCodigo() << "?" << endl;
 			cout << "1. Si" << endl;
 			cout << "2. No" << endl;
-			cin >> opcion;
+			opcion = inputOp();
 			switch (opcion) {
 				case 1: 
 					controlador->confirmar(dtMaterialBasico.getCodigo());
@@ -627,7 +635,7 @@ void menu() {
 		cout << "0. Salir" << endl << endl;
 		cout << "Seleccione una opcion: ";
 
-		cin >> opcion;
+		opcion = inputOp();
 
 		switch (opcion) {
 			case 1: iniciarSesion(); break;
@@ -643,7 +651,7 @@ void menu() {
 			case 11: eliminarLector(); break;
 			case 12: eliminarMaterial(); break;
 			case 0: cout << "Saliendo..." << endl; break;
-			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
+			default: system("clear"); cout << "Opcion invalida, intente nuevamente." << endl; break;
 		}
 	} while (opcion != 0);
 }
@@ -660,8 +668,8 @@ bool menuLector() {
 		cout << "0. Salir" << endl << endl;
 		cout << "Seleccione una opcion: ";
 
-		cin >> opcion;
-
+		opcion = inputOp();
+		
 		switch (opcion) {
 			case 1: cerrarSesion(); break;
 			case 2: verInformacionDeMaterial(); break;
@@ -694,7 +702,7 @@ bool menuFuncionario() {
 		cout << "0. Salir" << endl << endl;
 		cout << "Seleccione una opcion: ";
 
-		cin >> opcion;
+		opcion = inputOp();
 
 		switch (opcion) {
 			case 1: cerrarSesion(); break;
@@ -708,11 +716,22 @@ bool menuFuncionario() {
 			case 9: eliminarLector(); break;
 			case 10: eliminarMaterial(); break;
 			case 0: cout << "Saliendo..." << endl; break;
-			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
+			default: system("clear");cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
 		}
 	} while (opcion != 0 && opcion != 1);
 	// Si opcion == 0, devuelve true, sino, devuelve false
 	return opcion == 0 ? true : false;
+}
+
+int inputOp() {
+	string opcion;
+	cin >> opcion;
+	
+	try {
+		return stoi(opcion);
+	} catch (const invalid_argument& e) {
+		return -1;
+	}
 }
 
 void pausa() {
