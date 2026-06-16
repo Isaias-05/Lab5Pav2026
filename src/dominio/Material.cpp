@@ -53,7 +53,7 @@ float Material::getPuntajePromedio() {
     return PuntajePromedio;
 }
 
-void Material::actualizarPuntaje(float nuevoPuntaje) {}
+void Material::actualizarPuntajePromedio(float nuevoPuntaje) {}
 
 const map<string, Puntaje*>& Material::getPuntajes() {
     return puntajes;

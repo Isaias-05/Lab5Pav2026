@@ -34,7 +34,7 @@ class Material{
         void setAnioPublicacion(int);
 
         float getPuntajePromedio();
-        void actualizarPuntaje(float);
+        void actualizarPuntajePromedio(float);
 
         const map<string, Puntaje*>& getPuntajes();
         void agregarPuntaje(Puntaje*);

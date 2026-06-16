@@ -8,19 +8,27 @@
 #include "DtMaterialBasico.h"
 #include "DtPuntaje.h"
 
+#include <vector>
 #include <set>
 #include <string>
 using namespace std;
 
 class ControladorPuntuarMaterial : public IControladorPuntuarMaterial {
-public:
-	ControladorPuntuarMaterial();
-	~ControladorPuntuarMaterial();
+	private:
+		Material* materialSeleccionado;
+		string idLectorSeleccionado;
+	public:
+		ControladorPuntuarMaterial();
 
-	set<DtMaterialBasico> listarMateriales() override;
-	DtMaterialBasico seleccionarMaterial(string codigo) override;
-	DtPuntaje obtenerPuntaje(string codigo, int puntaje) override;
-	void puntuarMaterial(string idUsuario, int puntaje) override;
+		~ControladorPuntuarMaterial();
+
+		vector<DtMaterialBasico> listarMateriales() override;
+
+		DtMaterialBasico seleccionarMaterial(string codigo) override;
+
+		DtPuntaje obtenerPuntaje(string idLector) override;
+		
+		void puntuarMaterial(int puntaje) override;
 };
 
 #endif // CONTROLADORPUNTUARMATERIAL

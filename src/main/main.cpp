@@ -544,3 +544,21 @@ void pausa() {
 	// Esperar a que el usuario presione Enter
 	cin.get();
 }
+
+void puntuarMaterial(){
+	IControladorPuntuarMaterial* controlador = fabrica->getControladorPuntuarMaterial();
+	string codigo, idLector;
+	int puntaje;
+
+	vector<DtMaterialBasico> vectorMaterialesBasicos = controlador->listarMateriales();
+
+	cout << "Ingrese el codigo del material a seleccionar: "; 
+	cin >> codigo;
+	DtMaterialBasico materialBasico = controlador->seleccionarMaterial(codigo);
+
+	cout << "Ingrese su id para consultar el puntaje del material seleccionado: ";
+	cin >> idLector;
+	DtPuntaje dtPuntaje = controlador->obtenerPuntaje(idLector);
+
+	controlador->puntuarMaterial(puntaje);
+}

@@ -3,21 +3,27 @@
 ControladorPuntuarMaterial::ControladorPuntuarMaterial() {}
 ControladorPuntuarMaterial::~ControladorPuntuarMaterial() {}
 
-set<DtMaterialBasico> ControladorPuntuarMaterial::listarMateriales() {
-	// Implementar lógica aquí
-	return set<DtMaterialBasico>();
+vector<DtMaterialBasico> ControladorPuntuarMaterial::listarMateriales() {
+	ManejadorMaterial* manejadorMaterial = ManejadorMaterial::getInstancia();
+	return manejadorMaterial->obtenerVectorMaterialesBasicos();
 }
 
 DtMaterialBasico ControladorPuntuarMaterial::seleccionarMaterial(string codigo) {
-	// Implementar lógica aquí
-	return DtMaterialBasico();
+	
+	ManejadorMaterial* manejadorMaterial = ManejadorMaterial::getInstancia();
+	
+	if(manejadorMaterial->existeMaterial(codigo)){
+		materialSeleccionado = manejadorMaterial->obtenerMaterial(codigo);
+		return materialSeleccionado->getDtMaterialBasico();
+	}else
+		throw invalid_argument("Codigo de material no encontrado");
 }
 
-DtPuntaje ControladorPuntuarMaterial::obtenerPuntaje(string codigo, int puntaje) {
-	// Implementar lógica aquí
-	return DtPuntaje();
+DtPuntaje ControladorPuntuarMaterial::obtenerPuntaje(string idLector) {
+	idLectorSeleccionado = idLector;
+	return materialSeleccionado->getDtPuntajeUsuario(idLector);
 }
 
-void ControladorPuntuarMaterial::puntuarMaterial(string idUsuario, int puntaje) {
-	// Implementar lógica aquí
+void ControladorPuntuarMaterial::puntuarMaterial(int puntaje) {
+	
 }
