@@ -46,8 +46,8 @@ void eliminarMaterial();
 void relojDelSistema();
 //Declaración de funciones Auxiliares
 void menu();
-void menuLector();
-void menuFuncionario();
+bool menuLector();
+bool menuFuncionario();
 
 void pausa();
 
@@ -85,21 +85,29 @@ int main() {
 	controladorRegistrarFuncionario->altaFuncionario();
 	delete controladorRegistrarFuncionario;
 
-	iniciarSesion();
+	// Si salir == true, termina todo el programa
+	bool salir;
 
-	IControladorVerificarSesion* controladorVerificarSesion = fabrica->getControladorVerificarSesion();
+	do {
+		iniciarSesion();
 
-	TipoUsuario tipoUsuario = controladorVerificarSesion->verificarSesion();
+		IControladorVerificarSesion* controladorVerificarSesion = fabrica->getControladorVerificarSesion();
 
-	delete controladorVerificarSesion;
+		TipoUsuario tipoUsuario = controladorVerificarSesion->verificarSesion();
 
-	if (tipoUsuario == TipoUsuario::TU_LECTOR) {
-		menuLector();
-	} else if (tipoUsuario == TipoUsuario::TU_FUNCIONARIO) {
-		menuFuncionario();
-	} else {
-		cout << "Tipo de usuario desconocido. Saliendo..." << endl;
-	}
+		delete controladorVerificarSesion;
+
+		if (tipoUsuario == TipoUsuario::TU_LECTOR) {
+			salir = menuLector();
+		} else if (tipoUsuario == TipoUsuario::TU_FUNCIONARIO) {
+			salir = menuFuncionario();
+		} else {
+			cout << "Tipo de usuario desconocido. Saliendo...";
+			pausa();
+		}
+	}	while (!salir);
+
+	
 
 	return 0;
 }
@@ -463,6 +471,7 @@ void cambiarFechaActualDelSistema() {
 	delete controlador;
 }
 
+//Menu viejo (Obsoleto)
 void menu() {
 	int opcion;
 	do {
@@ -491,20 +500,20 @@ void menu() {
 			case 3: registrarLector(); break;
 			case 4: registrarFuncionario(); break;
 			case 5: registrarMaterial(); break;
-/*			case 6: registrarPrestamo(); break;
+			case 6: registrarPrestamo(); break;
 			case 7: consultarPrestamosDeLector(); break;
 			case 8: verInformacionDeMaterial(); break;
 			case 9: puntuarMaterial(); break;
 			case 10: consultarPuntajesDeMaterial(); break;
 			case 11: eliminarLector(); break;
-			case 12: eliminarMaterial(); break;*/
+			case 12: eliminarMaterial(); break;
 			case 0: cout << "Saliendo..." << endl; pausa(); break;
 			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
 		}
 	} while (opcion != 0);
 }
 
-void menuLector() {
+bool menuLector() {
 	int opcion;
 	do {
 		system("clear");
@@ -526,10 +535,12 @@ void menuLector() {
 			case 0: cout << "Saliendo..." << endl; pausa(); break;
 			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
 		};
-	} while (opcion != 0);
+	} while (opcion != 0 && opcion != 1);
+	// Si opcion == 0, devuelve true, sino, devuelve false
+	return opcion == 0 ? true : false;
 }
 
-void menuFuncionario() {
+bool menuFuncionario() {
 	int opcion;
 	do {
 		system("clear");
@@ -565,7 +576,9 @@ void menuFuncionario() {
 			case 0: cout << "Saliendo..." << endl; pausa(); break;
 			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
 		}
-	} while (opcion != 0);
+	} while (opcion != 0 && opcion != 1);
+	// Si opcion == 0, devuelve true, sino, devuelve false
+	return opcion == 0 ? true : false;
 }
 
 void pausa() {
