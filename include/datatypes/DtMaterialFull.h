@@ -26,5 +26,7 @@ class DtMaterialFull {
         float getPuntajePromedio();
 
         TipoMaterial getTipoMaterial();
+
+        virtual string toString() = 0;
 };
 #endif

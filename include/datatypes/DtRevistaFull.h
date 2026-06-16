@@ -13,7 +13,7 @@ class DtRevistaFull : public DtMaterialFull {
         ~DtRevistaFull();
 
         int getNumeroEdicion();
-
         bool getPublicacionMensual();
+        string toString() override;
 };
 #endif

@@ -17,7 +17,7 @@ class Revista: public Material{
         bool getPublicacionMensual();
         void setPublicacionMensual(bool);
 
-        DtMaterialFull getDtMaterialFull() override;
+        DtMaterialFull* getDtMaterialFull() override;
 
 };
 #endif

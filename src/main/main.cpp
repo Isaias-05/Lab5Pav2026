@@ -359,7 +359,41 @@ void consultarPrestamosDeLector() {
 }
 
 void verInformacionDeMaterial() {
-	// Implementar lógica aquí
+	system("clear");
+	IControladorVerInformacionDeMaterial* controlador = fabrica->getControladorVerInformacionDeMaterial();
+	
+	if(controlador->isEmpty()){
+		cout << "No hay materiales registrados en el sistema..." << endl;
+		pausa();
+		delete controlador;
+		return;
+	}
+
+	cout << "	< Ver Informacion de Material>	" << endl; 
+
+	vector<DtMaterialBasico> copiaMateriales = controlador->listarMateriales();
+	for (DtMaterialBasico material : copiaMateriales){
+		cout << material.toString() << endl;
+	}
+	
+	string codigo;
+	cout << "\nIngres codigo del Material: ";
+	cin >> codigo;
+
+	try
+	{
+		system("clear");
+		DtMaterialFull * dtMaterialFull = controlador->seleccionarMaterial(codigo);
+		cout << "	< Informacion del material >" << endl;
+		cout << dtMaterialFull->toString() << endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	pausa();
+	delete controlador;
 }
 
 void puntuarMaterial() {
@@ -432,8 +466,7 @@ void eliminarLector(){
 void eliminarMaterial(){
 	system("clear");
 	IControladorEliminarMaterial* controlador = fabrica->getControladorEliminarMaterial();
-	string codigo;
-
+	
 	if(controlador->isEmpty()){
 		cout << "No hay materiales registrados en el sistema..." << endl;
 		pausa();
@@ -448,6 +481,7 @@ void eliminarMaterial(){
 		cout << material.toString() << endl;
 	}
 	
+	string codigo;
 	cout << "Ingres codigo del Material: ";
 	cin >> codigo;
 
