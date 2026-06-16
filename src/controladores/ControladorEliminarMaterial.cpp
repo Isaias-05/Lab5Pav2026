@@ -10,10 +10,24 @@ vector<DtMaterialBasico> ControladorEliminarMaterial::listarMateriales() {
 }
 
 DtMaterialBasico ControladorEliminarMaterial::seleccionarMaterial(string codigo) {
-	// Implementar lógica aquí
-	return DtMaterialBasico();
+	ManejadorMaterial* manejadorMaterial = ManejadorMaterial::getInstancia();
+    Material* material = manejadorMaterial->obtenerMaterial(codigo);
+	
+    if (material == nullptr) 
+        throw invalid_argument("ERROR: No existe un material con codigo: " + codigo + " En el Sistema\n");
+    else
+        return material->getDtMaterialBasico();
 }
 
-void ControladorEliminarMaterial::confirmar() {
-	// Implementar lógica aquí
+void ControladorEliminarMaterial::confirmar(string codigo) {
+    ManejadorMaterial* manejadorMaterial = ManejadorMaterial::getInstancia();
+    bool eliminado = manejadorMaterial->eliminarMaterial(codigo);
+    if(!eliminado)
+        throw invalid_argument("ERROR: No se pudo eliminar el material con codigo: " + codigo + "\n");
+
+}
+
+bool ControladorEliminarMaterial::isEmpty(){
+    ManejadorMaterial* manejadorMaterial = ManejadorMaterial::getInstancia();
+    return manejadorMaterial->isEmpty();
 }

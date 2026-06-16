@@ -73,3 +73,7 @@ bool ManejadorMaterial::eliminarMaterial(string codigo) {
         return false; 
     }
 }
+
+bool ManejadorMaterial::isEmpty() {
+    return materiales.empty();
+}

@@ -429,6 +429,61 @@ void eliminarLector(){
 	
 }
 
+void eliminarMaterial(){
+	system("clear");
+	IControladorEliminarMaterial* controlador = fabrica->getControladorEliminarMaterial();
+	string codigo;
+
+	if(controlador->isEmpty()){
+		cout << "No hay materiales registrados en el sistema..." << endl;
+		pausa();
+		delete controlador;
+		return;
+	}
+
+	cout << "	< Eliminar Material >	" << endl; 
+
+	vector<DtMaterialBasico> copiaMateriales = controlador->listarMateriales();
+	for (DtMaterialBasico material : copiaMateriales){
+		cout << material.toString() << endl;
+	}
+	
+	cout << "Ingres codigo del Material: ";
+	cin >> codigo;
+
+	try
+	{
+		DtMaterialBasico dtMaterialBasico = controlador->seleccionarMaterial(codigo);
+		int opcion;
+		do {
+			cout << "Desea a eliminar el material : " << dtMaterialBasico.getTitulo() << " con Código: " << dtMaterialBasico.getCodigo() << "?" << endl;
+			cout << "1. Si" << endl;
+			cout << "2. No" << endl;
+			cin >> opcion;
+			switch (opcion) {
+				case 1: 
+					controlador->confirmar(dtMaterialBasico.getCodigo());
+					cout << "Material eliminado exitosamente..." << endl; 
+					break;
+				case 2: 
+					cout << "Operación cancelada exitosamente." << endl; 
+					break;
+				default: 
+					cout << "Opcion invalida, intente nuevamente." << endl; 
+					break;
+			}
+			pausa();
+		} while (opcion != 1 && opcion != 2);
+
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << '\n' << e.what() << '\n';
+		pausa();
+	}
+	delete controlador;
+}
+
 void menu() {
 	int opcion;
 	do {
@@ -461,9 +516,9 @@ void menu() {
 			case 7: consultarPrestamosDeLector(); break;
 			case 8: verInformacionDeMaterial(); break;
 			case 9: puntuarMaterial(); break;
-			case 10: consultarPuntajesDeMaterial(); break;*/
+			/*case 10: consultarPuntajesDeMaterial(); break;*/
 			case 11: eliminarLector(); break;
-			/*case 12: eliminarMaterial(); break;*/
+			case 12: eliminarMaterial(); break;
 			case 0: cout << "Saliendo..." << endl; break;
 			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
 		}
@@ -528,7 +583,7 @@ bool menuFuncionario() {
 			case 7: verInformacionDeMaterial(); break;
 			case 8: consultarPuntajesDeMaterial(); break;
 			case 9: eliminarLector(); break;
-		/*	case 10: eliminarMaterial(); break;*/
+			case 10: eliminarMaterial(); break;
 			case 0: cout << "Saliendo..." << endl; break;
 			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
 		}
