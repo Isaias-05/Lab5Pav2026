@@ -23,5 +23,7 @@ class DtPrestamo {
         DtFecha getFechaPrestamo();
 
         int getCantDias();
+
+        string toString();
 };
 #endif

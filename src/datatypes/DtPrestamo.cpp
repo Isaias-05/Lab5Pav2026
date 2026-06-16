@@ -26,3 +26,7 @@ DtFecha DtPrestamo::getFechaPrestamo() {
 int DtPrestamo::getCantDias() {
     return this->cantDias;
 }
+
+string DtPrestamo::toString() {
+    return "Prestamo[IdLector: " + idLector + ", CodigoMaterial: " + codigoMaterial + ", FechaPrestamo: " + fechaPrestamo.toString() + ", CantDias: " + to_string(cantDias) + "]";
+}

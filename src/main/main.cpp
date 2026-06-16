@@ -338,6 +338,71 @@ void registrarMaterial() {
 
 void registrarPrestamo() {
 	// Implementar lógica aquí
+	string idLector, codigoMaterial;
+	DtFecha fechaPrestamo, fechaDevolucion;
+	int cantDias;
+
+	string fechaPrestamoStr = fechaPrestamo.toString();
+	string fechaDevolucionStr = fechaDevolucion.toString();
+
+	system("clear");
+	cout << "Ingrese el id del lector: ";
+	cin >> idLector;
+	cout << "Ingrese el codigo del material: ";
+	cin >> codigoMaterial;
+	cout << "Ingrese la fecha del prestamo (dia mes anio hora minuto): ";
+	cin >> fechaPrestamoStr;
+	cout << "Ingrese la cantidad de dias del prestamo: ";
+	cin >> cantDias;
+	cout << "Ingrese la fecha de devolucion (dia mes anio hora minuto): ";
+	cin >> fechaDevolucionStr;
+
+	IControladorRegistrarPrestamo* controlador = fabrica->getControladorRegistrarPrestamo();
+	try {
+		fechaPrestamo = DtFecha(stoi(fechaPrestamoStr.substr(0, 2)), stoi(fechaPrestamoStr.substr(3, 2)), stoi(fechaPrestamoStr.substr(6, 4)), stoi(fechaPrestamoStr.substr(11, 2)), stoi(fechaPrestamoStr.substr(14, 2)));
+		fechaDevolucion = DtFecha(stoi(fechaDevolucionStr.substr(0, 2)), stoi(fechaDevolucionStr.substr(3, 2)), stoi(fechaDevolucionStr.substr(6, 4)), stoi(fechaDevolucionStr.substr(11, 2)), stoi(fechaDevolucionStr.substr(14, 2)));
+	} catch (const invalid_argument& e) {
+		cout << "Formato de fecha invalido. Use el formato: dia mes anio hora minuto" << endl;
+		delete controlador;
+		return;
+	}
+	try {
+		DtLector dtLector = controlador->obtenerLector(idLector);
+		DtMaterial dtMaterial = controlador->obtenerMaterial(codigoMaterial);
+		DtPrestamo dtPrestamo = controlador->registrarPrestamo(fechaPrestamo, cantDias, fechaDevolucion);
+
+		cout << "Datos del prestamo a registrar: " << endl;
+		cout << "Lector: " << dtLector.toString() << endl;
+		cout << "Material: " << dtMaterial.toString() << endl;
+		cout << "Prestamo: " << dtPrestamo.toString() << endl;
+	} catch (const invalid_argument& e) {
+		cout << e.what() << endl;
+		delete controlador;
+		return;
+	}
+	int opcion;
+	do {
+		cout << "Desea confirmar el registro del prestamo? " << endl;
+		cout << "1. Si" << endl;
+		cout << "2. No" << endl;
+		cout << "Seleccione una opcion: ";
+		cin >> opcion;
+		switch (opcion) {
+			case 1: 
+				controlador->confirmar();
+				cout << "Prestamo registrado exitosamente." << endl; 
+				break;
+			case 2: 
+				cout << "Registro de prestamo cancelado." << endl; 
+				break;
+			default: 
+				cout << "Opcion invalida, intente nuevamente." << endl; 
+				break;
+		}
+		pausa();
+	} while (opcion != 1 && opcion != 2);
+	delete controlador;
+	
 }
 
 void consultarPrestamosDeLector() {
