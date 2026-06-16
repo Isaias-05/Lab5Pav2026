@@ -9,8 +9,9 @@ DtLector ControladorRegistrarPrestamo::obtenerLector(string id) {
 	if (lector == nullptr) {
 		throw invalid_argument("Lector no encontrado");
 	}
+	this->idLector = id;
 	DtLector dtLector = lector->getDtLector();
-	return DtLector();
+	return dtLector;
 }
 
 DtMaterial ControladorRegistrarPrestamo::obtenerMaterial(string codigo) {
@@ -19,17 +20,15 @@ DtMaterial ControladorRegistrarPrestamo::obtenerMaterial(string codigo) {
 	if (material == nullptr) {
 		throw invalid_argument("Material no encontrado");
 	}
+	this->codigoMaterial = codigo;
 	DtMaterial dtMaterial = material->getDtMaterial();
-	return DtMaterial();
+	return dtMaterial;
 }
 
-DtPrestamo ControladorRegistrarPrestamo::registrarPrestamo(DtFecha fecha, int cantidad, DtFecha fechaDevolucion) {
+DtPrestamo ControladorRegistrarPrestamo::registrarPrestamo(DtFecha fecha, int cantidad) {
 	// Implementar lógica aquí
 	this->fechaPrestamo = fecha;
 	this->cantDias = cantidad;
-	this->fechaDevolucion = fechaDevolucion;
-	this->codigoMaterial = codigoMaterial;
-	this->idLector = idLector;
 	return DtPrestamo(idLector, codigoMaterial, fechaPrestamo, cantDias);
 }
 

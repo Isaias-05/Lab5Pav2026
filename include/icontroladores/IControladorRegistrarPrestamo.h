@@ -11,11 +11,11 @@ using std::string;
 class IControladorRegistrarPrestamo {
     public:
 
-    	~IControladorRegistrarPrestamo() {};
+    	virtual ~IControladorRegistrarPrestamo() {};
 
         virtual DtLector obtenerLector(string) = 0;
         virtual DtMaterial obtenerMaterial(string) = 0;
-        virtual DtPrestamo registrarPrestamo(DtFecha, int, DtFecha) = 0;
+        virtual DtPrestamo registrarPrestamo(DtFecha, int) = 0;
         virtual void confirmar() = 0;
 };
 

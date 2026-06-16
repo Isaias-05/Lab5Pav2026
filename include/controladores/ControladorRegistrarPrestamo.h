@@ -18,7 +18,6 @@ class ControladorRegistrarPrestamo: public IControladorRegistrarPrestamo {
     private:
         DtFecha fechaPrestamo;
         int cantDias;
-        DtFecha fechaDevolucion;
         string idLector;
         string codigoMaterial;
     public:
@@ -27,7 +26,7 @@ class ControladorRegistrarPrestamo: public IControladorRegistrarPrestamo {
 
         DtLector obtenerLector(string) override;
         DtMaterial obtenerMaterial(string) override;
-        DtPrestamo registrarPrestamo(DtFecha, int, DtFecha) override;
+        DtPrestamo registrarPrestamo(DtFecha, int) override;
         void confirmar() override;
 };
 
