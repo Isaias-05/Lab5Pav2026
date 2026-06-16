@@ -15,6 +15,12 @@
 using std::string;
 
 class ControladorRegistrarPrestamo: public IControladorRegistrarPrestamo {
+    private:
+        DtFecha fechaPrestamo;
+        int cantDias;
+        DtFecha fechaDevolucion;
+        string idLector;
+        string codigoMaterial;
     public:
         ControladorRegistrarPrestamo();
 	    ~ControladorRegistrarPrestamo();
