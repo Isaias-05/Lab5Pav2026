@@ -1,6 +1,10 @@
 #include <iostream>
 #include <limits>
 
+//Fecha actual
+#include <chrono>
+#include <ctime>
+
 #include "Fabrica.h"
 
 //Datatypes
@@ -24,8 +28,6 @@
 
 using namespace std;
 
-DtFecha fechaActual = DtFecha(1,1,2001);
-
 Fabrica * fabrica = Fabrica::getInstancia();
 
 //Declaración de funciones
@@ -41,14 +43,43 @@ void puntuarMaterial();
 void consultarPuntajesDeMaterial();
 void eliminarLector();
 void eliminarMaterial();
+void relojDelSistema();
 //Declaración de funciones Auxiliares
 void menu();
 void menuLector();
 void menuFuncionario();
+
 void pausa();
+
+void verFechaActualDelSistema();
+void cambiarFechaActualDelSistema();
 
 //MAIN
 int main() {
+	// Setear la fecha actual del sistema inicial
+
+	// 1. Obtener el tiempo actual
+    auto ahora = std::chrono::system_clock::now();
+    std::time_t tiempo_actual = std::chrono::system_clock::to_time_t(ahora);
+    std::tm* tiempo_local = std::localtime(&tiempo_actual);
+
+	int dia, mes, anio, hora, minuto;
+
+	// 2. Extraer cada componente
+	dia    = tiempo_local->tm_mday;
+	mes    = tiempo_local->tm_mon + 1;     // tm_mon va de 0 a 11
+	anio   = tiempo_local->tm_year + 1900; // tm_year cuenta desde 1900
+	hora   = tiempo_local->tm_hour;
+	minuto = tiempo_local->tm_min;
+
+			  
+	IControladorCambiarFechaActualDelSistema* controladorCambiarFechaActualDelSistema = fabrica->getControladorCambiarFechaActualDelSistema();
+	controladorCambiarFechaActualDelSistema->cambiarFechaActualDelSistema(dia, mes, anio, hora, minuto);
+	controladorCambiarFechaActualDelSistema->confirmar();
+	delete controladorCambiarFechaActualDelSistema;
+			  
+	// Crear un funcionario inicial para iniciar sesión
+
 	IControladorRegistrarFuncionario* controladorRegistrarFuncionario = fabrica->getControladorRegistrarFuncionario();
 	controladorRegistrarFuncionario->registrarFuncionario("admin", "Administrador", "admin", 1);
 	controladorRegistrarFuncionario->altaFuncionario();
@@ -120,9 +151,12 @@ void registrarLector() {
 	cin >> contrasenia;
 
 
-	IControladorRegistrarLector * controlador = fabrica->getControladorRegistrarLector();
+	IControladorRegistrarLector * controladorLector = fabrica->getControladorRegistrarLector();
+	IControladorVerFechaActualDelSistema * controladorVerFechaActual = fabrica->getControladorVerFechaActualDelSistema();
 
-	DtLector resultado = controlador->registrarLector(id, nombre, contrasenia, fechaActual);
+	DtFecha fechaActual = controladorVerFechaActual->verFechaActualDelSistema();
+	delete controladorVerFechaActual;
+	DtLector resultado = controladorLector->registrarLector(id, nombre, contrasenia, fechaActual);
 
 	int opcion;
 	do {
@@ -131,10 +165,11 @@ void registrarLector() {
 		cout << resultado.toString() << endl;
 		cout << "1. Si" << endl;
 		cout << "2. No" << endl;
+		cout << "Seleccione una opcion: ";
 		cin >> opcion;
 		switch (opcion) {
 			case 1: 
-				controlador->altaLector(); 
+				controladorLector->altaLector(); 
 				cout << "Lector registrado exitosamente." << endl; 
 				break;
 			case 2: 
@@ -147,7 +182,7 @@ void registrarLector() {
 		pausa();
 	} while (opcion != 1 && opcion != 2);
 	
-	delete controlador;
+	delete controladorLector;
 }
 
 void registrarFuncionario() {
@@ -174,6 +209,7 @@ void registrarFuncionario() {
 		cout << resultado.toString() << endl;
 		cout << "1. Si" << endl;
 		cout << "2. No" << endl;
+		cout << "Seleccione una opcion: ";
 		cin >> opcion;
 		switch (opcion) {
 			case 1: 
@@ -239,7 +275,7 @@ void registrarMaterial() {
 
 		DtLibro resultado = controlador->ingresarDatosLibro(autor, cantPaginas);
 		cout << "Datos ingresados para el libro: " << endl;
-		cout << resultado.toString() << endl;
+		cout << resultado.toString() << endl << endl;
 	} else if (tipo == TipoMaterial::TM_REVISTA) {
 		int numEdicion;
 		bool publicacionMensual;
@@ -247,7 +283,7 @@ void registrarMaterial() {
 		cin >> numEdicion;
 		int pubMensualInt;
 		do {
-			cout << "La revista es de publicacion mensual? (1 para Si, 2 para No): ";
+			cout << "¿La revista es de publicacion mensual? (1 para Si, 2 para No): ";
 			cin >> pubMensualInt;
 			switch (pubMensualInt) {
 			case 1:
@@ -264,7 +300,7 @@ void registrarMaterial() {
 		
 		DtRevista resultado = controlador->ingresarDatosRevista(numEdicion, publicacionMensual);
 		cout << "Datos ingresados para la revista: " << endl;
-		cout << resultado.toString() << endl;
+		cout << resultado.toString() << endl << endl;
 	}
 
 	int opcion;
@@ -272,6 +308,7 @@ void registrarMaterial() {
 		cout << "Desea confirmar el registro del material? " << endl;
 		cout << "1. Si" << endl;
 		cout << "2. No" << endl;
+		cout << "Seleccione una opcion: ";
 		cin >> opcion;
 		switch (opcion) {
 			case 1: 
@@ -341,11 +378,96 @@ void consultarPuntajesDeMaterial() {
 	delete controlador;
 }
 
+void eliminarLector() {
+
+}
+
+void eliminarMaterial() {
+
+}
+
+void relojDelSistema() {
+
+	int opcion;
+	do {
+		system("clear");
+		cout << "Reloj del sistema" << endl;
+		cout << "1. Ver fecha del sistema" << endl;
+		cout << "2. Cambiar fecha del sistema" << endl;
+		cout << "0. Volver" << endl << endl;
+		cout << "Seleccione una opcion: ";
+
+		cin >> opcion;
+
+		switch(opcion) {
+			case 0: cout << "Volviendo..." << endl; pausa(); break;
+			case 1: verFechaActualDelSistema(); break;
+			case 2: cambiarFechaActualDelSistema(); break;
+			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
+		}
+	} while (opcion != 0);
+}
+
+void verFechaActualDelSistema() {
+	IControladorVerFechaActualDelSistema* controlador = fabrica->getControladorVerFechaActualDelSistema();
+	DtFecha fechaActual = controlador->verFechaActualDelSistema();
+	system("clear");
+	cout << "La fecha actual en el sistema es: " + fechaActual.toString() << endl;
+	pausa();
+	delete controlador;
+}
+
+void cambiarFechaActualDelSistema() {
+	int dia, mes, anio, hora, minuto;
+	system("clear");
+	cout << "A continuacion se le pediran los datos en el formato: [dd/mm/aaaa hh:mm]" << endl << endl;
+	cout << "Ingrese el dia (dd): ";
+	cin >> dia;
+	cout << "Ingrese el mes (mm): ";
+	cin >> mes;
+	cout << "Ingrese el anio (aaaa): ";
+	cin >> anio;
+	cout << "Ingrese la hora (hh): ";
+	cin >> hora;
+	cout << "Ingrese el minuto (mm): ";
+	cin >> minuto;
+
+	IControladorCambiarFechaActualDelSistema* controlador = fabrica->getControladorCambiarFechaActualDelSistema();
+	DtFecha nuevaFecha = controlador->cambiarFechaActualDelSistema(dia, mes, anio, hora, minuto);
+	
+	cout << "Datos ingresados para la fecha: " << endl;
+	cout << nuevaFecha.toString() << endl << endl;
+
+	int opcion;
+	do {
+		cout << "Desea confirmar el cambio de fecha? " << endl;
+		cout << "1. Si" << endl;
+		cout << "2. No" << endl;
+		cout << "Seleccione una opcion: ";
+		cin >> opcion;
+		switch (opcion) {
+			case 1: 
+				controlador->confirmar();
+				cout << "Fecha cambiada exitosamente." << endl; 
+				break;
+			case 2: 
+				cout << "Cambio de hora cancelado." << endl; 
+				break;
+			default: 
+				cout << "Opcion invalida, intente nuevamente." << endl; 
+				break;
+		}
+		pausa();
+	} while (opcion != 1 && opcion != 2);
+
+	delete controlador;
+}
+
 void menu() {
 	int opcion;
 	do {
 		system("clear");
-		cout << "Menu Principal:" << endl;
+		cout << "Menu Principal" << endl;
 		cout << "1. Iniciar Sesion" << endl;
 		cout << "2. Cerrar Sesion" << endl;
 		cout << "3. Registrar Lector" << endl;
@@ -376,8 +498,8 @@ void menu() {
 			case 10: consultarPuntajesDeMaterial(); break;
 			case 11: eliminarLector(); break;
 			case 12: eliminarMaterial(); break;*/
-			case 0: cout << "Saliendo..." << endl; break;
-			default: cout << "Opcion invalida, intente nuevamente." << endl; break;
+			case 0: cout << "Saliendo..." << endl; pausa(); break;
+			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
 		}
 	} while (opcion != 0);
 }
@@ -386,7 +508,7 @@ void menuLector() {
 	int opcion;
 	do {
 		system("clear");
-		cout << "Menu de Lector:" << endl;
+		cout << "Menu de Lector" << endl;
 		cout << "1. Cerrar Sesion" << endl;
 		cout << "2. Ver Informacion de Material" << endl;
 		cout << "3. Puntuar Material" << endl;
@@ -398,10 +520,10 @@ void menuLector() {
 
 		switch (opcion) {
 			case 1: cerrarSesion(); break;
-/*			case 2: verInformacionDeMaterial(); break;
-			case 3: puntuarMaterial(); break;*/
+			case 2: verInformacionDeMaterial(); break;
+			case 3: puntuarMaterial(); break;
 			case 4: consultarPuntajesDeMaterial(); break;
-			case 0: cout << "Saliendo..." << endl; break;
+			case 0: cout << "Saliendo..." << endl; pausa(); break;
 			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
 		};
 	} while (opcion != 0);
@@ -411,7 +533,7 @@ void menuFuncionario() {
 	int opcion;
 	do {
 		system("clear");
-		cout << "Menu de Funcionario:" << endl;
+		cout << "Menu de Funcionario" << endl;
 		cout << "1. Cerrar Sesion" << endl;
 		cout << "2. Registrar Lector" << endl;
 		cout << "3. Registrar Funcionario" << endl;
@@ -422,6 +544,7 @@ void menuFuncionario() {
 		cout << "8. Consultar Puntajes de Material" << endl;
 		cout << "9. Eliminar Lector" << endl;
 		cout << "10. Eliminar Material" << endl;
+		cout << "11. Reloj del sistema" << endl;
 		cout << "0. Salir" << endl << endl;
 		cout << "Seleccione una opcion: ";
 
@@ -432,20 +555,21 @@ void menuFuncionario() {
 			case 2: registrarLector(); break;
 			case 3: registrarFuncionario(); break;
 			case 4: registrarMaterial(); break;
-/*			case 5: registrarPrestamo(); break;
+			case 5: registrarPrestamo(); break;
 			case 6: consultarPrestamosDeLector(); break;
-			case 7: verInformacionDeMaterial(); break;*/
+			case 7: verInformacionDeMaterial(); break;
 			case 8: consultarPuntajesDeMaterial(); break;
-/*			case 9: eliminarLector(); break;
-			case 10: eliminarMaterial(); break;*/
-			case 0: cout << "Saliendo..." << endl; break;
+			case 9: eliminarLector(); break;
+			case 10: eliminarMaterial(); break;
+			case 11: relojDelSistema();
+			case 0: cout << "Saliendo..." << endl; pausa(); break;
 			default: cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
 		}
 	} while (opcion != 0);
 }
 
 void pausa() {
-	cout << "Presione Enter para continuar...";
+	cout << endl << "Presione Enter para continuar...";
 	// Limpiar el buffer de entrada para evitar que el siguiente cin se salte
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	// Esperar a que el usuario presione Enter

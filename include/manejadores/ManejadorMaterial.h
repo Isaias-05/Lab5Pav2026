@@ -12,8 +12,9 @@ using namespace std;
 class ManejadorMaterial {
     private:
         static ManejadorMaterial* instancia;
-        map<string, Material*> materiales;
         ManejadorMaterial();
+        
+        map<string, Material*> materiales;
     public:
         
         ~ManejadorMaterial();

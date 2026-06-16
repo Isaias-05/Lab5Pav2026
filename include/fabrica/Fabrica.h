@@ -16,7 +16,13 @@
 #include "IControladorConsultarPuntajesDeMaterial.h"
 #include "IControladorEliminarLector.h"
 #include "IControladorEliminarMaterial.h"
+
+//Extra
 #include "IControladorVerificarSesion.h"
+
+//Fecha del sistema
+#include "IControladorVerFechaActualDelSistema.h"
+#include "IControladorCambiarFechaActualDelSistema.h"
 
 class Fabrica {
 private:
@@ -40,7 +46,13 @@ public:
     static IControladorConsultarPuntajesDeMaterial* getControladorConsultarPuntajesDeMaterial();
     static IControladorEliminarLector* getControladorEliminarLector();
     static IControladorEliminarMaterial* getControladorEliminarMaterial();
+
+    //Extra
     static IControladorVerificarSesion* getControladorVerificarSesion();
+
+    //Fecha del sistema
+    static IControladorVerFechaActualDelSistema* getControladorVerFechaActualDelSistema();
+    static IControladorCambiarFechaActualDelSistema* getControladorCambiarFechaActualDelSistema();
 
     ~Fabrica();
 };
