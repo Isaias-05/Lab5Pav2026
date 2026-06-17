@@ -23,6 +23,7 @@ Material::~Material() {
     for (auto& pair : puntajes) {
         delete pair.second; 
     }
+    puntajes.clear();
 }
 
 string Material::getCodigo() {
@@ -56,11 +57,16 @@ float Material::getPuntajePromedio() {
 void Material::actualizarPuntajePromedio() {
     int cantPuntajes = puntajes.size(), suma = 0;
 
+    if (cantPuntajes == 0) {
+        puntajePromedio = 0.0;
+        return;
+    }
+
     for(const auto& par : puntajes){
         suma += par.second->getValor();
     }
 
-    puntajePromedio = suma/cantPuntajes;
+    puntajePromedio = static_cast<float>(suma) / cantPuntajes;
 }
 
 const map<string, Puntaje*>& Material::getPuntajes() {
@@ -98,5 +104,13 @@ DtPuntaje Material::getDtPuntajeUsuario(string idUsuario) {
     } else {
         //Si el usuario no ha dado un puntaje, devuelve un DtPuntaje vacío
         return DtPuntaje();
+    }
+}
+
+void Material::eliminarPuntaje(string idLector){
+    if(this->tienePuntaje(idLector)) {
+        delete puntajes.find(idLector)->second;
+        this->puntajes.erase(idLector);
+        actualizarPuntajePromedio();
     }
 }

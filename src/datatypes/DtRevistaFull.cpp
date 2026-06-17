@@ -21,6 +21,7 @@ string DtRevistaFull::toString(){
     return  "Codigo: " + getCodigo() + 
             "\nTitulo: " + getTitulo() + 
             "\nAnio de Publicacion: " + to_string(getAnioPublicacion()) + 
+            "\nTipo de Material: Revista" +
             "\nPuntaje Promedio: " + to_string(getPuntajePromedio()) + 
             "\nNumero de Edicion: " + to_string(this->numeroEdicion) +
             "\nPublicacion Mensual: " + (this->publicacionMensual ? "Si" : "No");

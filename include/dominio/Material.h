@@ -48,5 +48,8 @@ class Material{
         virtual DtMaterialFull* getDtMaterialFull() = 0;
 
         bool tienePuntaje(string);
+
+        void eliminarPuntaje(string);
+
 };
 #endif

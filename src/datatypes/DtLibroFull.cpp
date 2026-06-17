@@ -21,6 +21,7 @@ string DtLibroFull::toString(){
     return  "Codigo: " + getCodigo() + 
         "\nTitulo: " + getTitulo() + 
         "\nAnio de Publicacion: " + to_string(getAnioPublicacion()) + 
+        "\nTipo de Material: Libro" +
         "\nPuntaje Promedio: " + to_string(getPuntajePromedio()) + 
         "\nAutor: " + this->autor + 
         "\nCantidad de Paginas: " + to_string(this->cantPaginas);

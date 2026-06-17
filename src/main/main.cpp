@@ -31,7 +31,7 @@ using namespace std;
 Fabrica * fabrica = Fabrica::getInstancia();
 
 //Declaración de funciones
-void iniciarSesion();
+bool iniciarSesion();
 void cerrarSesion();
 void registrarLector();
 void registrarFuncionario();
@@ -92,7 +92,8 @@ int main() {
 	bool salir;
 
 	do {
-		iniciarSesion();
+		salir = iniciarSesion();
+		if (salir) break;
 
 		IControladorVerificarSesion* controladorVerificarSesion = fabrica->getControladorVerificarSesion();
 
@@ -105,23 +106,29 @@ int main() {
 		} else if (tipoUsuario == TipoUsuario::TU_FUNCIONARIO) {
 			salir = menuFuncionario();
 		} else {
-			cout << "Tipo de usuario desconocido. Saliendo...";
+			cout << "Tipo de usuario desconocido.";
 			pausa();
 		}
 	}while (!salir);
 
+	system("clear");
+	cout << "Saliendo..." << endl;
+	pausa();
 
 	return 0;
 }
 
 //Implementación de funciones
-void iniciarSesion() {
+bool iniciarSesion() {
 	string id, contrasenia;
 	IControladorIniciarSesion* controlador = fabrica->getControladorIniciarSesion();
 
-	bool exito = false;
+	bool exito = false, salir = false;
 	do {
+		if (salir) break;
+
 		system("clear");
+		cout << "	< Iniciar Sesion >" << endl << endl;
 		cout << "Ingrese su id: ";
 		cin >> id;
 		cout << "Ingrese su contrasenia: ";
@@ -135,11 +142,32 @@ void iniciarSesion() {
 		} else {
 			system("clear");
 			cout << "Error al iniciar sesion. Verifique sus credenciales." << endl;
+			pausa();
+			int opcion;
+			do {
+				system("clear");
+				cout << "Desea volver a intentar iniciar sesion?" << endl;
+				cout << "1. Si" << endl;
+				cout << "2. No" << endl;
+				cout << "Seleccione una opcion: ";
+				opcion = ingresoEntero();
+				switch (opcion) {
+					case 1: break;
+					case 2: salir = true; break;
+					default: 
+						system("clear");
+						cout << "Opcion invalida, intente nuevamente." << endl; 
+						pausa();
+						break;
+				} 
+			} while(opcion != 1 && opcion != 2);
 		}
 		pausa();
 	} while (!exito);
-	
+
 	delete controlador;
+
+	return salir;
 }
 
 void cerrarSesion() {
@@ -164,13 +192,48 @@ void registrarLector() {
 
 
 	IControladorRegistrarLector * controladorLector = fabrica->getControladorRegistrarLector();
-	IControladorVerFechaActualDelSistema * controladorVerFechaActual = fabrica->getControladorVerFechaActualDelSistema();
+	
 
-	DtFecha fechaActual = controladorVerFechaActual->verFechaActualDelSistema();
-	delete controladorVerFechaActual;
-	DtLector resultado = controladorLector->registrarLector(id, nombre, contrasenia, fechaActual);
-
+	DtFecha fechaRegistro;
 	int opcion;
+	do {
+		system("clear");
+		cout << "Desea registrarlo con la fecha actual del sistema? " << endl;
+		cout << "1. Si" << endl;
+		cout << "2. No" << endl;
+		cout << "Seleccione una opcion: ";
+		opcion = ingresoEntero();
+		
+		switch (opcion) {
+			case 1: { // Added curly braces to create a new scope
+				IControladorVerFechaActualDelSistema * controladorVerFechaActual = fabrica->getControladorVerFechaActualDelSistema();
+				fechaRegistro = controladorVerFechaActual->verFechaActualDelSistema();
+				delete controladorVerFechaActual;
+			} break;
+			case 2: { // Added curly braces to create a new scope
+				int dia, mes, anio, hora, minuto;
+				system("clear");
+				cout << "A continuacion se le pediran los datos en el formato: [dd/mm/aaaa hh:mm]" << endl << endl;
+				cout << "Ingrese el dia (dd): ";
+				dia = ingresoEntero();
+				cout << "Ingrese el mes (mm): ";
+				mes = ingresoEntero();
+				cout << "Ingrese el anio (aaaa): ";
+				anio = ingresoEntero();
+				cout << "Ingrese la hora (hh): ";
+				hora = ingresoEntero();
+				cout << "Ingrese el minuto (mm): ";
+				minuto = ingresoEntero();
+				fechaRegistro = DtFecha(dia, mes, anio, hora, minuto);
+			} break;
+			default:
+				cout << "Opcion invalida, intente nuevamente." << endl;
+			break;
+		} 
+	}	while (opcion != 1 && opcion != 2);
+
+	DtLector resultado = controladorLector->registrarLector(id, nombre, contrasenia, fechaRegistro);
+
 	do {
 		system("clear");
 		cout << "Desea guardar el lector con los datos: " << endl;
@@ -217,7 +280,7 @@ void registrarFuncionario() {
 
 	if (numEmpleado == -1){
 		system("clear");
-		cout << "Error: El numero de Funcioanrio debe ser un numero entero." << endl;
+		cout << "Error: El numero de Funcionario debe ser un numero entero." << endl;
 		pausa();
 		return;
 	}
@@ -234,6 +297,7 @@ void registrarFuncionario() {
 		cout << "2. No" << endl;
 		cout << "Seleccione una opcion: ";
 		opcion = ingresoEntero();
+		system("clear");
 		switch (opcion) {
 			case 1: 
 				controlador->altaFuncionario();
@@ -276,8 +340,10 @@ void registrarMaterial() {
 
 	int tipoInt;
 	do {
+		system("clear");
 		cout << "Ingrese el tipo de material (1 para Libro, 2 para Revista): ";
 		tipoInt = ingresoEntero();
+		system("clear");
 		switch (tipoInt) {
 		case 1:
 			tipo = TipoMaterial::TM_LIBRO;
@@ -322,7 +388,7 @@ void registrarMaterial() {
 		int numEdicion;
 		bool publicacionMensual;
 		cout << "Ingrese el numero de edicion de la revista: ";
-		cin >> numEdicion;
+		numEdicion = ingresoEntero();
 		int pubMensualInt;
 		do {
 			cout << "La revista es de publicacion mensual? (1 para Si, 2 para No): ";
@@ -425,14 +491,10 @@ void registrarPrestamo() {
 	}
 
 	cout << "Ingrese la cantidad de dias del prestamo: ";
-	cin >> cantDias;
-	
+	cantDias = ingresoEntero();
+	DtPrestamo dtPrestamo;
 	try {
-		
-		DtPrestamo dtPrestamo = controlador->registrarPrestamo(fechaPrestamo, cantDias);
-		cout << "Datos del prestamo a registrar: " << endl;
-		cout << dtPrestamo.toString() << endl;
-
+		dtPrestamo = controlador->registrarPrestamo(fechaPrestamo, cantDias);
 	} catch (const invalid_argument& e) {
 		cout << e.what() << endl;
 		pausa();
@@ -441,11 +503,14 @@ void registrarPrestamo() {
 	}
 	int opcion;
 	do {
-		cout << "Desea confirmar el registro del prestamo? " << endl;
+		system("clear");
+		cout << "Desea confirmar el registro del prestamo con los datos:" << endl;
+		cout << dtPrestamo.toString() << endl;
 		cout << "1. Si" << endl;
 		cout << "2. No" << endl;
 		cout << "Seleccione una opcion: ";
 		opcion = ingresoEntero();
+		system("clear");
 		switch (opcion) {
 			case 1: 
 				controlador->confirmar();
@@ -466,6 +531,7 @@ void registrarPrestamo() {
 
 void consultarPrestamosDeLector() {
 	string idLector;
+	system("clear");
 	cout << "Ingrese el id del lector para consultar sus prestamos: ";
 	cin >> idLector;
 
@@ -493,15 +559,16 @@ void verInformacionDeMaterial() {
 		return;
 	}
 
-	cout << "	< Ver Informacion de Material >" << endl; 
+	cout << "	< Ver Informacion de Material >" << endl << endl; 
 
 	vector<DtMaterialBasico> copiaMateriales = controlador->listarMateriales();
+	cout << "Materiales Registrados:" << endl;
 	for (DtMaterialBasico material : copiaMateriales){
 		cout << material.toString() << endl;
 	}
 	
 	string codigo;
-	cout << "\nIngrese codigo del Material: ";
+	cout << "\nIngrese codigo del Material a seleccionar: ";
 	cin >> codigo;
 
 	try
@@ -527,25 +594,27 @@ void puntuarMaterial(){
 	string codigo;
 	int puntaje;
 
+	cout << "	< Puntuar Material >" << endl << endl; 
+
 	vector<DtMaterialBasico> vectorMaterialesBasicos = controlador->listarMateriales();
-	cout << "Materiales Registrados" << endl;
+	cout << "Materiales Registrados:" << endl;
 	for(const auto& materialBasico : vectorMaterialesBasicos){
 		cout << materialBasico.toString() << endl;
 	}
 	
-	cout << "Ingrese el codigo del material a seleccionar: "; 
+	cout << endl << "Ingrese el codigo del material a seleccionar: "; 
 	cin >> codigo;
 	DtMaterialBasico materialBasico = controlador->seleccionarMaterial(codigo);
 	system("clear");
-	cout << "Material Seleccionado" << endl;
+	cout << "Material Seleccionado:" << endl;
 	cout << materialBasico.toString() << endl;
 
 	DtPuntaje dtPuntaje = controlador->obtenerPuntaje();
 	if(dtPuntaje.getValor() != -1){
 		cout << "El Puntaje anterior era: " + to_string(dtPuntaje.getValor()) << endl;
 	}
-	cout << "Ingrese el nuevo puntaje para el material: ";
-	cin >> puntaje;
+	cout << endl << "Ingrese el nuevo puntaje para el material: ";
+	puntaje = ingresoEntero();
 	controlador->puntuarMaterial(puntaje);
 
 	delete controlador;
@@ -557,9 +626,19 @@ void consultarPuntajesDeMaterial() {
 	string codigoDeMaterial;
 
 	vector<DtMaterialBasico> vectorMateriales = controlador->listarMateriales();
+	if (vectorMateriales.empty())
+	{
+		cout << "No hay materiales registrados en el sistema." << endl;
+		pausa();
+		delete controlador;
+		return;
+	}
+
+	cout << "	< Consultar Puntajes de Material >" << endl << endl; 
+
+	cout << "Materiales Registrados:" << endl;
 	for(const auto& material : vectorMateriales)
 		cout << material.toString() << endl;
-
 	cout << endl << "Ingrese el codigo del material a consultar: ";
 	cin >> codigoDeMaterial;
 	cout << endl;
@@ -590,9 +669,11 @@ void eliminarLector(){
 		DtLector dtLector = controlador->consultarLector(id);
 		int opcion;
 		do {
+			system("clear");
 			cout << "Desea a eliminar el usuario: " << dtLector.getNombre() << " con ID: " << dtLector.getId() << "?" << endl;
 			cout << "1. Si" << endl;
 			cout << "2. No" << endl;
+			cout << "Seleccione una opcion: ";
 			opcion = ingresoEntero();
 			switch (opcion) {
 				case 1: 
@@ -639,7 +720,7 @@ void eliminarMaterial(){
 	}
 	
 	string codigo;
-	cout << "Ingres codigo del Material: ";
+	cout << "Ingrese el codigo del Material: ";
 	cin >> codigo;
 
 	try
@@ -647,9 +728,10 @@ void eliminarMaterial(){
 		DtMaterialBasico dtMaterialBasico = controlador->seleccionarMaterial(codigo);
 		int opcion;
 		do {
-			cout << "Desea a eliminar el material : " << dtMaterialBasico.getTitulo() << " con Código: " << dtMaterialBasico.getCodigo() << "?" << endl;
+			cout << "Desea a eliminar el material : " << dtMaterialBasico.getTitulo() << " con Codigo: " << dtMaterialBasico.getCodigo() << "?" << endl;
 			cout << "1. Si" << endl;
 			cout << "2. No" << endl;
+			cout << "Seleccione una opcion: ";
 			opcion = ingresoEntero();
 			switch (opcion) {
 				case 1: 
@@ -683,13 +765,13 @@ void relojDelSistema() {
 	int opcion;
 	do {
 		system("clear");
-		cout << "Reloj del sistema" << endl;
+		cout << "	< Reloj del Sistema >" << endl;
 		cout << "1. Ver fecha del sistema" << endl;
 		cout << "2. Cambiar fecha del sistema" << endl;
 		cout << "0. Volver" << endl << endl;
 		cout << "Seleccione una opcion: ";
 
-		cin >> opcion;
+		opcion = ingresoEntero();
 
 		switch(opcion) {
 			case 0: cout << "Volviendo..." << endl; pausa(); break;
@@ -714,15 +796,15 @@ void cambiarFechaActualDelSistema() {
 	system("clear");
 	cout << "A continuacion se le pediran los datos en el formato: [dd/mm/aaaa hh:mm]" << endl << endl;
 	cout << "Ingrese el dia (dd): ";
-	cin >> dia;
+	dia = ingresoEntero();
 	cout << "Ingrese el mes (mm): ";
-	cin >> mes;
+	mes = ingresoEntero();
 	cout << "Ingrese el anio (aaaa): ";
-	cin >> anio;
+	cin >> anio; // anio = ingresoEntero();
 	cout << "Ingrese la hora (hh): ";
-	cin >> hora;
+	hora = ingresoEntero();
 	cout << "Ingrese el minuto (mm): ";
-	cin >> minuto;
+	minuto = ingresoEntero();
 
 	IControladorCambiarFechaActualDelSistema* controlador = fabrica->getControladorCambiarFechaActualDelSistema();
 	DtFecha nuevaFecha = controlador->cambiarFechaActualDelSistema(dia, mes, anio, hora, minuto);
@@ -736,7 +818,7 @@ void cambiarFechaActualDelSistema() {
 		cout << "1. Si" << endl;
 		cout << "2. No" << endl;
 		cout << "Seleccione una opcion: ";
-		cin >> opcion;
+		opcion = ingresoEntero();
 		switch (opcion) {
 			case 1: 
 				controlador->confirmar();
@@ -828,7 +910,7 @@ void menu() {
 	int opcion;
 	do {
 		system("clear");
-		cout << "Menu Principal" << endl;
+		cout << "	< Menu Principal >" << endl;
 		cout << "1. Iniciar Sesion" << endl;
 		cout << "2. Cerrar Sesion" << endl;
 		cout << "3. Registrar Lector" << endl;
@@ -871,7 +953,7 @@ bool menuLector() {
 	int opcion;
 	do {
 		system("clear");
-		cout << "Menu de Lector" << endl;
+		cout << "	< Menu de Lector >" << endl;
 		cout << "1. Cerrar Sesion" << endl;
 		cout << "2. Ver Informacion de Material" << endl;
 		cout << "3. Puntuar Material" << endl;
@@ -898,7 +980,7 @@ bool menuFuncionario() {
 	int opcion;
 	do {
 		system("clear");
-		cout << "Menu de Funcionario" << endl;
+		cout << "	< Menu de Funcionario >" << endl;
 		cout << "1. Cerrar Sesion" << endl;
 		cout << "2. Registrar Lector" << endl;
 		cout << "3. Registrar Funcionario" << endl;

@@ -89,3 +89,9 @@ bool ManejadorMaterial::existeMaterial(string codigo){
 bool ManejadorMaterial::isEmpty(){
     return materiales.empty();
 }
+
+void ManejadorMaterial::eliminarPuntajesDeLector(string idLector){
+    for (auto& pair : materiales) {
+        pair.second->eliminarPuntaje(idLector);
+    }
+}

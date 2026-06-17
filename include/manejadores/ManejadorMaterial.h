@@ -36,5 +36,8 @@ class ManejadorMaterial {
         bool eliminarMaterial(string codigo);
 
         bool existeMaterial(string codigo);
+
+        void eliminarPuntajesDeLector(string idLector);
+
     };
 #endif
