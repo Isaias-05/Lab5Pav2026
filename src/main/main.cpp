@@ -44,6 +44,7 @@ void consultarPuntajesDeMaterial();
 void eliminarLector();
 void eliminarMaterial();
 void relojDelSistema();
+void cargarDatosDePrueba();
 
 //Declaracíón de funciones Menú
 void menu();
@@ -615,6 +616,75 @@ void eliminarMaterial(){
 	delete controlador;
 }
 
+void cargarDatosDePrueba() {
+	//Registro de lectores
+	IControladorRegistrarLector* controladorRegistrarLector = fabrica->getControladorRegistrarLector();
+
+	controladorRegistrarLector->registrarLector("l1234", "Lector1", "1234", DtFecha(1, 1, 2023, 0, 0));
+	controladorRegistrarLector->altaLector();
+
+	controladorRegistrarLector->registrarLector("l5678", "Lector2", "5678", DtFecha(1, 1, 2023, 0, 0));
+	controladorRegistrarLector->altaLector();
+
+	delete controladorRegistrarLector;
+
+	//Registro de funcionarios
+	IControladorRegistrarFuncionario* controladorRegistrarFuncionario = fabrica->getControladorRegistrarFuncionario();
+
+	controladorRegistrarFuncionario->registrarFuncionario("f1234", "Funcionario1", "1234", 2);
+	controladorRegistrarFuncionario->altaFuncionario();
+
+	controladorRegistrarFuncionario->registrarFuncionario("f5678", "Funcionario2", "5678", 3);
+	controladorRegistrarFuncionario->altaFuncionario();
+
+	delete controladorRegistrarFuncionario;
+
+	//Registro de materiales
+	IControladorRegistrarMaterial* controladorRegistrarMaterial = fabrica->getControladorRegistrarMaterial();
+
+	controladorRegistrarMaterial->registrarMaterial("li1234", "Libro1", 2001, TipoMaterial::TM_LIBRO);
+	controladorRegistrarMaterial->ingresarDatosLibro("Autor1", 100);
+	controladorRegistrarMaterial->confirmar();
+
+	controladorRegistrarMaterial->registrarMaterial("li5678", "Libro2", 2002, TipoMaterial::TM_LIBRO);
+	controladorRegistrarMaterial->ingresarDatosLibro("Autor2", 200);
+	controladorRegistrarMaterial->confirmar();
+
+	controladorRegistrarMaterial->registrarMaterial("re1234", "Revista1", 2003, TipoMaterial::TM_REVISTA);
+	controladorRegistrarMaterial->ingresarDatosRevista(1, true);
+	controladorRegistrarMaterial->confirmar();
+
+	controladorRegistrarMaterial->registrarMaterial("re5678", "Revista2", 2004, TipoMaterial::TM_REVISTA);
+	controladorRegistrarMaterial->ingresarDatosRevista(2, false);
+	controladorRegistrarMaterial->confirmar();
+
+	delete controladorRegistrarMaterial;
+
+	//Registro de prestamos
+	IControladorRegistrarPrestamo* controladorRegistrarPrestamo = fabrica->getControladorRegistrarPrestamo();
+
+	controladorRegistrarPrestamo->obtenerLector("l1234");
+	controladorRegistrarPrestamo->obtenerMaterial("li1234");
+	controladorRegistrarPrestamo->registrarPrestamo(DtFecha(1, 1, 2023, 0, 0), 1);
+	controladorRegistrarPrestamo->confirmar();
+
+	controladorRegistrarPrestamo->obtenerMaterial("re1234");
+	controladorRegistrarPrestamo->registrarPrestamo(DtFecha(1, 1, 2023, 0, 0), 2);
+	controladorRegistrarPrestamo->confirmar();
+
+	controladorRegistrarPrestamo->obtenerLector("l5678");
+	controladorRegistrarPrestamo->obtenerMaterial("li5678");
+	controladorRegistrarPrestamo->registrarPrestamo(DtFecha(1, 1, 2023, 0, 0), 3);
+	controladorRegistrarPrestamo->confirmar();
+
+	controladorRegistrarPrestamo->obtenerLector("l5678");
+	controladorRegistrarPrestamo->obtenerMaterial("re5678");
+	controladorRegistrarPrestamo->registrarPrestamo(DtFecha(1, 1, 2023, 0, 0), 4);
+	controladorRegistrarPrestamo->confirmar();
+
+	delete controladorRegistrarPrestamo;
+}
+
 void menu() {
 	int opcion;
 	do {
@@ -699,6 +769,7 @@ bool menuFuncionario() {
 		cout << "9. Eliminar Lector" << endl;
 		cout << "10. Eliminar Material" << endl;
 		cout << "11. Reloj del sistema" << endl;
+		cout << "12. Cargar datos de prueba" << endl;
 		cout << "0. Salir" << endl << endl;
 		cout << "Seleccione una opcion: ";
 
@@ -715,6 +786,8 @@ bool menuFuncionario() {
 			case 8: consultarPuntajesDeMaterial(); break;
 			case 9: eliminarLector(); break;
 			case 10: eliminarMaterial(); break;
+			case 11: relojDelSistema(); break;
+			case 12: cargarDatosDePrueba(); break;
 			case 0: cout << "Saliendo..." << endl; break;
 			default: system("clear");cout << "Opcion invalida, intente nuevamente." << endl; pausa(); break;
 		}

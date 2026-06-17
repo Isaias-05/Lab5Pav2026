@@ -10,5 +10,5 @@ DtPrestamoLector ControladorConsultarPrestamosDeLector::obtenerLector(string idL
 		throw invalid_argument("Lector no encontrado");
 	}
 	DtPrestamoLector dtPrestamoLector = lector->getDtPrestamoLector();
-	return DtPrestamoLector();
+	return dtPrestamoLector;
 }
