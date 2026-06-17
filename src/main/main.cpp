@@ -51,7 +51,7 @@ bool menuLector();
 bool menuFuncionario();
 
 //Declaración de funciones Auxiliares
-int  inputOp();
+int  ingresoEntero();
 void pausa();
 
 void verFechaActualDelSistema();
@@ -178,7 +178,7 @@ void registrarLector() {
 		cout << "1. Si" << endl;
 		cout << "2. No" << endl;
 		cout << "Seleccione una opcion: ";
-		opcion = inputOp();
+		opcion = ingresoEntero();
 		switch (opcion) {
 			case 1: 
 				controladorLector->altaLector();
@@ -212,7 +212,15 @@ void registrarFuncionario() {
 	cout << "Ingrese la contrasenia del funcionario: ";
 	cin >> contrasenia;
 	cout << "Ingrese el numero de empleado del funcionario: ";
-	cin >> numEmpleado;
+	numEmpleado = ingresoEntero();
+
+
+	if (numEmpleado == -1){
+		system("clear");
+		cout << "Error: El numero de Funcioanrio debe ser un numero entero." << endl;
+		pausa();
+		return;
+	}
 
 	IControladorRegistrarFuncionario * controlador = fabrica->getControladorRegistrarFuncionario();
 	DtFuncionario resultado = controlador->registrarFuncionario(id, nombre, contrasenia, numEmpleado);
@@ -225,7 +233,7 @@ void registrarFuncionario() {
 		cout << "1. Si" << endl;
 		cout << "2. No" << endl;
 		cout << "Seleccione una opcion: ";
-		opcion = inputOp();
+		opcion = ingresoEntero();
 		switch (opcion) {
 			case 1: 
 				controlador->altaFuncionario();
@@ -256,11 +264,20 @@ void registrarMaterial() {
 	cout << "Ingrese el titulo del material: ";
 	cin >> titulo;
 	cout << "Ingrese el anio de publicacion del material: ";
-	cin >> anioPublicacion;
+	anioPublicacion = ingresoEntero();
+
+	if (anioPublicacion == -1){
+		system("clear");
+		cout << "Error: El anio de publicacion debe ser un numero entero." << endl;
+		pausa();
+		return;
+	}
+
+
 	int tipoInt;
 	do {
 		cout << "Ingrese el tipo de material (1 para Libro, 2 para Revista): ";
-		tipoInt = inputOp();
+		tipoInt = ingresoEntero();
 		switch (tipoInt) {
 		case 1:
 			tipo = TipoMaterial::TM_LIBRO;
@@ -301,7 +318,7 @@ void registrarMaterial() {
 		int pubMensualInt;
 		do {
 			cout << "La revista es de publicacion mensual? (1 para Si, 2 para No): ";
-			pubMensualInt = inputOp();
+			pubMensualInt = ingresoEntero();
 			switch (pubMensualInt) {
 			case 1:
 				publicacionMensual = true;
@@ -327,7 +344,7 @@ void registrarMaterial() {
 		cout << "1. Si" << endl;
 		cout << "2. No" << endl;
 		cout << "Seleccione una opcion: ";
-		opcion = inputOp();
+		opcion = ingresoEntero();
 		switch (opcion) {
 			case 1: 
 				controlador->confirmar();
@@ -418,7 +435,7 @@ void registrarPrestamo() {
 		cout << "1. Si" << endl;
 		cout << "2. No" << endl;
 		cout << "Seleccione una opcion: ";
-		opcion = inputOp();
+		opcion = ingresoEntero();
 		switch (opcion) {
 			case 1: 
 				controlador->confirmar();
@@ -498,6 +515,7 @@ void puntuarMaterial() {
 }
 
 void consultarPuntajesDeMaterial() {
+	system("clear");
 	IControladorConsultarPuntajesDeMaterial* controlador = fabrica->getControladorConsultarPuntajesDeMaterial();
 	string codigoDeMaterial;
 
@@ -523,7 +541,7 @@ void eliminarLector(){
 	string id;
 	
 	cout << "	< Eliminar Lector >	" << endl; 
-	cout << "Ingres ID del Lector: ";
+	cout << "Ingrese ID del Lector: ";
 	cin >> id;
 
 	try
@@ -534,7 +552,7 @@ void eliminarLector(){
 			cout << "Desea a eliminar el usuario: " << dtLector.getNombre() << " con ID: " << dtLector.getId() << "?" << endl;
 			cout << "1. Si" << endl;
 			cout << "2. No" << endl;
-			opcion = inputOp();
+			opcion = ingresoEntero();
 			switch (opcion) {
 				case 1: 
 					controlador->confirmar(dtLector.getId());
@@ -552,6 +570,7 @@ void eliminarLector(){
 	}
 	catch(const std::exception& e)
 	{
+		system("clear");
 		std::cerr << e.what() << '\n';
 		pausa();
 	}
@@ -590,7 +609,7 @@ void eliminarMaterial(){
 			cout << "Desea a eliminar el material : " << dtMaterialBasico.getTitulo() << " con Código: " << dtMaterialBasico.getCodigo() << "?" << endl;
 			cout << "1. Si" << endl;
 			cout << "2. No" << endl;
-			opcion = inputOp();
+			opcion = ingresoEntero();
 			switch (opcion) {
 				case 1: 
 					controlador->confirmar(dtMaterialBasico.getCodigo());
@@ -635,7 +654,7 @@ void menu() {
 		cout << "0. Salir" << endl << endl;
 		cout << "Seleccione una opcion: ";
 
-		opcion = inputOp();
+		opcion = ingresoEntero();
 
 		switch (opcion) {
 			case 1: iniciarSesion(); break;
@@ -668,7 +687,7 @@ bool menuLector() {
 		cout << "0. Salir" << endl << endl;
 		cout << "Seleccione una opcion: ";
 
-		opcion = inputOp();
+		opcion = ingresoEntero();
 		
 		switch (opcion) {
 			case 1: cerrarSesion(); break;
@@ -702,7 +721,7 @@ bool menuFuncionario() {
 		cout << "0. Salir" << endl << endl;
 		cout << "Seleccione una opcion: ";
 
-		opcion = inputOp();
+		opcion = ingresoEntero();
 
 		switch (opcion) {
 			case 1: cerrarSesion(); break;
@@ -723,7 +742,7 @@ bool menuFuncionario() {
 	return opcion == 0 ? true : false;
 }
 
-int inputOp() {
+int ingresoEntero() {
 	string opcion;
 	cin >> opcion;
 	

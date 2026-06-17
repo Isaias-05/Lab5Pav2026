@@ -9,7 +9,7 @@ DtLector ControladorEliminarLector::consultarLector(string idUsuario) {
     if (lector != nullptr) {
         return lector->getDtLector();
     }else{
-        throw invalid_argument("ERROR: No existe un lector con ID: " + idUsuario + " En el Sistema\n");
+        throw invalid_argument("ERROR: No existe un lector con Id '" + idUsuario + "' en el sistema.");
     }
 }
 
@@ -19,5 +19,6 @@ void ControladorEliminarLector::confirmar(string idUsuario) {
  
     bool eliminado = manejadorUsuario->eliminarUsuario(idUsuario);
     if(!eliminado)
-        throw invalid_argument("ERROR: No se pudo eliminar el lector con ID: " + idUsuario + "\n");
+        throw invalid_argument("ERROR: No se pudo eliminar el lector con ID ' " + idUsuario + " ' .\n");
+
 }
