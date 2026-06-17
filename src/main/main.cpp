@@ -298,18 +298,26 @@ void registrarMaterial() {
 		string autor;
 		int cantPaginas;
 
-		system("clear");
-
 		cout << "Ingrese el autor del libro: ";
 		cin.ignore();
 		getline(cin, autor);
 		//cin >> autor;
 		cout << "Ingrese la cantidad de paginas del libro: ";
-		cin >> cantPaginas;
+		cantPaginas = ingresoEntero();
+
+		if (cantPaginas == -1){
+			system("clear");
+			cout << "Error: La cantidad de paginas debe ser un numero entero." << endl;
+			pausa();
+			delete controlador;
+			return;
+		}
+
 
 		DtLibro resultado = controlador->ingresarDatosLibro(autor, cantPaginas);
-		cout << "Datos ingresados para el libro: " << endl;
+		system("clear"); cout << "Datos ingresados para el libro: " << endl;
 		cout << resultado.toString() << endl << endl;
+
 	} else if (tipo == TipoMaterial::TM_REVISTA) {
 		int numEdicion;
 		bool publicacionMensual;
@@ -333,8 +341,7 @@ void registrarMaterial() {
 		} while (pubMensualInt != 1 && pubMensualInt != 2);
 		
 		DtRevista resultado = controlador->ingresarDatosRevista(numEdicion, publicacionMensual);
-		system("clear");
-		cout << "Datos ingresados para la revista: " << endl;
+		system("clear");cout << "Datos ingresados para la revista: " << endl;
 		cout << resultado.toString() << endl << endl;
 	}
 
@@ -348,12 +355,15 @@ void registrarMaterial() {
 		switch (opcion) {
 			case 1: 
 				controlador->confirmar();
+				system("clear");
 				cout << "Material registrado exitosamente." << endl; 
 				break;
-			case 2: 
+			case 2:
+				system("clear");
 				cout << "Registro de material cancelado." << endl; 
 				break;
 			default: 
+				system("clear");
 				cout << "Opcion invalida, intente nuevamente." << endl; 
 				break;
 		}
@@ -644,12 +654,15 @@ void eliminarMaterial(){
 			switch (opcion) {
 				case 1: 
 					controlador->confirmar(dtMaterialBasico.getCodigo());
+					system("clear");
 					cout << "Material eliminado exitosamente..." << endl; 
 					break;
-				case 2: 
+				case 2:
+					system("clear");
 					cout << "Operación cancelada exitosamente." << endl; 
 					break;
 				default: 
+					system("clear");
 					cout << "Opcion invalida, intente nuevamente." << endl; 
 					break;
 			}
