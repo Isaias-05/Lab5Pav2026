@@ -510,8 +510,35 @@ void verInformacionDeMaterial() {
 	delete controlador;
 }
 
-void puntuarMaterial() {
+void puntuarMaterial(){
+	system("clear");
+
+	IControladorPuntuarMaterial* controlador = fabrica->getControladorPuntuarMaterial();
+	string codigo;
+	int puntaje;
+
+	vector<DtMaterialBasico> vectorMaterialesBasicos = controlador->listarMateriales();
+	cout << "Materiales Registrados" << endl;
+	for(const auto& materialBasico : vectorMaterialesBasicos){
+		cout << materialBasico.toString() << endl;
+	}
 	
+	cout << "Ingrese el codigo del material a seleccionar: "; 
+	cin >> codigo;
+	DtMaterialBasico materialBasico = controlador->seleccionarMaterial(codigo);
+	system("clear");
+	cout << "Material Seleccionado" << endl;
+	cout << materialBasico.toString() << endl;
+
+	DtPuntaje dtPuntaje = controlador->obtenerPuntaje();
+	if(dtPuntaje.getValor() != -1){
+		cout << "El Puntaje anterior era: " + to_string(dtPuntaje.getValor()) << endl;
+	}
+	cout << "Ingrese el nuevo puntaje para el material: ";
+	cin >> puntaje;
+	controlador->puntuarMaterial(puntaje);
+
+	delete controlador;
 }
 
 void consultarPuntajesDeMaterial() {
@@ -519,7 +546,11 @@ void consultarPuntajesDeMaterial() {
 	IControladorConsultarPuntajesDeMaterial* controlador = fabrica->getControladorConsultarPuntajesDeMaterial();
 	string codigoDeMaterial;
 
-	cout << "Ingrese el codigo del material a consultar: ";
+	vector<DtMaterialBasico> vectorMateriales = controlador->listarMateriales();
+	for(const auto& material : vectorMateriales)
+		cout << material.toString() << endl;
+
+	cout << endl << "Ingrese el codigo del material a consultar: ";
 	cin >> codigoDeMaterial;
 	cout << endl;
 
@@ -910,22 +941,4 @@ void pausa() {
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	// Esperar a que el usuario presione Enter
 	cin.get();
-}
-
-void puntuarMaterial(){
-	IControladorPuntuarMaterial* controlador = fabrica->getControladorPuntuarMaterial();
-	string codigo, idLector;
-	int puntaje;
-
-	vector<DtMaterialBasico> vectorMaterialesBasicos = controlador->listarMateriales();
-
-	cout << "Ingrese el codigo del material a seleccionar: "; 
-	cin >> codigo;
-	DtMaterialBasico materialBasico = controlador->seleccionarMaterial(codigo);
-
-	cout << "Ingrese su id para consultar el puntaje del material seleccionado: ";
-	cin >> idLector;
-	DtPuntaje dtPuntaje = controlador->obtenerPuntaje();
-
-	controlador->puntuarMaterial(puntaje);
 }

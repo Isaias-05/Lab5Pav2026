@@ -1,6 +1,8 @@
 #include "DtPuntaje.h"
 
-DtPuntaje::DtPuntaje() {}
+DtPuntaje::DtPuntaje() {
+    valor = -1;
+}
 
 DtPuntaje::DtPuntaje(string idLector, string codigoMaterial, int valor) {
     this->idLector = idLector;
@@ -20,4 +22,8 @@ string DtPuntaje::getCodigoMaterial() {
 
 int DtPuntaje::getValor() {
     return this->valor;
+}
+
+string DtPuntaje::toString(){
+    return "ID Lector: " + idLector + "\nCodigo Material: " + codigoMaterial + "\nValor: " + to_string(valor);
 }

@@ -32,6 +32,5 @@ DtPuntaje ControladorPuntuarMaterial::obtenerPuntaje() {
 }
 
 void ControladorPuntuarMaterial::puntuarMaterial(int valorPuntaje) {
-	Puntaje* nuevoPuntaje = new Puntaje(valorPuntaje, lectorSeleccionado);
 	materialSeleccionado->actualizarPuntaje(valorPuntaje, lectorSeleccionado);
 }

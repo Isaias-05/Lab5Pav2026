@@ -19,5 +19,7 @@ class DtPuntaje {
         string getCodigoMaterial();
 
         int getValor();
+
+        string toString();
 };
 #endif
