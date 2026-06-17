@@ -4,7 +4,7 @@ Material::Material() {
     this->codigo = "";
     this->titulo = "";
     this->anioPublicacion = 0;
-    this->PuntajePromedio = 0.0;
+    this->puntajePromedio = 0.0;
     this->puntajes.clear();
 }
 
@@ -12,7 +12,7 @@ Material::Material(string codigo, string titulo, int anioPublicacion) {
     this->codigo = codigo;
     this->titulo = titulo;
     this->anioPublicacion = anioPublicacion;
-    this->PuntajePromedio = 0.0;
+    this->puntajePromedio = 0.0;
     this->puntajes.clear();
 }
 
@@ -50,17 +50,35 @@ void Material::setAnioPublicacion(int anioPublicacion) {
 }
 
 float Material::getPuntajePromedio() {
-    return PuntajePromedio;
+    return puntajePromedio;
 }
 
-void Material::actualizarPuntajePromedio(float nuevoPuntaje) {}
+void Material::actualizarPuntajePromedio() {
+    int cantPuntajes = puntajes.size(), suma = 0;
+
+    for(const auto& par : puntajes){
+        suma += par.second->getValor();
+    }
+
+    puntajePromedio = suma/cantPuntajes;
+}
 
 const map<string, Puntaje*>& Material::getPuntajes() {
     return puntajes;
 }
 
-void Material::agregarPuntaje(Puntaje* puntaje) {
-    this->puntajes[puntaje->getLector()->getId()] = puntaje;
+void Material::actualizarPuntaje(int valorPuntaje, Lector* lector) {
+    
+    if(this->tienePuntaje(lector->getId()))
+        this->puntajes.find(lector->getId())->second->setValor(valorPuntaje);
+    else
+        this->puntajes.insert({lector->getId(), new Puntaje(valorPuntaje, lector)});
+    
+    actualizarPuntajePromedio();
+}
+
+bool Material::tienePuntaje(string idLector){
+    return this->puntajes.find(idLector) != this->puntajes.end();
 }
 
 DtMaterialBasico Material::getDtMaterialBasico() {

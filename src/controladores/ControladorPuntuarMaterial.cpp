@@ -1,6 +1,7 @@
 #include "ControladorPuntuarMaterial.h"
 
 ControladorPuntuarMaterial::ControladorPuntuarMaterial() {}
+
 ControladorPuntuarMaterial::~ControladorPuntuarMaterial() {}
 
 vector<DtMaterialBasico> ControladorPuntuarMaterial::listarMateriales() {
@@ -19,11 +20,18 @@ DtMaterialBasico ControladorPuntuarMaterial::seleccionarMaterial(string codigo) 
 		throw invalid_argument("Codigo de material no encontrado");
 }
 
-DtPuntaje ControladorPuntuarMaterial::obtenerPuntaje(string idLector) {
-	idLectorSeleccionado = idLector;
-	return materialSeleccionado->getDtPuntajeUsuario(idLector);
+DtPuntaje ControladorPuntuarMaterial::obtenerPuntaje() {
+	
+	Sesion* sesion = Sesion::getInstancia();
+
+	lectorSeleccionado = dynamic_cast<Lector*>(sesion->getUsuario());
+    
+	if (lectorSeleccionado == nullptr) throw invalid_argument("Usuario no es un lector");
+
+	return materialSeleccionado->getDtPuntajeUsuario(lectorSeleccionado->getId());
 }
 
-void ControladorPuntuarMaterial::puntuarMaterial(int puntaje) {
-	
+void ControladorPuntuarMaterial::puntuarMaterial(int valorPuntaje) {
+	Puntaje* nuevoPuntaje = new Puntaje(valorPuntaje, lectorSeleccionado);
+	materialSeleccionado->actualizarPuntaje(valorPuntaje, lectorSeleccionado);
 }

@@ -48,9 +48,7 @@ void relojDelSistema();
 void menu();
 bool menuLector();
 bool menuFuncionario();
-
 void pausa();
-
 void verFechaActualDelSistema();
 void cambiarFechaActualDelSistema();
 
@@ -363,7 +361,7 @@ void verInformacionDeMaterial() {
 }
 
 void puntuarMaterial() {
-	// Implementar lógica aquí
+	
 }
 
 void consultarPuntajesDeMaterial() {

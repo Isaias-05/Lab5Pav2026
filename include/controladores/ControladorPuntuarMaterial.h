@@ -4,9 +4,12 @@
 #include "ManejadorMaterial.h"
 #include "Material.h"
 
+#include "Sesion.h"
 #include "IControladorPuntuarMaterial.h"
 #include "DtMaterialBasico.h"
 #include "DtPuntaje.h"
+#include "Puntaje.h"
+#include "Lector.h"
 
 #include <vector>
 #include <set>
@@ -16,7 +19,7 @@ using namespace std;
 class ControladorPuntuarMaterial : public IControladorPuntuarMaterial {
 	private:
 		Material* materialSeleccionado;
-		string idLectorSeleccionado;
+		Lector* lectorSeleccionado;
 	public:
 		ControladorPuntuarMaterial();
 
@@ -26,9 +29,9 @@ class ControladorPuntuarMaterial : public IControladorPuntuarMaterial {
 
 		DtMaterialBasico seleccionarMaterial(string codigo) override;
 
-		DtPuntaje obtenerPuntaje(string idLector) override;
+		DtPuntaje obtenerPuntaje() override;
 		
-		void puntuarMaterial(int puntaje) override;
+		void puntuarMaterial(int valorPuntaje) override;
 };
 
 #endif // CONTROLADORPUNTUARMATERIAL

@@ -6,6 +6,7 @@ ManejadorMaterial::ManejadorMaterial() {
     this->materiales = map<string, Material*>();
 }
 
+
 ManejadorMaterial::~ManejadorMaterial() {
     for (auto& pair : materiales) {
         delete pair.second;
@@ -15,10 +16,12 @@ ManejadorMaterial::~ManejadorMaterial() {
     instancia = nullptr;
 }
 
+
 ManejadorMaterial* ManejadorMaterial::getInstancia() {
     if (instancia == nullptr) instancia = new ManejadorMaterial();
     return instancia;
 }
+
 
 bool ManejadorMaterial::agregarMaterial(Material* material) {
 
@@ -31,6 +34,7 @@ bool ManejadorMaterial::agregarMaterial(Material* material) {
         return false; 
 }
 
+
 Material* ManejadorMaterial::obtenerMaterial(string codigo) {
     map<string, Material*>::iterator iterador = materiales.find(codigo);
     if (iterador != materiales.end()) {
@@ -40,9 +44,11 @@ Material* ManejadorMaterial::obtenerMaterial(string codigo) {
     }
 }
 
+
 map<string, Material*> ManejadorMaterial::obtenerMateriales() {
     return materiales;
 }
+
 
 DtMaterialFull* ManejadorMaterial::obtenerMaterialFull(string codigo) {
     map<string, Material*>::iterator iterador = materiales.find(codigo);
@@ -52,6 +58,7 @@ DtMaterialFull* ManejadorMaterial::obtenerMaterialFull(string codigo) {
         return nullptr; 
     }
 }
+
 
 vector<DtMaterialBasico> ManejadorMaterial::obtenerVectorMaterialesBasicos() {
 
@@ -69,14 +76,15 @@ bool ManejadorMaterial::eliminarMaterial(string codigo) {
     if (iterador != materiales.end()) {
         materiales.erase(iterador);
         return true;
-    } else {
+    } else
         return false; 
-    }
 }
+
 
 bool ManejadorMaterial::existeMaterial(string codigo){
     return this->materiales.at(codigo) != nullptr;
 }
+
 
 bool ManejadorMaterial::isEmpty(){
     return materiales.empty();
