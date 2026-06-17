@@ -16,7 +16,7 @@ class Material{
         string codigo;
         string titulo;
         int anioPublicacion;
-        float PuntajePromedio; 
+        float puntajePromedio; 
         // clave: idLector, valor: Puntaje*
         map<string, Puntaje*> puntajes; 
     public:
@@ -34,10 +34,10 @@ class Material{
         void setAnioPublicacion(int);
 
         float getPuntajePromedio();
-        void actualizarPuntaje(float);
+        void actualizarPuntajePromedio();
 
         const map<string, Puntaje*>& getPuntajes();
-        void agregarPuntaje(Puntaje*);
+        void actualizarPuntaje(int, Lector*);
 
         DtMaterial getDtMaterial();
 
@@ -46,5 +46,7 @@ class Material{
         DtPuntaje getDtPuntajeUsuario(string);
         
         virtual DtMaterialFull* getDtMaterialFull() = 0;
+
+        bool tienePuntaje(string);
 };
 #endif

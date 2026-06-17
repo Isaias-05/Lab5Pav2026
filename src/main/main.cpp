@@ -54,7 +54,6 @@ bool menuFuncionario();
 //Declaración de funciones Auxiliares
 int  ingresoEntero();
 void pausa();
-
 void verFechaActualDelSistema();
 void cambiarFechaActualDelSistema();
 
@@ -512,7 +511,7 @@ void verInformacionDeMaterial() {
 }
 
 void puntuarMaterial() {
-	// Implementar lógica aquí
+	
 }
 
 void consultarPuntajesDeMaterial() {
@@ -911,4 +910,22 @@ void pausa() {
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	// Esperar a que el usuario presione Enter
 	cin.get();
+}
+
+void puntuarMaterial(){
+	IControladorPuntuarMaterial* controlador = fabrica->getControladorPuntuarMaterial();
+	string codigo, idLector;
+	int puntaje;
+
+	vector<DtMaterialBasico> vectorMaterialesBasicos = controlador->listarMateriales();
+
+	cout << "Ingrese el codigo del material a seleccionar: "; 
+	cin >> codigo;
+	DtMaterialBasico materialBasico = controlador->seleccionarMaterial(codigo);
+
+	cout << "Ingrese su id para consultar el puntaje del material seleccionado: ";
+	cin >> idLector;
+	DtPuntaje dtPuntaje = controlador->obtenerPuntaje();
+
+	controlador->puntuarMaterial(puntaje);
 }

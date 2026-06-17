@@ -34,5 +34,7 @@ class ManejadorMaterial {
         bool isEmpty();
 
         bool eliminarMaterial(string codigo);
+
+        bool existeMaterial(string codigo);
     };
 #endif
